@@ -1,16 +1,17 @@
 class CardsController < ApplicationController
   def index
-    @cards = policy_scope(Card)
+    # @cards: all cards created by current user(scope ie defined in app/policies)
+    @cards = policy_scope(Card) # pundit(authorization)
   end
 
   def show
     @card = Card.find(params[:id])
-    authorize(@card)
+    authorize(@card) # pundit(authorization)
   end
 
   def new
     @card = Card.new
-    authorize @card
+    authorize @card # pundit(authorization)
   end
 
   def create
@@ -40,6 +41,7 @@ class CardsController < ApplicationController
   end
 
   private
+
   # strong params
 
   def card_params
