@@ -8,5 +8,8 @@ class Practice < ApplicationRecord
 
   has_many :cards, dependent: :destroy
 
+  has_one_attached :photo
+
   validates_presence_of :name, :info
+
 end
