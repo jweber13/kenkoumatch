@@ -1,0 +1,14 @@
+<h1>Card Show Page</h1>
+<%="#{@card.user.email}'s Card"%>
+<%if @card.institution.present?%>
+  <p><%="You're going to #{@card.institution.name}"%></p>
+  <br>
+  <%="located at: #{@card.institution.address}"%>
+  <br>
+  <%="they can be contacted here: #{@card.institution.phone}"%>
+  <br>
+  <%="website: #{@card.institution.address}"%>
+  <br>
+<%end%>
+<p><%="Here is a translation of your symptoms: #{@card.translatedcontent}"%></p>
+<p><%="Here are some keywords to help get you started: #{@card.cardkeywords}"%></p>
