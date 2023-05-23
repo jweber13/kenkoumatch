@@ -1,5 +1,5 @@
 <h2><%= @practice.name %></h2>
 <p><%= @practice.info %></p>
-<p><%= link_to 'serch', '#' %></p>
+<p><%= link_to 'search', practice_institutions_path(@practice) %></p>
 <p><%= link_to 'create card', new_practice_card_path(@practice) %></p>
 <p><%= link_to 'back', root_path %></p>
