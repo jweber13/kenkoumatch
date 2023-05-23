@@ -8,8 +8,9 @@ class Practice < ApplicationRecord
 
   has_many :cards, dependent: :destroy
 
-  validates_presence_of :name, :info
+  has_one_attached :photo
 
+  validates_presence_of :name, :info
   include PgSearch::Model
   # multisearchable against: [:name, :info]
 
@@ -21,5 +22,4 @@ class Practice < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
-
 end

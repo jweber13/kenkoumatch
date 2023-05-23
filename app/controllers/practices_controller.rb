@@ -12,3 +12,9 @@ class PracticesController < ApplicationController
     @practice = Practice.find(params[:id])
   end
 end
+
+private
+
+def practice_params
+  params.require(:practice).permit(:name, :info, :photo)
+end
