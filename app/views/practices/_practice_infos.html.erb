@@ -1,6 +1,6 @@
 <div class="practice-card">
   <div class="practice-infos">
-    <h2><%= practice.name %></h2>
+    <h2><%= link_to practice.name, practice_path(practice)%></h2>
     <h5><small> <%= practice.info %></small></h2>
   </div>
 </div>
