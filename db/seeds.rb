@@ -212,6 +212,11 @@ puts "creating institutions"
   )
 end
 
+puts "matching institutions to practices"
+Institution.all.each do |inst|
+  Institutionspractice.create(institution: inst, practice: Practice.all.sample)
+end
+
 # Additional code for creating cards if needed
 card = Card.new
 card.user = User.first
