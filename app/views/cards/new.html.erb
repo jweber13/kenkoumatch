@@ -1,2 +1,6 @@
 <h1>this is cards#new</h1>
 <p>here should be a form for creating a new card</p>
+<%= simple_form_for [@practice, @card] do |f| %>
+  <%= f.input :originalcontent %>
+  <%= f.submit "create card", class: "btn btn-primary" %>
+<% end %>

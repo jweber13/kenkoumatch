@@ -7,10 +7,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :practices, only: %i[index show] do
     resources :cards, only: %i[new create]
-    resources :institutions, only: %i[index show new create] do
-      resources :cards, only: %i[new create]
-    end
+    resources :institutions, only: %i[index show new create]
   end
   resources :cards, only: %i[index show edit update destroy]
-
 end

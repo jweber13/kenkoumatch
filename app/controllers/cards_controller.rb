@@ -12,6 +12,7 @@ class CardsController < ApplicationController
   def new
     @card = Card.new
     @card.user = current_user
+    @practice = Practice.find(params[:practice_id])
     authorize @card # pundit(authorization)
   end
 
