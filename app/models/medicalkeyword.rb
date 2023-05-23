@@ -4,4 +4,7 @@ class Medicalkeyword < ApplicationRecord
   has_many :practices, through: :practicekeywords
 
   validates_presence_of :term
+
+  # include PgSearch::Model
+  # multisearchable against: [:term]
 end
