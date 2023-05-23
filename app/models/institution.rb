@@ -4,6 +4,8 @@ class Institution < ApplicationRecord
   has_many :practices, through: :institutionspractices
   has_many :cards
 
+  has_one_attached :photo
+
   # validation
   validates_presence_of :name, :address, :phone
 end
