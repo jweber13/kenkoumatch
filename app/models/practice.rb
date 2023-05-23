@@ -1,4 +1,5 @@
 class Practice < ApplicationRecord
+  # association(see also the schema https://kitt.lewagon.com/db/101668)
   has_many :institutionspractices, dependent: :destroy
   has_many :institions, through: :institutionspractices
 
