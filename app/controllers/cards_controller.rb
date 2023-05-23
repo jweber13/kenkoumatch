@@ -10,6 +10,7 @@ class CardsController < ApplicationController
   end
 
   def new
+    raise
     @card = Card.new
     @card.user = current_user
     authorize @card # pundit(authorization)
