@@ -6,8 +6,6 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-require 'faker'
-
 Practicekeyword.destroy_all
 Medicalkeyword.destroy_all
 Practice.destroy_all
@@ -229,3 +227,39 @@ card.cardkeywords = {
   "オープンエアコン周辺堂堂巡り": "Open-air air conditioning area tour"
 }.to_json
 card.save
+
+medical_practices[0].photo.attach(
+  filename: 'dermatology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684829234/dermatology_fecws9.png')
+)
+
+# medical_practices[1].photo.attach(
+#   filename: 'pediatrics',
+#   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684829233/pediatrics_g6mldn.png')
+# )
+
+# medical_practices[2].photo.attach(
+#   filename: 'orthopedics',
+#   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684829233/orthopedics_vebswn.png')
+# )
+
+# medical_practices[3].photo.attach(
+#   filename: 'Dermatology',
+#   io: URI.open('')
+# )
+
+# medical_practices[4].photo.attach(
+#   filename: 'Dermatology',
+#   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684829234/dermatology_fecws9.png')
+# # )
+
+# medical_practices.each do |practice|
+#   @practice = Practice.find_by(name: practice)
+#    p "debug#{@practice}"
+#    binding.pry
+#   @practice.photo.attach(
+#     filename: practice,
+#     io: File.open("app/assets/images/#{practice.downcase}.png")
+# )
+# @practice.save
+# end
