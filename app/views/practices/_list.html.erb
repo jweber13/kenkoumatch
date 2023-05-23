@@ -1,0 +1,14 @@
+<div>
+  <p class="h3">
+    <% if params[:query].blank? %>
+      <%= pluralize practices.count, "practice" %> available
+    <% else %>
+      <%= pluralize practices.count, "result" %> for <code><%= params[:query] %></code>
+    <% end %>
+  </p>
+  <div class="practices">
+    <% practices.each do |practice| %>
+      <%= render "practice_infos", practice: practice %>
+    <% end %>
+  </div>
+</div>
