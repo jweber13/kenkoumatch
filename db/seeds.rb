@@ -8,6 +8,7 @@
 
 require 'faker'
 
+Practicekeyword.destroy_all
 Medicalkeyword.destroy_all
 Practice.destroy_all
 Institution.destroy_all
@@ -24,37 +25,124 @@ User.create!(
 puts "creating medical keywords"
 
 medical_terms = [
-  'Headache',
-  'Fever',
-  'Cough',
-  'Sore throat',
-  'Stomachache',
-  'Nausea',
-  'Vomiting',
-  'Diarrhea',
-  'Constipation',
-  'Dizziness',
-  'Fatigue',
-  'Insomnia',
   'Rash',
   'Itching',
-  'Burn',
-  'Sprain',
-  'Fracture',
-  'Back pain',
-  'High blood pressure',
-  'Low blood pressure',
-  'Cholesterol',
-  'Diabetes',
-  'Allergy',
-  'Asthma',
-  'Influenza',
-  'Common cold',
-  'Urinary tract infection',
-  'Kidney stone',
-  'Anxiety',
+  'Redness',
+  'Swelling',
+  'Dryness',
+  'Scaling',
+  'Blisters',
+  'Pain',
+  'Soreness',
+  'Discoloration',
+  'Fever',
+  'Cough',
+  'Diarrhea',
+  'Vomiting',
+  'Fatigue',
+  'Abdominal pain',
+  'Nasal congestion',
+  'Sore throat',
+  'Ear pain',
+  'Stiffness',
+  'Limited range of motion',
+  'Weakness',
+  'Instability',
+  'Deformity',
+  'Numbness',
+  'Tingling',
+  'Difficulty walking',
+  'Toothache',
+  'Tooth sensitivity',
+  'Gum swelling',
+  'Bleeding gums',
+  'Bad breathe',
+  'Toothe discoloration',
+  'Jaw pain',
+  'Loose teeth',
+  'Difficulty chewing',
+  'Muscle weakness',
+  'Joint stiffness',
+  'Balance problems',
+  'Difficulty walking',
+  'Muscle spasms',
+  'Postual problems',
+  'Functiona; limitations',
+  'Menstrual irregularities',
+  'Pelvic pain',
+  'Vaginal bleeding',
+  'Infertility',
+  'Sexual dysfunction',
   'Depression',
-  'Stress'
+  'Anxiety',
+  'Mood swings',
+  'Insomnia',
+  'Loss of interest',
+  'Changes in appetite',
+  'Irritability',
+  'Difficulty concentrating',
+  'Suicidal thoughts',
+  'Headache',
+  'Dizziness',
+  'Seizures',
+  'Tremors',
+  'Memory problems',
+  'Coordination difficulties',
+  'Speech difficulties',
+  'Vision changes',
+  'Chest pain',
+  'Shortness of breath',
+  'Palpitations',
+  'Edema',
+  'High blood pressure',
+  'Irregular heartbeat',
+  'Fainting',
+  'Leg pain or cramping',
+  'Blurred vision',
+  'Eye pain',
+  'Dry eyes',
+  'Eye discharge',
+  'Double vision',
+  'Flashes of light',
+  'Floaters in vision',
+  'Vision loss',
+  'Weight changes',
+  'Mood swings',
+  'Hair loss',
+  'Irregular menstrual periods',
+  'Excessive thirst',
+  'Increased urination',
+  'Temperature intolerance',
+  'Changes in appetite',
+  'Low libido',
+  'Shortness of breath',
+  'Wheezing',
+  'Chest tightness',
+  'Sputum production',
+  'Chronic cough',
+  'Difficulty breathing',
+  'Chest pain',
+  'respiratory infections',
+  'Braces',
+  'Invisalign',
+  'Retainer',
+  'Overbite',
+  'Underbite',
+  'Crossbite',
+  'Crowding',
+  'Gaps between teeth',
+  'Spinal adjustment',
+  'Back pain',
+  'Neck pain',
+  'Joint pain',
+  'Muscle stiffness',
+  'tingling',
+  'Sciatica',
+  'Family doctor',
+  'General physician',
+  'Nausea',
+  'Routine check-ups',
+  'Common illness'
 ]
 
 medical_terms.each do |mterm|
@@ -62,18 +150,53 @@ medical_terms.each do |mterm|
 end
 
 puts "making practices"
+
 medical_practices = [
-  'General Practice',
-  'Internal Medicine',
-  'Family Medicine',
-  'Emergency Medicine',
-  'Pediatrics'
+  'Dermatology',
+  'Pediatrics',
+  'Orthopedics',
+  'Dentistry',
+  'Physical Therapy',
+  'Obstetrics and Gynecology',
+  'Psychiatry',
+  'Neurology',
+  'Cardiology',
+  'Ophthalmology',
+  'Endocrinology',
+  'Pulmonology',
+  'Orthodontics',
+  'Chiropractic',
+  'Clinic'
 ]
+
 medical_practices.each do |m_practice|
   new_practice = Practice.create!(name: m_practice, info: Faker::Lorem.sentence)
-  practice_keywords = Medicalkeyword.order(Arel.sql('RANDOM()')).limit(5)
-  practice_keywords.each do |keyword|
-    Practicekeyword.create!(practice: new_practice, medicalkeyword: keyword)
+end
+
+medical_keywords_for_practices = {
+  "Dermatology" => ['Rash', 'Itching', 'Redness', 'Swelling', 'Dryness', 'Scaling', 'Blisters'],
+  "Pediatrics" => ['Fever', 'Cough', 'Diarrhea', 'Vomiting', 'Fatigue', 'Abdominal pain'],
+  "Orthopedics" => ['Stiffness', 'Limited range of motion', 'Pain', 'Weakness', 'Instability', 'Deformity', 'Numbness', 'Tingling', 'Difficulty walking', 'Joint stiffness'],
+  "Dentistry" => ['Toothache', 'Tooth sensitivity', 'Gum swelling', 'Bleeding gums', 'Bad breath', 'Tooth discoloration', 'Jaw pain', 'Loose teeth', 'Difficulty chewing'],
+  "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations'],
+  "Obstetrics and Gynecology" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction'],
+  "Psychiatry" => ['Depression', 'Anxiety', 'Mood swings', 'Insomnia', 'Loss of interest', 'Changes in appetite', 'Irritability', 'Difficulty concentrating', 'Suicidal thoughts'],
+  "Neurology" => ['Headache', 'Dizziness', 'Seizures', 'Tremors', 'Memory problems', 'Coordination difficulties', 'Speech difficulties', 'Vision changes'],
+  "Cardiology" => ['Chest pain', 'Shortness of breath', 'Palpitations', 'Edema', 'High blood pressure', 'Irregular heartbeat', 'Fainting', 'Leg pain or cramping'],
+  "Ophthalmology" => ['Blurred vision', 'Eye pain', 'Dry eyes', 'Eye discharge', 'Double vision', 'Flashes of light', 'Floaters in vision', 'Vision loss'],
+  "Endocrinology" => ['Weight changes', 'Mood swings', 'Hair loss', 'Irregular menstrual periods', 'Excessive thirst', 'Increased urination', 'Temperature intolerance', 'Changes in appetite', 'Low libido'],
+  "Pulmonology" => ['Shortness of breath', 'Wheezing', 'Chest tightness', 'Sputum production', 'Chronic cough', 'Difficulty breathing', 'Chest pain', 'Respiratory infections'],
+  "Orthodontics" => ['Braces', 'Invisalign', 'Retainer', 'Overbite', 'Underbite', 'Crossbite', 'Crowding', 'Gaps between teeth'],
+  "Chiropractic" => ['Spinal adjustment', 'Back pain', 'Neck pain', 'Joint pain', 'Muscle stiffness', 'Tingling', 'Sciatica'],
+  "Clinic" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness']
+}
+
+puts "making practice keywords..."
+medical_keywords_for_practices.each do |practice_name, keywords|
+  practice = Practice.find_by(name: practice_name)
+  keywords.each do |keyword|
+    medical_keyword = Medicalkeyword.find_by(term: keyword)
+    Practicekeyword.create(practice: practice, medicalkeyword: medical_keyword)
   end
 end
 
