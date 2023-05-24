@@ -164,7 +164,33 @@ medical_terms = [
   'hormones',
   'lungs',
   'pregnancy',
-  'pregnant'
+  'pregnant',
+  "acne",
+  "flake",
+  "bump",
+  "Eczema",
+  "newborn",
+  "growth",
+  "vaccination",
+  "vaccine",
+  "nutrition",
+  "Immunization",
+  "Sports",
+  "strain",
+  "Neck",
+  "Shoulder",
+  "body",
+  "Knee",
+  "Hip",
+  "Ankle",
+  "Sprains",
+  "Tendonitis",
+  "Rehabilitation",
+  "injury",
+  "sick",
+  "cold",
+  "flu",
+  "stomach"
 ]
 
 medical_terms.each do |mterm|
@@ -179,7 +205,7 @@ medical_practices = [
   'Orthopedics',
   'Dentistry',
   'Physical Therapy',
-  'Obstetrics and Gynecology',
+  'OB-GYN',
   'Psychiatry',
   'Neurology',
   'Cardiology',
@@ -188,7 +214,7 @@ medical_practices = [
   'Pulmonology',
   'Orthodontics',
   'Chiropractic',
-  'General clinic'
+  'Internal Medicine'
 ]
 
 medical_practices.each do |m_practice|
@@ -196,12 +222,13 @@ medical_practices.each do |m_practice|
 end
 
 medical_keywords_for_practices = {
-  "Dermatology" => ['Rash', 'Itching', 'Redness', 'Swelling', 'Dryness', 'Scaling', 'Blisters', 'skin', 'hair'],
-  "Pediatrics" => ['Fever', 'Cough', 'Diarrhea', 'Vomiting', 'Fatigue', 'Abdominal pain', 'child'],
+  "Dermatology" => ['Rash', 'Itching', 'Redness', 'Swelling', 'Dryness', 'Scaling', 'Blisters', 'skin', 'hair', "acne", "flake", "bump", "Eczema"],
+  "Pediatrics" => ['Fever', 'Cough', 'Diarrhea', 'Vomiting', 'Fatigue', 'Abdominal pain', 'child', "newborn", "growth", "vaccination", "vaccine", "nutrition", "Immunization"],
   "Orthopedics" => ['Stiffness', 'Limited range of motion', 'Pain', 'Weakness', 'Instability', 'Deformity', 'Numbness', 'Tingling', 'Difficulty walking', 'Joint stiffness', 'surgery', 'bones'],
   "Dentistry" => ['Toothache', 'Tooth sensitivity', 'Gum swelling', 'Bleeding gums', 'Bad breath', 'Tooth discoloration', 'Jaw pain', 'Loose teeth', 'Difficulty chewing', 'cavity'],
-  "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations', 'massage'],
-  "Obstetrics and Gynecology" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction', 'woman', 'pregnancy', 'pregnant'],
+  "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations', 'massage', "Sports", "strain", "Neck", "Shoulder",
+  "body", "Knee", "Hip", "Ankle", "Sprains", "Tendonitis", "Rehabilitation", "injury"],
+  "OB-GYN" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction', 'woman', 'pregnancy', 'pregnant'],
   "Psychiatry" => ['Depression', 'Anxiety', 'Mood swings', 'Insomnia', 'Loss of interest', 'Changes in appetite', 'Irritability', 'Difficulty concentrating', 'Suicidal thoughts', 'mental health', 'emotional'],
   "Neurology" => ['Headache', 'Dizziness', 'Seizures', 'Tremors', 'Memory problems', 'Coordination difficulties', 'Speech difficulties', 'Vision changes', 'brain', 'nerves'],
   "Cardiology" => ['Chest pain', 'Shortness of breath', 'Palpitations', 'Edema', 'High blood pressure', 'Irregular heartbeat', 'Fainting', 'heart'],
@@ -211,7 +238,7 @@ medical_keywords_for_practices = {
   "Pulmonology" => ['Shortness of breath', 'Wheezing', 'Chest tightness', 'Sputum production', 'Chronic cough', 'Difficulty breathing', 'Chest pain', 'Respiratory infections', 'lungs'],
   "Orthodontics" => ['Braces', 'Invisalign', 'Retainer', 'Overbite', 'Underbite', 'Crossbite', 'Crowding', 'Gaps between teeth'],
   "Chiropractic" => ['Spinal adjustment', 'Back pain', 'Neck pain', 'Joint pain', 'Muscle stiffness', 'Tingling', 'Sciatica'],
-  "General clinic" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness']
+  "Internal Medicine" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness', "vaccination", "vaccine", "cough", "sick", "cold", "flu", "stomach"]
 }
 
 puts "making practice keywords..."
@@ -250,7 +277,7 @@ Practice.find_by(name: "Dermatology").photo.attach(
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/dermatology.png')
 )
 
-Practice.find_by(name: "General clinic").photo.attach(
+Practice.find_by(name: "Internal Medicine").photo.attach(
   filename: 'general_clinic',
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849563/clinic.png')
 )
