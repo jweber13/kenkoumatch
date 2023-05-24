@@ -1,26 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="h2 my-3 d-flex justify-content-center"> Search for a Specialty </h1>
-      <div data-controller="search-practices">
-        <%= form_with url: practices_path, method: :get, html: {class: "mb-4", data: { search_practices_target: "form" }} do |f| %>
-          <%= f.label "Type a Practice, Specialty, or Symptom" %>
-          <!-- How to write an action in regular HTML
-          <input class="btn" type="text" data-action="keyup->search-practices#update">
-          <input class="btn" type="text" data-search-practices-target="input"> -->
-          <%= f.text_field :query,
-                           class: "form-control",
-                           value: params[:query],
-                           data: {
-                            action: "keyup->search-practices#update",
-                            search_practices_target: "input"
-                           }
-                           %>
-        <% end %>
-        <div data-search-practices-target='list'>
-          <%= render "list", practices: @practices %>
-        </div>
-      </div>
-    </div>
+<div class="search-bar">
+  <h1 class="h2 py-3 d-flex justify-content-center"> Search for a Specialty </h1>
+  <div data-controller="search-practices">
+    <%= form_with url: practices_path, method: :get, html: {class: "mb-4", data: { search_practices_target: "form" }} do |f| %>
+      <p class="search-text"><%= f.label "Type a Practice, Specialty, or Symptom" %></p>
+      <!-- How to write an action in regular HTML
+      <input class="btn" type="text" data-action="keyup->search-practices#update">
+      <input class="btn" type="text" data-search-practices-target="input"> -->
+      <%= f.text_field :query,
+                        class: "form-control",
+                        value: params[:query],
+                        data: {
+                        action: "keyup->search-practices#update",
+                        search_practices_target: "input"
+                        }
+                        %>
+    <% end %>
   </div>
 </div>
+<div class="container">
+  <%= render "list", practices: @practices %>
+</div>
+<!-- end of container -->

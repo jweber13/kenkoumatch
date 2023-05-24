@@ -1,2 +1,31 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.practice-card {
+  text-align: center;
+  height: 200px;
+  border-radius: 15px;
+}
+
+.search-bar {
+  background-color: white;
+  padding-bottom: 15px;
+}
+
+input.form-control {
+  max-width: 500px;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.search-text {
+  text-align: center;
+}
+
+.practice-count {
+  padding-top: 15px;
+}
+
+h1 {
+  font-family: 'Quicksand', sans-serif;
+}

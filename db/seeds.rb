@@ -160,7 +160,8 @@ medical_terms = [
   'glasses',
   'eyes',
   'hormones',
-  'lungs'
+  'lungs',
+  'pregnancy'
 ]
 
 medical_terms.each do |mterm|
@@ -184,7 +185,7 @@ medical_practices = [
   'Pulmonology',
   'Orthodontics',
   'Chiropractic',
-  'Clinic'
+  'Clinic',
 ]
 
 medical_practices.each do |m_practice|
@@ -197,7 +198,7 @@ medical_keywords_for_practices = {
   "Orthopedics" => ['Stiffness', 'Limited range of motion', 'Pain', 'Weakness', 'Instability', 'Deformity', 'Numbness', 'Tingling', 'Difficulty walking', 'Joint stiffness', 'surgery', 'bones'],
   "Dentistry" => ['Toothache', 'Tooth sensitivity', 'Gum swelling', 'Bleeding gums', 'Bad breath', 'Tooth discoloration', 'Jaw pain', 'Loose teeth', 'Difficulty chewing', 'cavity'],
   "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations', 'massage'],
-  "Obstetrics and Gynecology" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction', 'woman'],
+  "Obstetrics and Gynecology" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction', 'woman', 'pregnancy'],
   "Psychiatry" => ['Depression', 'Anxiety', 'Mood swings', 'Insomnia', 'Loss of interest', 'Changes in appetite', 'Irritability', 'Difficulty concentrating', 'Suicidal thoughts', 'mental health', 'emotional'],
   "Neurology" => ['Headache', 'Dizziness', 'Seizures', 'Tremors', 'Memory problems', 'Coordination difficulties', 'Speech difficulties', 'Vision changes', 'brain', 'nerves'],
   "Cardiology" => ['Chest pain', 'Shortness of breath', 'Palpitations', 'Edema', 'High blood pressure', 'Irregular heartbeat', 'Fainting', 'heart'],
