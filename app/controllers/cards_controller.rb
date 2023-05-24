@@ -12,6 +12,7 @@ class CardsController < ApplicationController
     authorize @card # pundit(authorization)
     @parse_service = CardsParseService.new(@card.cardkeywords)
     keysarray = @parse_service.parse_content
+    # raise
     @keywords = keysarray[0]
     @keyphrases = keysarray[1]
   end
@@ -37,7 +38,7 @@ class CardsController < ApplicationController
     @openai_service = OpenaiService.new(content)
 
     # results = @openai_service.call
-    @card.cardkeywords = @openai_service.call
+    @card.cardkeywords = @openai_service.call["content"]
     # @card.cardkeywords = "these cardkeywords should be replaced by what joe is doing"
 
     if @card.save

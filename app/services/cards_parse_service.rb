@@ -8,6 +8,12 @@ class CardsParseService
 
   def parse_content
     parsed_content = eval(@content)
-    return [parsed_content["keywords"], parsed_content["phrases"]]
+    if parsed_content["keywords"].present?
+      return [parsed_content["keywords"], parsed_content["phrases"]]
+    elsif parsed_content[:keywords].present?
+      return [parsed_content[:keywords], parsed_content[:phrases]]
+    else
+      raise
+    end
   end
 end
