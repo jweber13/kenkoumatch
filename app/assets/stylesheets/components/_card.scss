@@ -2,7 +2,6 @@
 .practice-card h3 {
   padding-top: 10px;
   color: black;
-  line-break: auto;
 }
 
 .practice-card {
@@ -16,12 +15,15 @@
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 30px;
+  text-decoration: none;
 }
 
-a:link {
+.practice-card a {
   text-decoration: none;
   display: flex;
   justify-content: center;
+  color: black;
+  font-weight: 900;
 }
 
 .practice-card p {
@@ -35,4 +37,9 @@ a:link {
 .practice-card {
   padding-top: 15px;
   padding-left: 15px;
+}
+
+.practice-name {
+  opacity: 10pc;
+  width: 100%;
 }
