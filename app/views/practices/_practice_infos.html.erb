@@ -1,7 +1,11 @@
-<!-- practice_path(practice) -->
 <a href="<%= practice_path(practice) %>">
-  <div class="practice-card" style="background-color: #C9EBEF" >
-    <h3><%= practice.name %></h3>
-    <p><%= practice.info %></p>
+  <div class="practice-card" style="background-color: #C9EBEF">
+    <div class="practice-infos">
+      <%if practice.photo.present?%>
+        <%= cl_image_tag practice.photo.key, height: 300, width: 400, crop: :fill %>
+      <%end%>
+      <h2><%= link_to practice.name, practice_path(practice)%></h2>
+      <h5><small> <%= practice.info %></small></h2>
+    </div>
   </div>
 </a>
