@@ -17,8 +17,6 @@ Institution.destroy_all
 User.destroy_all
 Card.destroy_all
 
-
-
 # Create a user
 User.create!(
   email: "rashon@email.com",
@@ -146,7 +144,25 @@ medical_terms = [
   'General physician',
   'Nausea',
   'Routine check-ups',
-  'Common illness'
+  'Common illness',
+  'child',
+  'kid',
+  'skin',
+  'hair',
+  'surgery',
+  'bones',
+  'cavity',
+  'massage',
+  'woman',
+  'mental health',
+  'emotional',
+  'brain',
+  'nerves',
+  'heart',
+  'glasses',
+  'eyes',
+  'hormones',
+  'lungs'
 ]
 
 medical_terms.each do |mterm|
