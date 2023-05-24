@@ -8,6 +8,7 @@
 
 require 'faker'
 
+Institutionspractice.destroy_all
 Practicekeyword.destroy_all
 Medicalkeyword.destroy_all
 Practice.destroy_all
