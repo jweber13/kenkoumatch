@@ -27,11 +27,18 @@ class CardsController < ApplicationController
     @card = Card.new(card_params)
     @card.user = current_user
     @card.practice = @practice
-    content = set_ai_prompt(@practice.name, params[:card][:originalcontent])
     authorize @card
+
+    @card.translatedcontent = (DeepL.translate @card.originalcontent, nil, "JA").text
+
+    # content = set_ai_prompt(@practice.name, params[:card][:originalcontent])
+    content = set_ai_prompt(@practice.name, @card.translatedcontent)
     @openai_service = OpenaiService.new(content)
-    results = @openai_service.call
-    @card.cardkeywords = results
+
+    # results = @openai_service.call
+    @card.cardkeywords = @openai_service.call
+    # @card.cardkeywords = "these cardkeywords should be replaced by what joe is doing"
+
     if @card.save
       redirect_to card_path(@card)
     else
