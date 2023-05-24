@@ -272,15 +272,17 @@ card.translatedcontent = "チョロン、彼のサブ男性デュオHongcunヘ�
 card.cardkeywords = "{ \n'keywords' => [\n{'Shortness of breath' => '息切れ, いきぎれ, ikigire'},\n{'Last week' => '先週, せんしゅう, senshuu'},\n{'Became' => 'なった, natta'}\n], \n'phrases' => [\n'息切れがします。 (I am experiencing shortness of breath.)',\n'先週から息切れがするようになりました。(I started experiencing shortness of breath since last week.)',\n'息切れがあるときは、胸が苦しくなります。(When I have shortness of breath, I feel chest tightness.)'\n]\n}"
 card.save
 
-Practice.find_by(name: "Dermatology").photo.attach(
-  filename: 'dermatology',
-  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/dermatology.png')
-)
 
 Practice.find_by(name: "Internal Medicine").photo.attach(
   filename: 'general_clinic',
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849563/clinic.png')
 )
+
+Practice.find_by(name: "Dermatology").photo.attach(
+  filename: 'dermatology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/dermatology.png')
+)
+
 
 Practice.find_by(name: "Dentistry").photo.attach(
   filename: 'dentistry',
