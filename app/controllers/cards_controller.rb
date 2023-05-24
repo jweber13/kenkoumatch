@@ -20,7 +20,10 @@ class CardsController < ApplicationController
     @practice = Practice.find(params[:practice_id])
     @card = Card.new(card_params)
     @card.user = current_user
+    authorize @card
     @card.practice = @practice
+    @card.translatedcontent = (DeepL.translate @card.originalcontent, nil, "JA").text
+    @card.cardkeywords = "these cardkeywords should be replaced by what joe is doing"
 
     if @card.save
       redirect_to card_path(@card)
