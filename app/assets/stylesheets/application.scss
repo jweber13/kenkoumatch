@@ -10,5 +10,8 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
 @import "components/practice_infos";
+
+.userList{
+  text-decoration: none;
+}
