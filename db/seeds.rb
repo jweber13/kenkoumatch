@@ -149,7 +149,19 @@ medical_terms = [
   'skin',
   'hair',
   'surgery',
-  'bones'
+  'bones',
+  'cavity',
+  'massage',
+  'woman',
+  'mental health',
+  'emotional',
+  'brain',
+  'nerves',
+  'heart',
+  'glasses',
+  'eyes',
+  'hormones',
+  'lungs'
 ]
 
 medical_terms.each do |mterm|
@@ -173,19 +185,7 @@ medical_practices = [
   'Pulmonology',
   'Orthodontics',
   'Chiropractic',
-  'Clinic',
-  'cavity',
-  'massage',
-  'woman',
-  'mental health',
-  'emotional',
-  'brain',
-  'nerves',
-  'heart',
-  'glasses',
-  'eyes',
-  'hormones',
-  'lungs'
+  'Clinic'
 ]
 
 medical_practices.each do |m_practice|
@@ -230,11 +230,6 @@ puts "creating institutions"
     rating: Faker::Number.between(from: 1, to: 5),
     phone: Faker::PhoneNumber.phone_number
   )
-end
-
-puts "matching institutions to practices"
-Institution.all.each do |inst|
-  Institutionspractice.create(institution: inst, practice: Practice.all.sample)
 end
 
 # Additional code for creating cards if needed
