@@ -250,15 +250,17 @@ card.cardkeywords = {
 }.to_json
 card.save
 
-Practice.find_by(name: "Dermatology").photo.attach(
-  filename: 'dermatology',
-  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/dermatology.png')
-)
 
 Practice.find_by(name: "General clinic").photo.attach(
   filename: 'general_clinic',
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849563/clinic.png')
 )
+
+Practice.find_by(name: "Dermatology").photo.attach(
+  filename: 'dermatology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/dermatology.png')
+)
+
 
 Practice.find_by(name: "Dentistry").photo.attach(
   filename: 'dentistry',

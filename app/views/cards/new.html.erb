@@ -1,6 +1,16 @@
-<h1>this is cards#new</h1>
-<p>here should be a form for creating a new card</p>
-<%= simple_form_for [@practice, @card] do |f| %>
-  <%= f.input :originalcontent %>
-  <%= f.submit "create card", class: "btn btn-primary" %>
-<% end %>
+<div class='container rounded-4 p-3 col-3 mt-3 mb-5 p-3 bg-white p-5 border border-info'>
+  <div class='row'>
+    <div class='col'>
+      <h1>this is cards#new</h1>
+      <p>here should be a form for creating a new card</p>
+      <%= simple_form_for [@practice, @card] do |f| %>
+        <%= f.input :originalcontent %>
+        <div class='d-flex justify-content-between'>
+          <%= f.submit "create card", class: "btn btn-primary justify-content-center" %>
+          <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger"}%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>
