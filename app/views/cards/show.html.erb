@@ -10,5 +10,6 @@
   <%="website: #{@card.institution.address}"%>
   <br>
 <%end%>
+<p><%= "Here is user's original input: #{@card.originalcontent}"%></p>
 <p><%="Here is a translation of your symptoms: #{@card.translatedcontent}"%></p>
 <p><%="Here are some keywords to help get you started: #{@card.cardkeywords}"%></p>
