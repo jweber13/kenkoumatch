@@ -239,15 +239,7 @@ card.practice = Practice.first
 card.institution = Institution.first
 card.originalcontent = Faker::Lorem.sentence
 card.translatedcontent = "チョロン、彼のサブ男性デュオHongcunヘルプ、インターネットカフェ、卓球、オフにスケートだけでなく、工芸品や骨董品店に加えて、そこが店をオープンエアコン周辺堂堂巡りをすることができます。"
-card.cardkeywords = {
-  "チョロン": "Choron",
-  "彼のサブ男性デュオHongcunヘルプ": "His sub-male duo Hongcun help",
-  "インターネットカフェ": "Internet cafe",
-  "卓球": "Table tennis",
-  "オフにスケート": "Skating off",
-  "工芸品や骨董品店": "Crafts and antique shops",
-  "オープンエアコン周辺堂堂巡り": "Open-air air conditioning area tour"
-}.to_json
+card.cardkeywords = "{ \n'keywords' => [\n{'Shortness of breath' => '息切れ, いきぎれ, ikigire'},\n{'Last week' => '先週, せんしゅう, senshuu'},\n{'Became' => 'なった, natta'}\n], \n'phrases' => [\n'息切れがします。 (I am experiencing shortness of breath.)',\n'先週から息切れがするようになりました。(I started experiencing shortness of breath since last week.)',\n'息切れがあるときは、胸が苦しくなります。(When I have shortness of breath, I feel chest tightness.)'\n]\n}"
 card.save
 
 Practice.find_by(name: "Dermatology").photo.attach(
