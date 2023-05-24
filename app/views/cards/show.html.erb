@@ -12,4 +12,13 @@
 <%end%>
 <p><%= "Here is user's original input: #{@card.originalcontent}"%></p>
 <p><%="Here is a translation of your symptoms: #{@card.translatedcontent}"%></p>
-<p><%="Here are some keywords to help get you started: #{@card.cardkeywords}"%></p>
+<h2>Some keywords</h2>
+<%@keywords.each do |keyword|%>
+  <%keyword.each do |k,v|%>
+    <p><%=k%>: <%=v%></p>
+  <%end%>
+<%end%>
+<h2>Some useful phrases</h2>
+<%@keyphrases.each do |phrase|%>
+  <p><%=phrase%></p>
+<%end%>

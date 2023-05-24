@@ -1,9 +1,10 @@
-<div class="practice-card">
-  <div class="practice-infos">
-    <%if practice.photo.present?%>
-      <%= cl_image_tag practice.photo.key, height: 300, width: 400, crop: :fill %>
-    <%end%>
-    <h2><%= link_to practice.name, practice_path(practice)%></h2>
-    <h5><small> <%= practice.info %></small></h2>
+<a href="<%= practice_path(practice) %>">
+  <div class="practice-card d-flex justify-content-center align-items-center border border-info rounded-4 shadow p-3 bg-body rounded border-opacity-25 border-light" style="background-image: url(<%= practice.photo.attached? ? cl_image_path(practice.photo.key) :  'https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>)">
+    <div class="practice-infos">
+      <!-- <%if practice.photo.present?%>
+        <%= cl_image_tag practice.photo.key, height: 300, width: 400, crop: :fill %>
+      <%end%> -->
+      <%= link_to practice.name, practice_path(practice), class: 'fw-bold' %>
+    </div>
   </div>
-</div>
+</a>

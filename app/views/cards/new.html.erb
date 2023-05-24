@@ -3,7 +3,7 @@
     <div class='col'>
       <h1>Cards#new</h1>
       <%= simple_form_for [@practice, @card] do |f| %>
-        <%= f.input :originalcontent %>
+        <%= f.input :originalcontent, input_html: { maxlength: 75, value: "be specific" } %>
         <div class='d-flex justify-content-between'>
           <%= f.submit "create card", class: "btn btn-primary justify-content-center" %>
           <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger"}%>
