@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'faker'
+require 'open-uri'
 
 Institutionspractice.destroy_all
 Practicekeyword.destroy_all
@@ -185,7 +186,7 @@ medical_practices = [
   'Pulmonology',
   'Orthodontics',
   'Chiropractic',
-  'Clinic'
+  'General clinic'
 ]
 
 medical_practices.each do |m_practice|
@@ -193,22 +194,21 @@ medical_practices.each do |m_practice|
 end
 
 medical_keywords_for_practices = {
-  "Dermatology" => ['Rash', 'Itching', 'Redness', 'Swelling', 'Dryness', 'Scaling', 'Blisters', 'skin', 'hair'],
-  "Pediatrics" => ['Fever', 'Cough', 'Diarrhea', 'Vomiting', 'Fatigue', 'Abdominal pain', 'child'],
-  "Orthopedics" => ['Stiffness', 'Limited range of motion', 'Pain', 'Weakness', 'Instability', 'Deformity', 'Numbness', 'Tingling', 'Difficulty walking', 'Joint stiffness', 'surgery', 'bones'],
-  "Dentistry" => ['Toothache', 'Tooth sensitivity', 'Gum swelling', 'Bleeding gums', 'Bad breath', 'Tooth discoloration', 'Jaw pain', 'Loose teeth', 'Difficulty chewing', 'cavity'],
-  "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations', 'massage'],
-  "Obstetrics and Gynecology" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction', 'woman'],
-  "Psychiatry" => ['Depression', 'Anxiety', 'Mood swings', 'Insomnia', 'Loss of interest', 'Changes in appetite', 'Irritability', 'Difficulty concentrating', 'Suicidal thoughts', 'mental health', 'emotional'],
-  "Neurology" => ['Headache', 'Dizziness', 'Seizures', 'Tremors', 'Memory problems', 'Coordination difficulties', 'Speech difficulties', 'Vision changes', 'brain', 'nerves'],
-  "Cardiology" => ['Chest pain', 'Shortness of breath', 'Palpitations', 'Edema', 'High blood pressure', 'Irregular heartbeat', 'Fainting', 'heart'],
-  "Ophthalmology" => ['Blurred vision', 'Eye pain', 'Dry eyes', 'Eye discharge', 'Double vision', 'Flashes of light', 'Floaters in vision', 'Vision loss',
-  'eyes', 'glasses'],
-  "Endocrinology" => ['Weight changes', 'Mood swings', 'Hair loss', 'Irregular menstrual periods', 'Excessive thirst', 'Increased urination', 'Temperature intolerance', 'Changes in appetite', 'Low libido', 'hormones'],
-  "Pulmonology" => ['Shortness of breath', 'Wheezing', 'Chest tightness', 'Sputum production', 'Chronic cough', 'Difficulty breathing', 'Chest pain', 'Respiratory infections', 'lungs'],
+  "Dermatology" => ['Rash', 'Itching', 'Redness', 'Swelling', 'Dryness', 'Scaling', 'Blisters'],
+  "Pediatrics" => ['Fever', 'Cough', 'Diarrhea', 'Vomiting', 'Fatigue', 'Abdominal pain'],
+  "Orthopedics" => ['Stiffness', 'Limited range of motion', 'Pain', 'Weakness', 'Instability', 'Deformity', 'Numbness', 'Tingling', 'Difficulty walking', 'Joint stiffness'],
+  "Dentistry" => ['Toothache', 'Tooth sensitivity', 'Gum swelling', 'Bleeding gums', 'Bad breath', 'Tooth discoloration', 'Jaw pain', 'Loose teeth', 'Difficulty chewing'],
+  "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations'],
+  "Obstetrics and Gynecology" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction'],
+  "Psychiatry" => ['Depression', 'Anxiety', 'Mood swings', 'Insomnia', 'Loss of interest', 'Changes in appetite', 'Irritability', 'Difficulty concentrating', 'Suicidal thoughts'],
+  "Neurology" => ['Headache', 'Dizziness', 'Seizures', 'Tremors', 'Memory problems', 'Coordination difficulties', 'Speech difficulties', 'Vision changes'],
+  "Cardiology" => ['Chest pain', 'Shortness of breath', 'Palpitations', 'Edema', 'High blood pressure', 'Irregular heartbeat', 'Fainting', 'Leg pain or cramping'],
+  "Ophthalmology" => ['Blurred vision', 'Eye pain', 'Dry eyes', 'Eye discharge', 'Double vision', 'Flashes of light', 'Floaters in vision', 'Vision loss'],
+  "Endocrinology" => ['Weight changes', 'Mood swings', 'Hair loss', 'Irregular menstrual periods', 'Excessive thirst', 'Increased urination', 'Temperature intolerance', 'Changes in appetite', 'Low libido'],
+  "Pulmonology" => ['Shortness of breath', 'Wheezing', 'Chest tightness', 'Sputum production', 'Chronic cough', 'Difficulty breathing', 'Chest pain', 'Respiratory infections'],
   "Orthodontics" => ['Braces', 'Invisalign', 'Retainer', 'Overbite', 'Underbite', 'Crossbite', 'Crowding', 'Gaps between teeth'],
-  "Chiropractic" => ['Spinal adjustment', 'Back pain', 'Neck pain', 'Joint pain', 'Muscle stiffness', 'Tingling', 'Sciatica', 'Leg pain or cramping'],
-  "Clinic" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness']
+  "Chiropractic" => ['Spinal adjustment', 'Back pain', 'Neck pain', 'Joint pain', 'Muscle stiffness', 'Tingling', 'Sciatica'],
+  "General clinic" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness']
 }
 
 puts "making practice keywords..."
@@ -232,11 +232,6 @@ puts "creating institutions"
   )
 end
 
-puts "matching institutions to practices"
-Institution.all.each do |inst|
-  Institutionspractice.create(institution: inst, practice: Practice.all.sample)
-end
-
 # Additional code for creating cards if needed
 card = Card.new
 card.user = User.first
@@ -254,3 +249,63 @@ card.cardkeywords = {
   "オープンエアコン周辺堂堂巡り": "Open-air air conditioning area tour"
 }.to_json
 card.save
+
+Practice.find_by(name: "Dermatology").photo.attach(
+  filename: 'dermatology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/dermatology.png')
+)
+
+Practice.find_by(name: "General clinic").photo.attach(
+  filename: 'general_clinic',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849563/clinic.png')
+)
+
+Practice.find_by(name: "Dentistry").photo.attach(
+  filename: 'dentistry',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849563/dentistry.png')
+)
+
+Practice.find_by(name: "Psychiatry").photo.attach(
+  filename: 'psychiatry',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/psychiatry.png')
+)
+
+Practice.find_by(name: "Chiropractic").photo.attach(
+  filename: 'chiropractic',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849563/chiropractic.png')
+)
+
+Practice.find_by(name: "Pediatrics").photo.attach(
+  filename: 'pediatrics',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/pediatrics.png')
+)
+
+
+
+# result = Cloudinary::Api.resources
+
+# images = result["resources"].map do |image|
+#   image["url"]
+#  end
+
+#  p images.count
+
+# medical_practices.each do |practice|
+#   @practice = Practice.find_by(name: practice)
+#   practice_url = ""
+#   images.each do |url|
+#     if url.include?(practice.split(' ').join('_').downcase)
+#       binding.pry
+#       practice_url = url
+#     end
+#   end
+#   p practice_url
+
+#   @practice.photo.attach(
+#     filename: practice,
+#     io: URI.open(practice_url)
+#   )
+#   @practice.save
+# end
+
+#  p images
