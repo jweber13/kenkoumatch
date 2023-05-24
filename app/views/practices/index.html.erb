@@ -20,15 +20,6 @@
         <div data-search-practices-target='list'>
           <%= render "list", practices: @practices %>
         </div>
-        <div class="practices container">
-          <div class="row"> <!-- row is flex -->
-            <% @practice.photo.each do |photo| %>
-              <div class="col-6 col-md-4 col-lg-3">
-                <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-              </div>
-            <% end %>
-          </div>
-        </div>
       </div>
     </div>
   </div>
