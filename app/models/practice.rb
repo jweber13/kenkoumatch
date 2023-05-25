@@ -15,9 +15,9 @@ class Practice < ApplicationRecord
   # multisearchable against: [:name, :info]
 
   pg_search_scope :global_search,
-  against: [ :name, :info ],
+  against: [:name, :info],
   associated_against: {
-    medicalkeywords: [ :term ]
+    medicalkeywords: [:term]
   },
   using: {
     tsearch: { prefix: true }

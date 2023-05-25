@@ -25,16 +25,27 @@ class CardsController < ApplicationController
   end
 
   def create
+    raise
+    # create a new practice here, using params because we come from the params page
     @practice = Practice.find(params[:practice_id])
+
+    # create a new card, with card_params which is  ONLY originalontent / the query made by the user
     @card = Card.new(card_params)
+
+    # card needs a user and a practice
     @card.user = current_user
     @card.practice = @practice
+
+    # pundit requires us to authorize this instance
     authorize @card
 
+    # Deepl is called here, so the original is translated to japanese.
     @card.translatedcontent = (DeepL.translate @card.originalcontent, nil, "JA").text
 
-    # content = set_ai_prompt(@practice.name, params[:card][:originalcontent])
+    # this uses a method function, and all it does is create a giant string that we'll use to "ask" ChatGPT a question.
     content = set_ai_prompt(@practice.name, @card.translatedcontent)
+
+    # ChatGPT is instantiated here. We use the 'content' returned from the set_ai_prompt method.
     @openai_service = OpenaiService.new(content)
 
     # results = @openai_service.call
