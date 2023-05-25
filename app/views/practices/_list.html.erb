@@ -1,6 +1,6 @@
 <p class="h3 practice-count">
   <% if params[:query].blank? %>
-    <%= pluralize practices.count, "practice" %> available
+    <%# <%= pluralize practices.count, "practice" available %>
   <% else %>
     <%= pluralize practices.count, "result" %> for <code><%= params[:query] %></code>
   <% end %>
