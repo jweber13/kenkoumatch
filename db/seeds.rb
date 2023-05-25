@@ -319,7 +319,6 @@ Practice.find_by(name: "Pediatrics").photo.attach(
 #   practice_url = ""
 #   images.each do |url|
 #     if url.include?(practice.split(' ').join('_').downcase)
-#       binding.pry
 #       practice_url = url
 #     end
 #   end
