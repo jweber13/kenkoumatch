@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="google-search"
 export default class extends Controller {
   static targets = ["input"];
+
   connect() {
     console.log('Google Search Controller connected');
   }
