@@ -6,8 +6,8 @@
         <%= simple_form_for [@practice, @card] do |f| %>
           <%= f.input :originalcontent, input_html: { maxlength: 300, value: "be specific" } %>
           <div class='d-flex justify-content-between'>
-            <%= f.submit "create card", class: "btn btn-primary justify-content-center" %>
-            <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger"}%>
+            <%= f.submit "create card", class: "btn custom-button fixed-width" %>
+            <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger fixed-width"}%>
           </div>
         </div>
       </div>
