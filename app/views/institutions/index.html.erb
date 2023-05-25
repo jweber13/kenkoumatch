@@ -1,17 +1,15 @@
-<h1>Hello there</h1>
-<%@practice%>
-<%= form_tag('/institutions', method: 'get') do %>
-  <%= label_tag 'Address' %>
-  <%= text_field_tag 'address', params[:address] %>
-  <% #= label_tag 'Practice' %>
-  <%# = text_field_tag 'practice', params[:practice] %>
-  <%= submit_tag 'Search' %>
-<% end %>
-<div
-  id="map"
-  data-controller="google-maps"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
->
+<div class="container page-content">
+  <h1><%=@practice.name%></h1>
+  <div class="container" data-controller="google-search">
+    <%= form_with data: { action: "submit->google-search#findPlaceFromQuery"}  do |form| %>
+      <%= form.text_field :query, placeholder: 'Enter your search query', data: {google_search_target: "input"} %>
+      <%= form.submit 'Search' %>
+    <% end %>
+    <div id="map" >
+      <div id="results">
+        <!-- Results will be dynamically inserted here , if remove the search doesnt work-->
+      </div>
+    </div>
+    <div id="card-container"></div>
+  </div>
 </div>

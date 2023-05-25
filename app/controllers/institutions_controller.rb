@@ -2,10 +2,10 @@ class InstitutionsController < ApplicationController
   def index
     # all institutionsfiltered by pundit policy(see app/policies)
     # address = params[:address]
-    practice = Practice.find_by(id: params[:practice_id])
+    @practice = Practice.find_by(id: params[:practice_id])
     # raise
     # @clinics = GooglePlacesService.search_medical_institutions(current_location, practice)
-    # @institutions = policy_scope(Institution).where.not(latitude: nil, longitude: nil)# .where(id: @institutions.pluck(:id))
+    @institutions = policy_scope(Institution) # .where.not(latitude: nil, longitude: nil)# .where(id: @institutions.pluck(:id))
 
     # @markers = @institutions.map do |institution|
     #   {
