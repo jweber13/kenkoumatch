@@ -1,0 +1,16 @@
+.custom-button {
+
+background-color: $turquoise;
+color: white;
+}
+
+.fixed-width {
+  width: 10em;
+  padding-top: 3;
+  padding-bottom: 3;
+}
+
+.custom-button:hover {
+  background-color: $light-blue;
+  color: $gray;
+}
