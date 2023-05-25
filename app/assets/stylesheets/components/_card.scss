@@ -103,3 +103,22 @@
   width: 100%;
   font-family: 'Quicksand' !important;
 }
+
+.card-index {
+  border: $turquoise 2px solid;
+  background-color: $light-blue;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+  position: relative;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 0;
+}
