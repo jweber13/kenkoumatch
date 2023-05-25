@@ -1,24 +1,60 @@
-<h1>Card Show Page</h1>
-<%="#{@card.user.email}'s Card"%>
-<%if @card.institution.present?%>
-  <p><%="You're going to #{@card.institution.name}"%></p>
-  <br>
-  <%="located at: #{@card.institution.address}"%>
-  <br>
-  <%="they can be contacted here: #{@card.institution.phone}"%>
-  <br>
-  <%="website: #{@card.institution.address}"%>
-  <br>
-<%end%>
-<p><%= "Here is user's original input: #{@card.originalcontent}"%></p>
-<p><%="Here is a translation of your symptoms: #{@card.translatedcontent}"%></p>
-<h2>Some keywords</h2>
-<%@keywords.each do |keyword|%>
-  <%keyword.each do |k,v|%>
-    <p><%=k%>: <%=v%></p>
-  <%end%>
-<%end%>
-<h2>Some useful phrases</h2>
-<%@keyphrases.each do |phrase|%>
-  <p><%=phrase%></p>
-<%end%>
+<div class="card-show-body">
+  <div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
+    <div id="subcontent">
+      <h1><%=@card.practice.name%> Card</h1>
+      <% card_date = @card.created_at.strftime('%Y-%m-%d') %>
+      <i>Created on: <%= card_date %></i>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card-show-container">
+          <%if @card.institution.present?%>
+            <div class="inner-header">
+              <h1>You're Going To:</h1>
+            </div>
+            <div class="card-show-element">
+              <p><%="#{@card.institution.name}"%></p>
+              <br>
+              <%="located at: #{@card.institution.address}"%>
+              <br>
+              <%="they can be contacted here: #{@card.institution.phone}"%>
+              <br>
+              <%="website: #{@card.institution.address}"%>
+              <br>
+            </div>
+          <%end%>
+          <div class="inner-header">
+            <h1>Your Input</h1>
+          </div>
+          <div class="card-show-element">
+            <p><%= "Symptoms: #{@card.originalcontent}"%></p>
+            <p><%="Japanese Translation: #{@card.translatedcontent}"%></p>
+          </div>
+          <div class="inner-header">
+            <h1>Some keywords</h1>
+          </div>
+          <div class="card-show-element">
+            <%@keywords.each do |keyword|%>
+              <%keyword.each do |k,v|%>
+                <div class="key-point">
+                  <%=k%>:
+                  <%=v%>
+                </div>
+              <%end%>
+            <%end%>
+          </div>
+          <div class="inner-header">
+            <h1>Useful Phrases</h1>
+          </div>
+          <div class="card-show-element">
+            <%@keyphrases.each do |phrase|%>
+              <p><%=phrase%></p>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

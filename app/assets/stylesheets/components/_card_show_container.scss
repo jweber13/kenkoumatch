@@ -1,0 +1,43 @@
+.card-show-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-show-container {
+  // background-color: $light-blue;
+}
+
+.card-show-element {
+  border: $turquoise 2px solid;
+  background-color: $light-blue;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+}
+
+.inner-header {
+  background-color: $light-gray;
+  color: $turquoise;
+  text-align: center;
+}
+
+.show-header {
+  // background-color: $turquoise;
+  // color: $light-blue;
+  display: flex;
+  align-items:flex-end;
+  justify-content: center;
+  color: $gray;
+  text-align: center;
+  height: 150px;
+  width: 100%;
+  // margin-bottom: 10px;
+}
+
+#subcontent {
+  background-color: rgba(255, 236, 176, 0.3);
+  width: 100%;
+}
