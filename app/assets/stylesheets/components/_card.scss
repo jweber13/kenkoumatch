@@ -105,9 +105,10 @@
 }
 
 .card-index {
-  border: $turquoise 2px solid;
-  background-color: $light-blue;
-  border-radius: 15px;
+  // border: $turquoise 2px solid;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgb(255, 253, 240);
+  // border-radius: 15px;
   display: flex;
   flex-direction: column;
   min-height: 150px;
