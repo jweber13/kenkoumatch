@@ -283,7 +283,6 @@ Practice.find_by(name: "Dermatology").photo.attach(
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/dermatology.png')
 )
 
-
 Practice.find_by(name: "Dentistry").photo.attach(
   filename: 'dentistry',
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849563/dentistry.png')
@@ -302,6 +301,51 @@ Practice.find_by(name: "Chiropractic").photo.attach(
 Practice.find_by(name: "Pediatrics").photo.attach(
   filename: 'pediatrics',
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/pediatrics.png')
+)
+
+Practice.find_by(name: "Orthopedics").photo.attach(
+  filename: 'orthopedics',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/orthopedics.png')
+)
+
+Practice.find_by(name: "Physical Therapy").photo.attach(
+  filename: 'physical_therapy',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/phisical_therapy.png')
+)
+
+Practice.find_by(name: "OB-GYN").photo.attach(
+  filename: 'ob-gyn',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/obstetrics_and_gynecology.png')
+)
+
+Practice.find_by(name: "Neurology").photo.attach(
+  filename: 'neurology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/neurology.png')
+)
+
+Practice.find_by(name: "Cardiology").photo.attach(
+  filename: 'cardiology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/cardiology.png')
+)
+
+Practice.find_by(name: "Ophthalmology").photo.attach(
+  filename: 'ophthalmology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/ophthalmology.png')
+)
+
+Practice.find_by(name: "Endocrinology").photo.attach(
+  filename: 'endocrinology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849561/endocrinology.png')
+)
+
+Practice.find_by(name: "Pulmonology").photo.attach(
+  filename: 'pulmonology',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/pulmonology.png')
+)
+
+Practice.find_by(name: "Orthodontics").photo.attach(
+  filename: 'orthodontics',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/orthodontics.png')
 )
 
 
