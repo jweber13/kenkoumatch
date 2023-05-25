@@ -7,14 +7,14 @@
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 }
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: 2fr;
   }
 }
 
@@ -30,6 +30,7 @@
   .cards {
     grid-template-columns: 1fr 1fr 1fr;
   }
+
 }
 
 // Extra large devices (large desktops, 1200px and up)
@@ -47,15 +48,18 @@
 .practice-card {
   flex-direction: column;
   justify-content: center;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   border-radius: 15px;
   margin: 10px 0;
-  padding: 10px;
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 30px;
   text-decoration: none;
+  text-align: center;
+  padding-top: 15px;
+  padding-left: 15px;
+  position: relative;
 }
 
 .practice-card a {
@@ -68,18 +72,21 @@
 
 .practice-card p {
   display: none;
+  font-weight: bold;
 }
 
 .practice-card:hover p {
   display: unset;
 }
 
-.practice-card {
-  padding-top: 15px;
-  padding-left: 15px;
-}
-
 .practice-name {
   opacity: 10pc;
+  width: 100%;
+}
+
+.practice-card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
   width: 100%;
 }
