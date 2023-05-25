@@ -16,13 +16,9 @@
             </div>
             <div class="card-show-element">
               <p><%="#{@card.institution.name}"%></p>
-              <br>
               <%="located at: #{@card.institution.address}"%>
-              <br>
               <%="they can be contacted here: #{@card.institution.phone}"%>
-              <br>
               <%="website: #{@card.institution.address}"%>
-              <br>
             </div>
           <%end%>
           <div class="inner-header">
@@ -33,7 +29,7 @@
             <p><%="Japanese Translation: #{@card.translatedcontent}"%></p>
           </div>
           <div class="inner-header">
-            <h1>Some keywords</h1>
+            <h1>Your Keywords</h1>
           </div>
           <div class="card-show-element">
             <%@keywords.each do |keyword|%>
