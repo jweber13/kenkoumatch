@@ -199,26 +199,26 @@ end
 
 puts "making practices"
 
-medical_practices = [
-  'Dermatology',
-  'Pediatrics',
-  'Orthopedics',
-  'Dentistry',
-  'Physical Therapy',
-  'OB-GYN',
-  'Psychiatry',
-  'Neurology',
-  'Cardiology',
-  'Ophthalmology',
-  'Endocrinology',
-  'Pulmonology',
-  'Orthodontics',
-  'Chiropractic',
-  'Internal Medicine'
-]
+medical_practices = {
+  'Dermatology': '皮膚科',
+  'Pediatrics': '小児科',
+  'Orthopedics': '整形外科',
+  'Dentistry': '歯科',
+  'Physical Therapy': '理学療法',
+  'OB-GYN': '産婦人科',
+  'Psychiatry': '精神科',
+  'Neurology': '神経内科',
+  'Cardiology': '循環器内科',
+  'Ophthalmology': '眼科',
+  'Endocrinology': '内分泌',
+  'Pulmonology': '呼吸器科',
+  'Orthodontics': '歯列矯正',
+  'Chiropractic': 'カイロプラクティック',
+  'Internal Medicine': '内科'
+}
 
-medical_practices.each do |m_practice|
-  Practice.create!(name: m_practice, info: Faker::Lorem.sentence)
+medical_practices.each do |name, japanese_name|
+  Practice.create!(name:, japanese_name:, info: Faker::Lorem.sentence)
 end
 
 medical_keywords_for_practices = {

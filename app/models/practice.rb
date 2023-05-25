@@ -10,7 +10,7 @@ class Practice < ApplicationRecord
 
   has_one_attached :photo
 
-  validates_presence_of :name, :info
+  validates_presence_of :name, :info, :japanese_name
   include PgSearch::Model
   # multisearchable against: [:name, :info]
 
