@@ -1,10 +1,10 @@
 <div class="card-show-body">
   <div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
-    <div id="subcontent">
-      <h1><%=@card.practice.name%> Card</h1>
-      <% card_date = @card.created_at.strftime('%Y-%m-%d') %>
-      <i>Created on: <%= card_date %></i>
-    </div>
+  </div>
+  <div id="subcontent">
+    <h1><%=@card.practice.name%> Card</h1>
+    <% card_date = @card.created_at.strftime('%Y-%m-%d') %>
+    <i>Created on: <%= card_date %></i>
   </div>
   <div class="container">
     <div class="row">
@@ -16,31 +16,28 @@
             </div>
             <div class="card-show-element">
               <p><%="#{@card.institution.name}"%></p>
-              <br>
               <%="located at: #{@card.institution.address}"%>
-              <br>
               <%="they can be contacted here: #{@card.institution.phone}"%>
-              <br>
               <%="website: #{@card.institution.address}"%>
-              <br>
             </div>
           <%end%>
           <div class="inner-header">
             <h1>Your Input</h1>
           </div>
           <div class="card-show-element">
-            <p><%= "Symptoms: #{@card.originalcontent}"%></p>
-            <p><%="Japanese Translation: #{@card.translatedcontent}"%></p>
+            <p><strong>Symptoms: </strong><%="#{@card.originalcontent}"%></p>
+            <p><strong>Japanese Translation: </strong><%="#{@card.translatedcontent}"%></p>
           </div>
           <div class="inner-header">
-            <h1>Some keywords</h1>
+            <h1>Your Keywords</h1>
           </div>
           <div class="card-show-element">
             <%@keywords.each do |keyword|%>
               <%keyword.each do |k,v|%>
                 <div class="key-point">
-                  <%=k%>:
-                  <%=v%>
+                  <strong><%=k%> : </strong><%=v%>
+                  <br>
+                  <br>
                 </div>
               <%end%>
             <%end%>
@@ -50,7 +47,10 @@
           </div>
           <div class="card-show-element">
             <%@keyphrases.each do |phrase|%>
-              <p><%=phrase%></p>
+              <%arr = phrase.split("。")%>
+              <strong><%=arr[1]%></strong><%=arr[0].gsub("(", "").gsub(")", "")%>
+              <br>
+              <br>
             <%end%>
           </div>
         </div>

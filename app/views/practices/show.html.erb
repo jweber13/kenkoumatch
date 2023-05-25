@@ -4,9 +4,9 @@
       <div class='bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
         <h2 class="d-flex justify-content-center mt-2"><%= @practice.name %></h2>
         <p class="d-flex justify-content-center mt-2" ><%= @practice.info %></p>
-        <p class="d-flex justify-content-center"><%= link_to 'search', practice_institutions_path(@practice), class:"userList mt-2 btn btn-primary"%></p>
-        <p class="text-decoration-none d-flex justify-content-center mt-2"><%= link_to 'create card', new_practice_card_path(@practice), class:"userList btn btn-primary" %></p>
-        <p class="text-decoration-none d-flex justify-content-center mt-2"><%= link_to 'back', root_path, class:"userList btn btn-outline-danger" %></p>
+        <p class="d-flex justify-content-center"><%= link_to 'search', practice_institutions_path(@practice), class:"userList mt-2 btn custom-button fixed-width"%></p>
+        <p class="text-decoration-none d-flex justify-content-center mt-2 "><%= link_to 'create card', new_practice_card_path(@practice), class:"userList btn custom-button fixed-width"%></p>
+        <p class="text-decoration-none d-flex justify-content-center mt-2"><%= link_to 'back', root_path, class:"userList btn btn-outline-danger fixed-width" %></p>
       </div>
     </div>
   </div>
