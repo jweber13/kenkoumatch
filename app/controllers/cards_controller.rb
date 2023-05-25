@@ -12,7 +12,6 @@ class CardsController < ApplicationController
     authorize @card # pundit(authorization)
     @parse_service = CardsParseService.new(@card.cardkeywords)
     keysarray = @parse_service.parse_content
-    # raise
     @keywords = keysarray[0]
     @keyphrases = keysarray[1]
   end
