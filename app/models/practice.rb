@@ -10,14 +10,14 @@ class Practice < ApplicationRecord
 
   has_one_attached :photo
 
-  validates_presence_of :name, :info
+  validates_presence_of :name, :info, :japanese_name
   include PgSearch::Model
   # multisearchable against: [:name, :info]
 
   pg_search_scope :global_search,
-  against: [ :name, :info ],
+  against: [:name, :info],
   associated_against: {
-    medicalkeywords: [ :term ]
+    medicalkeywords: [:term]
   },
   using: {
     tsearch: { prefix: true }

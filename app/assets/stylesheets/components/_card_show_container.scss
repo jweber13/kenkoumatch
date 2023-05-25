@@ -1,0 +1,45 @@
+.card-show-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.card-show-container {
+  // background-color: $light-blue;
+}
+
+.card-show-element {
+  border: $turquoise 2px solid;
+  background-color: $light-blue;
+  border-radius: 15px;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+  padding: 1em;
+}
+
+.inner-header {
+  background-color: $light-gray;
+  color: $turquoise;
+  text-align: center;
+}
+
+.show-header {
+  color: $gray;
+  height: 130px;
+  width: 100%;
+}
+
+#subcontent {
+  // background-color: rgba(255, 236, 176, 0.7);
+  border-bottom: $turquoise 2px solid;
+  border-top: $turquoise 2px solid;
+  background-color: rgb(255, 236, 176);
+  text-shadow: white 1px 0 10px;
+  width: 100%;
+  margin-bottom: .5em;
+  text-align: center;
+}
