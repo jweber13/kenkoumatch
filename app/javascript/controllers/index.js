@@ -13,5 +13,11 @@ application.register("google-search", GoogleSearchController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import PopoverController from "./popover_controller"
+application.register("popover", PopoverController)
+
 import SearchPracticesController from "./search_practices_controller"
 application.register("search-practices", SearchPracticesController)
+
+import TooltipController from "./tooltip_controller"
+application.register("tooltip", TooltipController)
