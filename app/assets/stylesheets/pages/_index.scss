@@ -19,22 +19,3 @@ input.form-control {
 .practice-count {
   padding-top: 15px;
 }
-
-h1 {
-  font-family: 'Quicksand', sans-serif;
-}
-
-.scrollable {
-  flex-grow: 1; /* mandatory */
-  overflow: scroll; /* mandatory */
-}
-
-.container {
-  display: flex; /* mandatory */
-  flex-direction: column; /* mandatory */
-  height: 100vh; /* mandatory */
-}
-
-body {
-  font-family: 'Quicksand', sans-serif;
-}
