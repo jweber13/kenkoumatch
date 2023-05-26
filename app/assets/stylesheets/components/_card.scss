@@ -132,3 +132,39 @@
 .search-text {
   text-align: center;
 }
+
+.practice-show-card {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 150px;
+  border-radius: 15px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 15px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+  // background: image-url('loupe.png');
+  // background-size: contain;
+  // background-repeat: no-repeat;
+}
+
+.practice-show-card-2 {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 150px;
+  border-radius: 15px;
+  text-decoration: none;
+  text-align: center;
+  padding-top: 15px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-around;
+  // background: image-url('flash-card.png');
+  // background-size: contain;
+  // background-repeat: no-repeat;
+}
