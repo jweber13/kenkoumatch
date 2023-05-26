@@ -1,21 +1,22 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.search-bar {
-  background-color: white;
-  padding-bottom: 15px;
-}
-
 input.form-control {
   max-width: 500px;
   width: 80%;
   margin: 0 auto;
 }
 
-.search-text {
-  text-align: center;
+h1 {
+  font-family: 'Quicksand', sans-serif;
 }
 
-.practice-count {
-  padding-top: 15px;
+.container {
+  display: flex; /* mandatory */
+  flex-direction: column; /* mandatory */
+  height: 100vh; /* mandatory */
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
 }

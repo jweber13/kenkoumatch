@@ -99,3 +99,36 @@
     filter: brightness(110%);
   }
 }
+
+.practice-count {
+  padding-top: 15px;
+}
+
+.card-index {
+  // border: $turquoise 2px solid;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgb(240, 233, 191);
+  // border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+  position: relative;
+}
+
+.card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 0;
+}
+
+.search-bar {
+  background-color: white;
+  padding-bottom: 15px;
+}
+
+.search-text {
+  text-align: center;
+}
