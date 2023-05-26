@@ -99,7 +99,8 @@ medical_terms = [
   'High blood pressure',
   'Irregular heartbeat',
   'Fainting',
-  'Leg pain or cramping',
+  'Leg',
+  'cramp',
   'Blurred vision',
   'Eye pain',
   'Dry eyes',
@@ -190,7 +191,12 @@ medical_terms = [
   "sick",
   "cold",
   "flu",
-  "stomach"
+  "stomach",
+  "foot",
+  "back",
+  "covid",
+  "covid-19",
+  "coronavirus"
 ]
 
 medical_terms.each do |mterm|
@@ -214,8 +220,29 @@ medical_practices = {
   'Pulmonology': '呼吸器科',
   'Orthodontics': '歯列矯正',
   'Chiropractic': 'カイロプラクティック',
-  'Internal Medicine': '内科'
+  'Internal Medicine': '内科',
+  'Eye Nose Throat': '耳鼻科'
 }
+
+practices_infos = {
+  'Dermatology': 'Skin doctors are called hifuka (皮膚科) in Japanese. A lot of advertisements for such doctors seem to focus on making the skin look better: laser treatments to remove blemishes, age-defying creams, and so on. But you would also visit this doctor to check for more serious problems, such as skin cancers or worrisome blotches. Sorry to be so direct, but it’s true.',
+  'Pediatrics': 'Shōnika (小児科) is the Japanese word for pediatrics, medicine that focuses on childhood illnesses. ',
+  'Orthopedics': 'Orthopedic practices are known as seikei-geka (整形外科) in Japanese. Such physicians are all over the place in Japan. While some orthopedic surgeons might need to cut you open to fix your bones or muscles, many of these doctors offer less-invasive relief for muscle and soft tissue aches and injuries. ',
+  'Dentistry': 'Unless you have a chronic illness, the doctor you will probably see more than all others is the dentist, known as shika (歯科) in Japan. Back in the US, I scheduled my dental cleanings twice a year, but here in Japan, such services happen every three months. Dentists here also seem to do a lot more than I am used to. All clinics here perform routine dental work, but some also offer orthodontic and oral surgery services, things that would be done by specialists back in America.',
+  'Physical Therapy': '理学療法',
+  'OB-GYN': 'For women’s health, you visit a fujinka (婦人科), the name for a gynecologist. But if you are about to have a baby, check out an obstetrician, or sanka (産科), instead. And congratulations on your new baby! ',
+  'Psychiatry': 'Doctors take time to listen to a new patient. For this reason weekday after 17:00 and weekend (Saturday, Sundays are generally closed) appointments are very difficult to take for a first time patient. Often a nurse or a psychologist take a pre-examination interview with a patient or they ask a patient to fill out a detailed questionnaire about the condition and run some paper psychological tests. Many of these services are Japanese only even if the doctor speaks some English –',
+  'Neurology': '神経内科',
+  'Cardiology': '循環器内科',
+  'Ophthalmology': 'The eyes are the window to the soul, and a Japanese ganka (眼科) is very good at checking your soul. In the US, you will typically seek out an optometrist when you want glasses, and an ophthalmologist when you are worried that something is really wrong with your eyes. In Japan, a ganka typically serves both communities, although I have seen eyeglass stores that have an in-house optometrist only.',
+  'Endocrinology': 'Endocrinology & Diabetes Department specializes in diabetes and all other hormonal disorders such as thyroid diseases. Hormones are part of the endocrine system, series of glands that produce and secrete hormones that control many different bodily functions.',
+  'Pulmonology': 'They diagnose and treat acute and chronic respiratory problems, including Asthma, Chronic Respiratory Failure/Insufficiency. They also treat sleep related respiratory Disorders.',
+  'Orthodontics': '歯列矯正',
+  'Chiropractic': 'カイロプラクティック',
+  'Internal Medicine': 'Your local catch-all physician is the naika (内科), an internal medicine professional, sometimes called an ippan-naika (一般内科). While some may argue that an internist is not the same as a general practitioner or family doctor, this nonetheless is the specialization you will look to for everyday care. Speaking of clinics, the term for that is kurinikku (クリニック), a word that applies to a broad range of medical offices. Your doctor might also work at a byōin (病院), that is, at a hospital.',
+  'Eye Nose Throat': 'If you are looking for an ear, nose, and throat (ENT) doctor, search for the word jibi-inkōka (耳鼻咽喉科), sometimes shortened to just jibika (耳鼻科). Such clinics might also delve into pulmonary medicine. For instance, if you require a CPAP machine, you might pick one up from a Japanese ENT even though such devices focus on the lungs.'
+}
+
 
 medical_practices.each do |name, japanese_name|
   Practice.create!(name:, japanese_name:, info: Faker::Lorem.sentence)
@@ -226,7 +253,7 @@ medical_keywords_for_practices = {
   "Pediatrics" => ['Fever', 'Cough', 'Diarrhea', 'Vomiting', 'Fatigue', 'Abdominal pain', 'child', "newborn", "growth", "vaccination", "vaccine", "nutrition", "Immunization"],
   "Orthopedics" => ['Stiffness', 'Limited range of motion', 'Pain', 'Weakness', 'Instability', 'Deformity', 'Numbness', 'Tingling', 'Difficulty walking', 'Joint stiffness', 'surgery', 'bones'],
   "Dentistry" => ['Toothache', 'Tooth sensitivity', 'Gum swelling', 'Bleeding gums', 'Bad breath', 'Tooth discoloration', 'Jaw pain', 'Loose teeth', 'Difficulty chewing', 'cavity'],
-  "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations', 'massage', "Sports", "strain", "Neck", "Shoulder",
+  "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations', 'massage', "Sports", "strain", "Neck", "Shoulder", "foot",
   "body", "Knee", "Hip", "Ankle", "Sprains", "Tendonitis", "Rehabilitation", "injury"],
   "OB-GYN" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction', 'woman', 'pregnancy', 'pregnant'],
   "Psychiatry" => ['Depression', 'Anxiety', 'Mood swings', 'Insomnia', 'Loss of interest', 'Changes in appetite', 'Irritability', 'Difficulty concentrating', 'Suicidal thoughts', 'mental health', 'emotional'],
@@ -235,10 +262,10 @@ medical_keywords_for_practices = {
   "Ophthalmology" => ['Blurred vision', 'Eye pain', 'Dry eyes', 'Eye discharge', 'Double vision', 'Flashes of light', 'Floaters in vision', 'Vision loss',
   'eyes', 'glasses'],
   "Endocrinology" => ['Weight changes', 'Mood swings', 'Hair loss', 'Irregular menstrual periods', 'Excessive thirst', 'Increased urination', 'Temperature intolerance', 'Changes in appetite', 'Low libido', 'hormones'],
-  "Pulmonology" => ['Shortness of breath', 'Wheezing', 'Chest tightness', 'Sputum production', 'Chronic cough', 'Difficulty breathing', 'Chest pain', 'Respiratory infections', 'lungs'],
+  "Pulmonology" => ['Shortness of breath', 'Wheezing', 'Chest tightness', 'Sputum production', 'Chronic cough', 'Difficulty breathing', 'Chest pain', 'Respiratory infections', 'lungs', "covid", "covid-19", "coronavirus"],
   "Orthodontics" => ['Braces', 'Invisalign', 'Retainer', 'Overbite', 'Underbite', 'Crossbite', 'Crowding', 'Gaps between teeth'],
-  "Chiropractic" => ['Spinal adjustment', 'Back pain', 'Neck pain', 'Joint pain', 'Muscle stiffness', 'Tingling', 'Sciatica'],
-  "Internal Medicine" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness', "vaccination", "vaccine", "cough", "sick", "cold", "flu", "stomach"]
+  "Chiropractic" => ['Spinal adjustment', 'Back pain', 'Neck pain', 'Joint pain', 'Muscle stiffness', 'Tingling', 'Sciatica', "cramp"],
+  "Internal Medicine" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness', "vaccination", "vaccine", "cough", "sick", "cold", "flu", "stomach", "headache", "covid", "covid-19", "coronavirus"]
 }
 
 puts "making practice keywords..."
@@ -271,6 +298,15 @@ card.originalcontent = Faker::Lorem.sentence
 card.translatedcontent = "チョロン、彼のサブ男性デュオHongcunヘルプ、インターネットカフェ、卓球、オフにスケートだけでなく、工芸品や骨董品店に加えて、そこが店をオープンエアコン周辺堂堂巡りをすることができます。"
 card.cardkeywords = "{ \n'keywords' => [\n{'Shortness of breath' => '息切れ, いきぎれ, ikigire'},\n{'Last week' => '先週, せんしゅう, senshuu'},\n{'Became' => 'なった, natta'}\n], \n'phrases' => [\n'息切れがします。 (I am experiencing shortness of breath.)',\n'先週から息切れがするようになりました。(I started experiencing shortness of breath since last week.)',\n'息切れがあるときは、胸が苦しくなります。(When I have shortness of breath, I feel chest tightness.)'\n]\n}"
 card.save
+
+# card2 = Card.new
+# card2.user = User.first
+# card2.practice = Practice.find_by(name: "Dentistry")
+# card2.institution = Institution.last
+# card2.originalcontent = "I've had a toothache for 3 days, and I'm worried I have a cavity"
+# card2.translatedcontent = "3日前から歯が痛く、虫歯がないか心配です"
+# card2.cardkeywords = "{\n  'keywords' => [\n    {'teeth'=>'歯, は, ha'},\n    {'pain'=>'痛い, いたい, itai'},\n    {'cavity'=>'虫歯, むしば, mushiba'}\n  ],\n  'phrases' => [\n    '歯が痛いです。虫歯があるかもしれません。(My teeth hurt. I'm worried I might have a cavity.)',\n    '3日前から歯が痛いです。(My teeth have been hurting for 3 days.)',\n    '虫歯がないか心配です。(I'm worried I might have a cavity.)'\n  ]\n}"
+# card2.save
 
 
 Practice.find_by(name: "Internal Medicine").photo.attach(
@@ -347,32 +383,3 @@ Practice.find_by(name: "Orthodontics").photo.attach(
   filename: 'orthodontics',
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/orthodontics.png')
 )
-
-
-
-# result = Cloudinary::Api.resources
-
-# images = result["resources"].map do |image|
-#   image["url"]
-#  end
-
-#  p images.count
-
-# medical_practices.each do |practice|
-#   @practice = Practice.find_by(name: practice)
-#   practice_url = ""
-#   images.each do |url|
-#     if url.include?(practice.split(' ').join('_').downcase)
-#       practice_url = url
-#     end
-#   end
-#   p practice_url
-
-#   @practice.photo.attach(
-#     filename: practice,
-#     io: URI.open(practice_url)
-#   )
-#   @practice.save
-# end
-
-#  p images
