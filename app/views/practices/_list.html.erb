@@ -1,12 +1,11 @@
 <p class="h3 practice-count">
   <% if params[:query].blank? %>
-    <h3>Top searched practices</h3>
+    <h3></h3>
   <% else %>
     <h3><%= pluralize practices.count, "result" %> for <code><%= params[:query] %></code></h3>
   <% end %>
 </p>
 <div class="practices-container">
-  <%# <h2>Practices</h2> %>
   <div class="row scrollable">
     <% practices.each do |practice| %>
       <div class="col-6 col-lg-4">
