@@ -51,31 +51,20 @@
   height: 150px;
   width: 150px;
   border-radius: 15px;
-  background-repeat: no-repeat;
-  background-size: contain;
   text-decoration: none;
   text-align: center;
   padding-top: 15px;
   padding-left: 15px;
   position: relative;
-  margin-top: 30px;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 
 .practice-card a {
-  text-decoration: none;
   display: flex;
-  justify-content: center;
-  color: black;
-  font-weight: 900;
-}
-
-.practice-card p {
-  display: none;
-  font-weight: bold;
-}
-
-.practice-card:hover p {
-  display: unset;
+  left: 0;
 }
 
 .practice-name {
@@ -90,18 +79,25 @@
   width: 100%;
 }
 
-#card-text {
-  color: black !important;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4) !important;
-  width: 100% !important;
-  text-shadow: -1px -1px 0 #000000;
+.card-text {
+  color: black;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .practice-infos {
   width: 100%;
-  font-family: 'Quicksand' !important;
+  font-family: 'Quicksand';
+  img {
+    width: 80%;
+  }
+}
+
+.practice-card:hover {
+  img {
+    filter: brightness(110%);
+  }
 }
 
 .practice-count {
