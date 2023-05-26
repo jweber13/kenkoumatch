@@ -3,15 +3,17 @@
 }
 
 .practices-descriptor {
-  margin: 1em;
+  margin-bottom: 1em;
   padding: 1em;
-  color: $turquoise;
+  // color: $turquoise;
 }
 
-// .practices-wrapper {
-//   border-radius: 15px;
-//   border: 1px rgb(200, 200, 200) solid;
-// }
+.practices-wrapper {
+  // border-radius: 15px;
+  // border: 1px rgb(200, 200, 200) solid;
+  background-color: rgba(51, 153, 183, 0.8);
+  color: $light-gray;
+}
 
 // .practices-descriptor
 // h3, h5 {
