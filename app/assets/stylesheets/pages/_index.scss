@@ -2,32 +2,14 @@
 @import "home";
 @import "login";
 
-.search-bar {
-  background-color: white;
-  padding-bottom: 15px;
-}
-
 input.form-control {
   max-width: 500px;
   width: 80%;
   margin: 0 auto;
 }
 
-.search-text {
-  text-align: center;
-}
-
-.practice-count {
-  padding-top: 15px;
-}
-
 h1 {
   font-family: 'Quicksand', sans-serif;
-}
-
-.scrollable {
-  flex-grow: 1; /* mandatory */
-  overflow: scroll; /* mandatory */
 }
 
 .container {

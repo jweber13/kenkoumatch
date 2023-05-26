@@ -1,0 +1,8 @@
+.scrollable {
+  flex-grow: 1; /* mandatory */
+  overflow: scroll; /* mandatory */
+  max-height: 500px;
+  border-radius: 15px;
+  border: 1px rgb(200, 200, 200) solid;
+  padding: 1em;
+}
