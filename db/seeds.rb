@@ -196,7 +196,21 @@ medical_terms = [
   "back",
   "covid",
   "covid-19",
-  "coronavirus"
+  "coronavirus",
+  "vertigo",
+  "ear",
+  "nose",
+  "throat",
+  "nasal",
+  "drip",
+  "sleep apnea",
+  "swallow",
+  "sinus",
+  "Hearing",
+  "Hearing Loss",
+  "Tinnitus",
+  "Hoarseness",
+  "arm"
 ]
 
 medical_terms.each do |mterm|
@@ -209,6 +223,7 @@ medical_practices = {
   'Dermatology': '皮膚科',
   'Pediatrics': '小児科',
   'Orthopedics': '整形外科',
+  'Ear-Nose-Throat': '耳鼻科',
   'Dentistry': '歯科',
   'Physical Therapy': '理学療法',
   'OB-GYN': '産婦人科',
@@ -220,8 +235,7 @@ medical_practices = {
   'Pulmonology': '呼吸器科',
   'Orthodontics': '歯列矯正',
   'Chiropractic': 'カイロプラクティック',
-  'Internal Medicine': '内科',
-  'Eye Nose Throat': '耳鼻科'
+  'Internal Medicine': '内科'
 }
 
 practices_infos = {
@@ -229,23 +243,23 @@ practices_infos = {
   'Pediatrics': 'Shōnika (小児科) is the Japanese word for pediatrics, medicine that focuses on childhood illnesses. ',
   'Orthopedics': 'Orthopedic practices are known as seikei-geka (整形外科) in Japanese. Such physicians are all over the place in Japan. While some orthopedic surgeons might need to cut you open to fix your bones or muscles, many of these doctors offer less-invasive relief for muscle and soft tissue aches and injuries. ',
   'Dentistry': 'Unless you have a chronic illness, the doctor you will probably see more than all others is the dentist, known as shika (歯科) in Japan. Back in the US, I scheduled my dental cleanings twice a year, but here in Japan, such services happen every three months. Dentists here also seem to do a lot more than I am used to. All clinics here perform routine dental work, but some also offer orthodontic and oral surgery services, things that would be done by specialists back in America.',
-  'Physical Therapy': '理学療法',
+  'Physical Therapy': 'Physiotherapy is a comprehensive health disciple offering assessment, treatment and ongoing management for a range of acute and chronic conditions and injuries. Physiotherapists specialise in the musculoskeletal and neural systems, utilising a range of techniques including joint mobilisations, massage, heat treatment, stretching and exercise programs to alleviate pain while addressing the underlying cause of your issue.',
   'OB-GYN': 'For women’s health, you visit a fujinka (婦人科), the name for a gynecologist. But if you are about to have a baby, check out an obstetrician, or sanka (産科), instead. And congratulations on your new baby! ',
   'Psychiatry': 'Doctors take time to listen to a new patient. For this reason weekday after 17:00 and weekend (Saturday, Sundays are generally closed) appointments are very difficult to take for a first time patient. Often a nurse or a psychologist take a pre-examination interview with a patient or they ask a patient to fill out a detailed questionnaire about the condition and run some paper psychological tests. Many of these services are Japanese only even if the doctor speaks some English –',
-  'Neurology': '神経内科',
-  'Cardiology': '循環器内科',
+  'Neurology': 'Neurologists aim at treating mental, neurological, muscle diseases, and developmental disorders, and provide advanced pioneering medical care based on the research results and to disseminate good care throughout the country. ',
+  'Cardiology': 'Cardiologists focus on hypertension, arrhythmia, heart failure, angina etc. They can also take care of patients who have head ache, allergic rhinitis, diabetes, and cold etc.',
   'Ophthalmology': 'The eyes are the window to the soul, and a Japanese ganka (眼科) is very good at checking your soul. In the US, you will typically seek out an optometrist when you want glasses, and an ophthalmologist when you are worried that something is really wrong with your eyes. In Japan, a ganka typically serves both communities, although I have seen eyeglass stores that have an in-house optometrist only.',
   'Endocrinology': 'Endocrinology & Diabetes Department specializes in diabetes and all other hormonal disorders such as thyroid diseases. Hormones are part of the endocrine system, series of glands that produce and secrete hormones that control many different bodily functions.',
   'Pulmonology': 'They diagnose and treat acute and chronic respiratory problems, including Asthma, Chronic Respiratory Failure/Insufficiency. They also treat sleep related respiratory Disorders.',
-  'Orthodontics': '歯列矯正',
-  'Chiropractic': 'カイロプラクティック',
+  'Orthodontics': 'Orthodontic treatment is a creative discipline in medicine that addresses skeletal and functional irregularities in teeth alignment and occlusion by implementing corrective procedures to achieve a new morphological and functional balance, paying attention to each patient’s unique growth and developmental process. Due to these characteristics, orthodontics has been recognized and appreciated by individual citizens and society as one of the leading dental specialties that entail advanced expertise and skill.',
+  'Chiropractic': ' Chiropractic is a natural, conservative, medication-free and non surgical form of health care that focuses on the relationship between the body’s structure, mainly the spine, and how it functions through the nervous system. Although chiropractors (practitioners) may use a variety of treatment approaches, they primarily perform spinal manipulations (adjustments) to correct misalignment of the spine. This is to improve function and support the body’s natural ability to heal itself.',
   'Internal Medicine': 'Your local catch-all physician is the naika (内科), an internal medicine professional, sometimes called an ippan-naika (一般内科). While some may argue that an internist is not the same as a general practitioner or family doctor, this nonetheless is the specialization you will look to for everyday care. Speaking of clinics, the term for that is kurinikku (クリニック), a word that applies to a broad range of medical offices. Your doctor might also work at a byōin (病院), that is, at a hospital.',
-  'Eye Nose Throat': 'If you are looking for an ear, nose, and throat (ENT) doctor, search for the word jibi-inkōka (耳鼻咽喉科), sometimes shortened to just jibika (耳鼻科). Such clinics might also delve into pulmonary medicine. For instance, if you require a CPAP machine, you might pick one up from a Japanese ENT even though such devices focus on the lungs.'
+  'Ear-Nose-Throat': 'If you are looking for an ear, nose, and throat (ENT) doctor, search for the word jibi-inkōka (耳鼻咽喉科), sometimes shortened to just jibika (耳鼻科). Such clinics might also delve into pulmonary medicine. For instance, if you require a CPAP machine, you might pick one up from a Japanese ENT even though such devices focus on the lungs.'
 }
 
-
+puts "adding info"
 medical_practices.each do |name, japanese_name|
-  Practice.create!(name:, japanese_name:, info: Faker::Lorem.sentence)
+  Practice.create!(name:, japanese_name:, info: practices_infos[name])
 end
 
 medical_keywords_for_practices = {
@@ -254,18 +268,18 @@ medical_keywords_for_practices = {
   "Orthopedics" => ['Stiffness', 'Limited range of motion', 'Pain', 'Weakness', 'Instability', 'Deformity', 'Numbness', 'Tingling', 'Difficulty walking', 'Joint stiffness', 'surgery', 'bones'],
   "Dentistry" => ['Toothache', 'Tooth sensitivity', 'Gum swelling', 'Bleeding gums', 'Bad breath', 'Tooth discoloration', 'Jaw pain', 'Loose teeth', 'Difficulty chewing', 'cavity'],
   "Physical Therapy" => ['Muscle weakness', 'Joint stiffness', 'Balance problems', 'Difficulty walking', 'Muscle spasms', 'Postural problems', 'Functional limitations', 'massage', "Sports", "strain", "Neck", "Shoulder", "foot",
-  "body", "Knee", "Hip", "Ankle", "Sprains", "Tendonitis", "Rehabilitation", "injury"],
+  "body", "Knee", "Hip", "Ankle", "Sprains", "Tendonitis", "Rehabilitation", "injury", "Leg", "arm"],
   "OB-GYN" => ['Menstrual irregularities', 'Pelvic pain', 'Vaginal bleeding', 'Infertility', 'Sexual dysfunction', 'woman', 'pregnancy', 'pregnant'],
   "Psychiatry" => ['Depression', 'Anxiety', 'Mood swings', 'Insomnia', 'Loss of interest', 'Changes in appetite', 'Irritability', 'Difficulty concentrating', 'Suicidal thoughts', 'mental health', 'emotional'],
   "Neurology" => ['Headache', 'Dizziness', 'Seizures', 'Tremors', 'Memory problems', 'Coordination difficulties', 'Speech difficulties', 'Vision changes', 'brain', 'nerves'],
   "Cardiology" => ['Chest pain', 'Shortness of breath', 'Palpitations', 'Edema', 'High blood pressure', 'Irregular heartbeat', 'Fainting', 'heart'],
-  "Ophthalmology" => ['Blurred vision', 'Eye pain', 'Dry eyes', 'Eye discharge', 'Double vision', 'Flashes of light', 'Floaters in vision', 'Vision loss',
-  'eyes', 'glasses'],
+  "Ophthalmology" => ['Blurred vision', 'Eye pain', 'Dry eyes', 'Eye discharge', 'Double vision', 'Flashes of light', 'Floaters in vision', 'Vision loss','eyes', 'glasses'],
   "Endocrinology" => ['Weight changes', 'Mood swings', 'Hair loss', 'Irregular menstrual periods', 'Excessive thirst', 'Increased urination', 'Temperature intolerance', 'Changes in appetite', 'Low libido', 'hormones'],
   "Pulmonology" => ['Shortness of breath', 'Wheezing', 'Chest tightness', 'Sputum production', 'Chronic cough', 'Difficulty breathing', 'Chest pain', 'Respiratory infections', 'lungs', "covid", "covid-19", "coronavirus"],
   "Orthodontics" => ['Braces', 'Invisalign', 'Retainer', 'Overbite', 'Underbite', 'Crossbite', 'Crowding', 'Gaps between teeth'],
   "Chiropractic" => ['Spinal adjustment', 'Back pain', 'Neck pain', 'Joint pain', 'Muscle stiffness', 'Tingling', 'Sciatica', "cramp"],
-  "Internal Medicine" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness', "vaccination", "vaccine", "cough", "sick", "cold", "flu", "stomach", "headache", "covid", "covid-19", "coronavirus"]
+  "Internal Medicine" => ['Family doctor', 'General physician', 'Nausea', 'Routine check-ups', 'Common illness', "vaccination", "vaccine", "cough", "sick", "cold", "flu", "stomach", "headache", "covid", "covid-19", "coronavirus"],
+  "Ear-Nose-Throat" => ["vertigo", "ear", "nose", "throat", "nasal", "drip", "sleep apnea", "swallow", "sinus", "Hearing", "Hearing Loss", "Tinnitus", "Hoarseness"]
 }
 
 puts "making practice keywords..."
@@ -382,4 +396,9 @@ Practice.find_by(name: "Pulmonology").photo.attach(
 Practice.find_by(name: "Orthodontics").photo.attach(
   filename: 'orthodontics',
   io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1684849562/orthodontics.png')
+)
+
+Practice.find_by(name: "Ear-Nose-Throat").photo.attach(
+  filename: 'earnosethroat',
+  io: URI.open('https://res.cloudinary.com/dozlu8kt0/image/upload/v1685066606/ear_nose_throat.png')
 )
