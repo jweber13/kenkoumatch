@@ -13,7 +13,11 @@ class CardsController < ApplicationController
     @parse_service = CardsParseService.new(@card.cardkeywords)
     keysarray = @parse_service.parse_content
     @keywords = keysarray[0]
-    @keyphrases = keysarray[1]
+    if keysarray[1].is_a? Hash
+      @keywords = keysarray[1].to_a
+    else
+      @keyphrases = keysarray[1]
+    end
   end
 
   def new
