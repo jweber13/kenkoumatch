@@ -33,22 +33,15 @@
           </div>
           <div class="card-show-element">
             <%@keywords.each do |keyword|%>
-              <%keyword.each do |k,v|%>
-                <div class="key-point">
-                  <strong><%=k%> : </strong><%=v%>
-                  <br>
-                  <br>
-                </div>
-              <%end%>
+              <strong><%=keyword[0]%>: </strong><%=keyword[1]%>
             <%end%>
           </div>
           <div class="inner-header">
             <h1>Useful Phrases</h1>
           </div>
           <div class="card-show-element">
-            <%@keyphrases.each do |phrase|%>
-              <%arr = phrase.split("。")%>
-              <strong><%=arr[1]%></strong><%=arr[0].gsub("(", "").gsub(")", "")%>
+            <%@phrases.each do |phrase|%>
+              <strong><%=phrase[0]%>: </strong><%=phrase[1]%>
               <br>
               <br>
             <%end%>

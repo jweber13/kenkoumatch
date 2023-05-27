@@ -308,19 +308,20 @@ card = Card.new
 card.user = User.first
 card.practice = Practice.first
 card.institution = Institution.first
-card.originalcontent = Faker::Lorem.sentence
-card.translatedcontent = "チョロン、彼のサブ男性デュオHongcunヘルプ、インターネットカフェ、卓球、オフにスケートだけでなく、工芸品や骨董品店に加えて、そこが店をオープンエアコン周辺堂堂巡りをすることができます。"
-card.cardkeywords = "{ \n'keywords' => [\n{'Shortness of breath' => '息切れ, いきぎれ, ikigire'},\n{'Last week' => '先週, せんしゅう, senshuu'},\n{'Became' => 'なった, natta'}\n], \n'phrases' => [\n'息切れがします。 (I am experiencing shortness of breath.)',\n'先週から息切れがするようになりました。(I started experiencing shortness of breath since last week.)',\n'息切れがあるときは、胸が苦しくなります。(When I have shortness of breath, I feel chest tightness.)'\n]\n}"
+card.originalcontent = "I have a rash on my upper left thigh and it's itchy in the evening. "
+card.translatedcontent = "左太もも上部に発疹があり、夕方になると痒くなります。"
+card.cardkeywords = "[[\"発疹 (はっしん)\", \"rash\"], [\"左太もも上部 (ひだりふとももじょうぶ)\", \"upper left thigh\"], [\"痒い (かゆい)\", \"itchy\"]]"
+card.cardphrases = "[[\"皮膚に発疹ができて、左太ももの上部にかゆみを感じます。\", \"ひふにはっしんができて、ひだりふもものじょうぶに かゆみをかんじます。- I have a rash on my skin and feel itchy on the upper left thigh.\"], [\"最近、左太ももの上部にかゆみを伴う発疹ができました。\", \"さいきん、ひだりふもものじょうぶに かゆみをともなうはっしんができました。- Recently, I developed a rash with itching on the upper left thigh.\"]]"
 card.save
 
-# card2 = Card.new
-# card2.user = User.first
-# card2.practice = Practice.find_by(name: "Dentistry")
-# card2.institution = Institution.last
-# card2.originalcontent = "I've had a toothache for 3 days, and I'm worried I have a cavity"
-# card2.translatedcontent = "3日前から歯が痛く、虫歯がないか心配です"
-# card2.cardkeywords = "{\n  'keywords' => [\n    {'teeth'=>'歯, は, ha'},\n    {'pain'=>'痛い, いたい, itai'},\n    {'cavity'=>'虫歯, むしば, mushiba'}\n  ],\n  'phrases' => [\n    '歯が痛いです。虫歯があるかもしれません。(My teeth hurt. I'm worried I might have a cavity.)',\n    '3日前から歯が痛いです。(My teeth have been hurting for 3 days.)',\n    '虫歯がないか心配です。(I'm worried I might have a cavity.)'\n  ]\n}"
-# card2.save
+=begin
+
+>> parsed_keywords
+=> [["発疹 (はっしん)", "rash"], ["左太もも上部 (ひだりふとももじょうぶ)", "upper left thigh"], ["痒い (かゆい)", "itchy"]]
+>> parsed_phrases
+=> [["皮膚に発疹ができて、左太ももの上部にかゆみを感じます。", "ひふにはっしんができて、ひだりふもものじょうぶに かゆみをかんじます。- I have a rash on my skin and feel itchy on the upper left thigh."], ["最近、左太ももの上部にかゆみを伴う発疹ができました。", "さいきん、ひだりふもものじょうぶに かゆみをともなうはっしんができました。- Recently, I developed a rash with itching on the upper left thigh."]]
+
+=end
 
 
 Practice.find_by(name: "Internal Medicine").photo.attach(

@@ -1,7 +1,4 @@
 class CardsController < ApplicationController
-  # include ".././services/openai_service"
-  # require OpenaiService
-
   def index
     # @cards: all cards created by current user(scope ie defined in app/policies)
     @cards = policy_scope(Card) # pundit(authorization)
@@ -9,15 +6,19 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
-    authorize @card # pundit(authorization)
-    @parse_service = CardsParseService.new(@card.cardkeywords)
-    keysarray = @parse_service.parse_content
-    @keywords = keysarray[0]
-    if keysarray[1].is_a? Hash
-      @keywords = keysarray[1].to_a
-    else
-      @keyphrases = keysarray[1]
-    end
+    authorize @card
+    cards_parse_service = CardsParseService.new
+    @keywords = cards_parse_service.parse_content_show(@card.cardkeywords)
+    @phrases = cards_parse_service.parse_content_show(@card.cardphrases)
+    # pundit(authorization)
+    # @parse_service = CardsParseService.new(@card.cardkeywords)
+    # keysarray = @parse_service.parse_content
+    # @keywords = keysarray[0]
+    # if keysarray[1].is_a? Hash
+    #   @keywords = keysarray[1].to_a
+    # else
+    #   @keyphrases = keysarray[1]
+    # end
   end
 
   def new
@@ -28,32 +29,38 @@ class CardsController < ApplicationController
   end
 
   def create
-    # raise
     # create a new practice here, using params because we come from the params page
     @practice = Practice.find(params[:practice_id])
-
     # create a new card, with card_params which is  ONLY originalontent / the query made by the user
     @card = Card.new(card_params)
 
     # card needs a user and a practice
     @card.user = current_user
     @card.practice = @practice
-
-    # pundit requires us to authorize this instance
     authorize @card
 
-    # Deepl is called here, so the original is translated to japanese.
+    # deepl
     @card.translatedcontent = (DeepL.translate @card.originalcontent, nil, "JA").text
+    prompt = keywords_prompt(@card.translatedcontent)
+    @openai_service = OpenaiService.new(prompt)
 
-    # this uses a method function, and all it does is create a giant string that we'll use to "ask" ChatGPT a question.
-    content = set_ai_prompt(@practice.name, @card.translatedcontent)
+    # keys
+    keywords = @openai_service.call
+    @cardparse_service = CardsParseService.new(keywords)
+    parsed_keywords = @cardparse_service.parse_content
+    eng_keys = @cardparse_service.keys_english(parsed_keywords)
 
-    # ChatGPT is instantiated here. We use the 'content' returned from the set_ai_prompt method.
-    @openai_service = OpenaiService.new(content)
+    # phrases
+    @openai_service.update(phrases_prompt(eng_keys, @practice.name))
+    phrases = @openai_service.call
+    @cardparse_service.update(phrases)
+    parsed_phrases = @cardparse_service.parse_content
 
-    # results = @openai_service.call
-    @card.cardkeywords = @openai_service.call
-    # @card.cardkeywords = "these cardkeywords should be replaced by what joe is doing"
+    # save to card
+    @card.cardkeywords = parsed_keywords
+    @card.cardphrases = parsed_phrases
+
+    # check if valid
     if @card.save
       redirect_to card_path(@card)
     else
@@ -82,15 +89,13 @@ class CardsController < ApplicationController
     params.require(:card).permit(:originalcontent)
   end
 
-  # prompt
-  def set_ai_prompt(practice, input)
-    content = "
-    You are a Japanese medical interpreter. I would like you to analyze this text input describing a patient's symptoms in Japanese. Provide me with a Ruby hash in JSON-readable format, with the following contents:
-1.  'keywords' => An array that contains 3-5 keyword hashes from the translated sentence (including the romaji phonetic spelling, and english translations of those keywords). The format should look like this: { 'english word' => '言葉, ひらがな, romaji'}
-2. 'phrases' => An array 3 useful phrases (strings) that could help a 1st time visitor with no Japanese skill who is going to a #{practice} clinic explain their symptoms in Japanese, along with their English translations.
-Your return input should look like this:
-{ 'keywords' => [{'word 1 in english'=>'言葉1, ひらがな, romaji'}, {'word 2 in english'=>'言葉2, ひらがな, romaji'}, {'word 3 in english'=>'言葉3, ひらがな, romaji'}], 'phrases' => ['文章: english sentence', '文章: english sentence'] }
-Here is the input: '#{input}'"
-    return content
+  #gpt prompts
+
+  def keywords_prompt(input)
+    "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 3-7 relevant keywords from the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. input: #{input}"
+  end
+
+  def phrases_prompt(input, practice)
+    "Give me a numbered list of 2 useful sentences in Japanese for a first-time patient at a #{practice} office, to help explain their symptoms. use 3-4 of the following keywords when creating the sentences. In addition to the Japanese, provide the kana pronouncation in this format, and the english translation: '日本語 - かな - english'. input: #{input}"
   end
 end
