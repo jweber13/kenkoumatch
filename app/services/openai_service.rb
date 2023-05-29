@@ -14,11 +14,18 @@ class OpenaiService
       parameters: {
           model: "gpt-3.5-turbo", # Required.
           messages: [{ role: "user", content: prompt }], # Required.
-          temperature: 0.7,
+          temperature: 0.5,
           stream: false,
           max_tokens: 350
       })
     # you might want to inspect the response and see what the api is giving you
     return response["choices"][0]["message"]["content"]
+  end
+
+  def call_phrase
+  end
+
+  def update(prompt)
+    @prompt = prompt
   end
 end
