@@ -64,7 +64,6 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     authorize @card
 
-    # @keywords = @card.cardkeywords
     prompt = keywords_prompt2(@card.translatedcontent)
     @openai_service = OpenaiService.new(prompt)
 
@@ -84,24 +83,17 @@ class CardsController < ApplicationController
   end
 
   def redophrase
-    # raise
     @card = Card.find(params[:id])
     authorize @card
 
     @cardparse_service = CardsParseService.new
-    # parsed_keywords = @cardparse_service.parse_content
-    # eng_keys = @cardparse_service.keys_english(JSON.parse(@card.cardkeywords))
-    # raise
     jp_words = JSON.parse(@card.cardkeywords).map { |el| el[0] }
     @openai_service = OpenaiService.new(phrases_prompt2(jp_words, @card.practice.name))
 
     phrases = @openai_service.call1
-    # raise
     @cardparse_service.update(phrases)
     parsed_phrases = @cardparse_service.parse_content
-    # raise
     @card.cardphrases = parsed_phrases.to_json
-    # raise
     @card.save
 
     @phrases = parsed_phrases
