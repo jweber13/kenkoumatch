@@ -40,6 +40,7 @@
           <div class="card-show-element">
             <%= render "jphrase", phrases: @phrases%>
           </div>
+          <%= link_to "Delete", card_path(@card), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>
       </div>
     </div>
