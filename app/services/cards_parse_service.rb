@@ -12,9 +12,6 @@ class CardsParseService
   end
 
   def parse_content
-    # matches = @content.scan(/\{ '(.*?)' => '(.*?)' \}/)
-    # parsed_array = matches.map { |match| { match[0] => match[1] } }
-    # parsed_array = @content.split("\n")arr
     array = @content.split("\n").map { |line| line.split(" - ") }
     array_without_counters = array.map { |sub_array| sub_array.map { |element| element.gsub(/^\d+\.\s+/, "") } }
     return array_without_counters

@@ -39,11 +39,16 @@
               <%= render "jkeyword", keywords: @keywords %>
             </div>
           </div>
-          <div class="inner-header">
-            <h1>Useful Phrases</h1>
-          </div>
-          <div class="card-show-element">
-            <%= render "jphrase", phrases: @phrases%>
+          <div data-controller="editphrase" data-editphrase-id-value="<%=@card.id%>">
+            <div class="inner-header">
+              <h1>Useful Phrases</h1>
+              <%=form_with url: redophrase_card_path(@card), data: { action: "submit->editphrase#edit" } do |form| %>
+                <% form.submit "Redo Phrases", class: "inner-header-btn h5"%>
+              <%end%>
+            </div>
+            <div data-editphrase-target="phedited" class="card-show-element">
+              <%= render "jphrase", phrases: @phrases%>
+            </div>
           </div>
           <%= link_to "Delete", card_path(@card), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
         </div>

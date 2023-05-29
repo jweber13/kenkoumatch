@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   resources :cards, only: %i[index show update destroy] do
     member do
-      post :redo
+      post :redo, :redophrase
     end
   end
 end
