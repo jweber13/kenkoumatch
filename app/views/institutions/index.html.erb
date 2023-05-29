@@ -3,9 +3,9 @@
     <div class='col-12 col-md-6'>
       <div class='h-25 bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
         <h1 class="d-flex justify-content-center mt-2"><%=@practice.name%></h1>
-        <div class="container" data-controller="google-search">
+        <div class="container" data-controller="google-search" data-practice="<%= @practice.japanese_name %>">
           <div class="d-flex justify-content-center mt-3" >
-            <%= form_with data: { action: "submit->google-search#findPlaceFromQuery"}  do |form| %>
+            <%= form_with data: { action: "submit->google-search#searchNearbyInstitutions"}  do |form| %>
               <%= form.text_field :query, placeholder: 'Enter your search query', data: {google_search_target: "input"} %>
               <%= form.submit 'Search', class: 'btn custom-button' %>
             <% end %>
@@ -14,7 +14,7 @@
             <div id="results">
             </div>
           </div>
-          <div id="card-container"></div>
+          <div id="card-institutions-index-container" data-google-search-target="cardInstitutionsIndexContainer"></div>
         </div>
       </div>
     </div>
