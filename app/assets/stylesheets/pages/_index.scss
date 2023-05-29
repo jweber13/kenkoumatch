@@ -15,9 +15,12 @@ h1 {
 .container {
   display: flex; /* mandatory */
   flex-direction: column; /* mandatory */
-  height: 100vh; /* mandatory */
+  // height: 100vh; /* mandatory */
+  flex-grow: 1;
+
 }
 
 body {
   font-family: 'Quicksand', sans-serif;
+  height: 100vh;
 }

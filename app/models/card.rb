@@ -4,6 +4,9 @@ class Card < ApplicationRecord
   belongs_to :practice
   belongs_to :institution, optional: true
 
+  has_many :cardwords
+  has_many :studywords, through: :cardwords
+
   # validation
   validates_presence_of :practice, :originalcontent, :translatedcontent, :cardkeywords
 end
