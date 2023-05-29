@@ -2,54 +2,51 @@
 import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="google-search"
 export default class extends Controller {
-  static targets = ["input"];
+  static targets = ["input", "cardInstitutionsIndexContainer"];
 
   connect() {
     console.log('Google Search Controller connected');
+    console.log(this.element.dataset.practice);
   }
 
-  findPlaceFromQuery(e) {
+  searchNearbyInstitutions(e) {
     e.preventDefault();
-    const query = this.inputTarget.value
+    console.log(this.element.dataset.practice);
+    // position should be replaced by (user input -> coordinates), using google map api(geocoding)
+    const position = new google.maps.LatLng(35.729756, 139.711069)
+    const practice = this.element.dataset.practice //this.inputTarget.value
     const map = new google.maps.Map(document.getElementById('map'), {
+      center: position,
       zoom: 15
     });
     const service = new google.maps.places.PlacesService(map);
     const request = {
-      query,
-      fields: ["name", "geometry", "formatted_address", "rating", "photos", "types", "place_id"]
+      location: position,
+      radius: '500',
+      keyword: practice,
     };
-    service.TextQuery(request, (results, status) => {
+    service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         console.log(results);
-        const card = document.createElement('div');
-        card.classList.add('card');
-
-        const name = document.createElement('h3');
-        name.textContent = results[0].name;
-        card.appendChild(name);
-        const address = document.createElement('p');
-        address.textContent = results[0].formatted_address;
-        card.appendChild(address);
-        const rating = document.createElement('p');
-        rating.textContent = `Rating: ${results[0].rating}`;
-        card.appendChild(rating);
-        const place_id = document.createElement('p');
-        rating.textContent = `place_id: ${results[0].place_id}`;
-        card.appendChild(place_id);
-        const photo = document.createElement('img');
-        const photoUrl = results[0].photos[0].getUrl({ maxWidth: 500, maxHeight: 333 });
-        photo.src = photoUrl;
-        card.appendChild(photo);
-        // I am taking just the first type to now overwhelm with info
-        const types = document.createElement('p');
-        types.textContent = `Type: ${results[0].types[0]}`;
-        card.appendChild(types);
-        console.log(card);
-
-        const cardContainer = document.getElementById('card-container');
-        cardContainer.innerHTML = '';
-        cardContainer.appendChild(card);
+        results.forEach(result => {
+          const container = this.cardInstitutionsIndexContainerTarget
+          const cardInstitutionsIndex = document.createElement('div');
+          cardInstitutionsIndex.classList.add('card-institutions-index');
+          const name = document.createElement('h3');
+          const address = document.createElement('p');
+          const rating = document.createElement('p');
+          const photo = document.createElement('img');
+          const photoUrl = result.photos[0].getUrl({ maxWidth: 500, maxHeight: 333 });
+          name.textContent = result.name;
+          address.textContent = result.vicinity
+          rating.textContent = result.rating
+          photo.src = photoUrl;
+          cardInstitutionsIndex.appendChild(name);
+          cardInstitutionsIndex.appendChild(address);
+          cardInstitutionsIndex.appendChild(rating);
+          cardInstitutionsIndex.appendChild(photo);
+          container.appendChild(cardInstitutionsIndex);
+        });
       }
     });
   }
