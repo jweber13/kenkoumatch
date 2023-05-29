@@ -31,24 +31,38 @@
   background-color: $manila;
 }
 
-.key1 {
-  // flex-grow: 1;
+.jcontainer {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 1em;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+}
+
+.key1 {
+  // flex-grow: 1;
+  // padding-top: 2px;
+  // padding-bottom: 2px;
+  // padding-left: 1em;
+  // border-top-left-radius: 15px;
+  // border-bottom-left-radius: 15px;
   text-align: left;
+  font-size: .7em;
 }
 
 .key2 {
-  text-align: center;
-  flex-grow: 1;
-  font-size: .7em;
+  text-align: left;
+  // flex-grow: 1;
+  // font-size: .7em;
 }
 
 .key3 {
   text-align: right;
+  padding-top: .5em;
+  padding-bottom: 0.5em;
   padding-right: 1em;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -111,11 +125,6 @@
   border-top-right-radius: 15px;
   border-bottom: none;
 }
-
-// .inner-header-btn:hover {
-//   background-color: $light-gray;
-//   color: black;
-// }
 
 .show-header {
   color: $gray;

@@ -24,10 +24,17 @@ color: white;
   font-weight: bolder;
 }
 
-.redo-button:hover {
-  background-color: $light-gray;
+.del-btn-container {
+  margin: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.redo-phrase-button {
-
+.del-btn {
+  background-color: $light-manila;
+  // margin-bottom: 0;
+  border: $turquoise 2px solid;
+  border-radius: 15px;
+  padding-top: .5em;
 }
