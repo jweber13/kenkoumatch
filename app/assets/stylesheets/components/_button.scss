@@ -14,3 +14,20 @@ color: white;
   background-color: $light-blue;
   color: $gray;
 }
+
+.redo-button {
+  background-color: $light-blue;
+  border-radius: 15px;
+  border: $turquoise 1px solid;
+  color: $turquoise;
+  // color: $light-gray;
+  font-weight: bolder;
+}
+
+.redo-button:hover {
+  background-color: $light-gray;
+}
+
+.redo-phrase-button {
+
+}

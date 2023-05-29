@@ -30,4 +30,8 @@ class CardPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
+
+  def redo?
+    record.user == user
+  end
 end

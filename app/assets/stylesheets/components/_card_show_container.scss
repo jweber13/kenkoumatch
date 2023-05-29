@@ -79,10 +79,38 @@
 }
 
 .inner-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // gap: 1em;
   background-color: $light-gray;
   color: $turquoise;
   text-align: center;
 }
+
+.inner-header-btn {
+  // border: $turquoise 1px solid;
+  // border: none;
+  // background: $turquoise;
+  // color: $manila;
+  // font-weight: bold;
+  // padding-top: 1em;
+  // background-color: $light-gray;
+  background-color: $light-manila;
+  // color: ;
+  margin-bottom: 0;
+  border-top: $turquoise 2px solid;
+  border-right: $turquoise 2px solid;
+  border-left: $turquoise 2px solid;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: none;
+}
+
+// .inner-header-btn:hover {
+//   background-color: $light-gray;
+//   color: black;
+// }
 
 .show-header {
   color: $gray;
