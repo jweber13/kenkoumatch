@@ -34,4 +34,8 @@ class CardPolicy < ApplicationPolicy
   def redo?
     record.user == user
   end
+
+  def redophrase?
+    record.user == user
+  end
 end
