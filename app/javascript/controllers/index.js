@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import EditController from "./edit_controller"
+application.register("edit", EditController)
+
 import GoogleMapsController from "./google_maps_controller"
 application.register("google-maps", GoogleMapsController)
 
