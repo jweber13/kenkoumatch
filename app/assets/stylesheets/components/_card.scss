@@ -168,3 +168,43 @@
   // background-size: contain;
   // background-repeat: no-repeat;
 }
+
+// card for institutions#index
+
+.card-institutions-index {
+  overflow: hidden;
+  height: 120px;
+  background: #F4F4F4;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  border: solid;
+  border-width: thin;
+  border-radius: 24px;
+  border-color: #C7EAF3;
+}
+
+.card-institutions-index img {
+  height: 100%;
+  width: 80px;
+  object-fit: cover;
+}
+
+.card-institutions-index h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-institutions-index p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-institutions-index .card-institutions-index-infos {
+  padding: 16px;
+}
