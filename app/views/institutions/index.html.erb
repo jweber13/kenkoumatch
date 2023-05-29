@@ -1,21 +1,23 @@
 <div class="container page-content">
   <div class='row justify-content-center mt-5'>
-    <div class='col-12 col-md-6'>
+    <div class='col-12 col-md-8'>
       <div class='h-25 bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
         <h1 class="d-flex justify-content-center mt-2"><%=@practice.name%></h1>
-        <div class="container" data-controller="google-search" data-practice="<%= @practice.japanese_name %>">
-          <div class="d-flex justify-content-center mt-3" >
-            <%= form_with data: { action: "submit->google-search#searchNearbyInstitutionsFromAddress"}  do |form| %>
-              <%= form.text_field :address, placeholder: 'Enter address', data: {google_search_target: "input"} %>
-              <%= form.submit 'Search from Address', class: 'btn custom-button' %>
-            <% end %>
-            <p class='btn custom-button' data-action='click->google-search#searchNearbyInstitutionsFromCurrentLocation'>Search from current location</p>
-          </div>
-          <div id="map" >
-            <div id="results">
+        <div data-controller="google-search" data-practice="<%= @practice.japanese_name %>">
+          <div>
+            <div class="d-flex justify-content-center mt-3" >
+              <%= form_with data: { action: "submit->google-search#searchNearbyInstitutionsFromAddress"}  do |form| %>
+                <%= form.text_field :address, placeholder: 'Enter address', data: {google_search_target: "input"} %>
+                <%= form.submit 'Search from Address', class: 'btn custom-button' %>
+              <% end %>
+              <p class='btn custom-button' data-action='click->google-search#searchNearbyInstitutionsFromCurrentLocation'>Search from current location</p>
+            </div>
+            <div id="map" >
+              <div id="results">
+              </div>
             </div>
           </div>
-          <div id="card-institutions-index-container" data-google-search-target="cardInstitutionsIndexContainer"></div>
+          <div class='container' id="card-institutions-index-container" data-google-search-target="cardInstitutionsIndexContainer"></div>
         </div>
       </div>
     </div>
