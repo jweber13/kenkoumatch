@@ -8,17 +8,10 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     authorize @card
     cards_parse_service = CardsParseService.new
-    @keywords = cards_parse_service.parse_content_show(@card.cardkeywords)
-    @phrases = cards_parse_service.parse_content_show(@card.cardphrases)
-    # pundit(authorization)
-    # @parse_service = CardsParseService.new(@card.cardkeywords)
-    # keysarray = @parse_service.parse_content
-    # @keywords = keysarray[0]
-    # if keysarray[1].is_a? Hash
-    #   @keywords = keysarray[1].to_a
-    # else
-    #   @keyphrases = keysarray[1]
-    # end
+    # raise
+    @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
+    @phrases = cards_parse_service.parse_content_phrases(@card.cardphrases)
+    # raise
   end
 
   def new
@@ -29,9 +22,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    # create a new practice here, using params because we come from the params page
     @practice = Practice.find(params[:practice_id])
-    # create a new card, with card_params which is  ONLY originalontent / the query made by the user
     @card = Card.new(card_params)
 
     # card needs a user and a practice
@@ -89,13 +80,13 @@ class CardsController < ApplicationController
     params.require(:card).permit(:originalcontent)
   end
 
-  #gpt prompts
+  # gpt prompts
 
   def keywords_prompt(input)
-    "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 3-7 relevant keywords from the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. input: #{input}"
+    "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 2-7 relevant keywords from the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
   end
 
   def phrases_prompt(input, practice)
-    "Give me a numbered list of 2 useful sentences in Japanese for a first-time patient at a #{practice} office, to help explain their symptoms. use 3-4 of the following keywords when creating the sentences. In addition to the Japanese, provide the kana pronouncation in this format, and the english translation: '日本語 - かな - english'. input: #{input}"
+    "Give me a numbered list of 3 useful and varied sentences in Japanese for a first-time patient to use at a #{practice} office, so they can help explain their symptoms. use some of the following keywords when creating the sentences:#{input}. In addition to the Japanese, provide the kana pronouncation in this format, and the english translation: '日本語 - かな - english'."
   end
 end

@@ -28,16 +28,45 @@ class CardsParseService
     return array_without_counters
   end
 
-  def phrases_for_show
-    # parsed_content = JSON.parse(@content)
-
-  end
-
   def keys_english(input)
     input.map { |sub_array| sub_array[1] }.join(",")
   end
 
-  def parse_content_show(content)
-    JSON.parse(content)
+  def parse_content_keys(content)
+    keys = JSON.parse(content)
+    # return keys.map { |el| el.join.split("-") }
+    # keys = JSON.parse(content).map do |key|
+    #   split_list = key.map do |item|
+    #     # raise
+    #     if item.include?(" (")
+    #       japanese, romaji = item.split(" (")
+    #       english = key[1]
+    #       [japanese, romaji, english]
+    #     else
+    #       [item]
+    #     end
+    #   end.flatten
+    #   split_list.pop
+    #   split_list
+    #   raise
+    # end
+  end
+
+  def parse_content_phrases(content)
+    arr = JSON.parse(content)
+    # raise
+    unless arr.all? { |el| el.count == 3 }
+    # string_arr = arr.map(&:join)
+      return arr.map(&:join).map do |el|
+        if el.include?("？")
+          el.split("？")
+        elsif el.include?("!")
+          el.split("!")
+        else
+          el.split("。")
+        end
+      end
+    end
+    return arr
   end
 end

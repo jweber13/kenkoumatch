@@ -19,10 +19,9 @@ export default class extends Controller {
       query,
       fields: ["name", "geometry", "formatted_address", "rating", "photos", "types", "place_id"]
     };
-    service.findPlaceFromQuery(request, (results, status) => {
+    service.TextQuery(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         console.log(results);
-
         const card = document.createElement('div');
         card.classList.add('card');
 

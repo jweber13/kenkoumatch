@@ -32,19 +32,13 @@
             <h1>Your Keywords</h1>
           </div>
           <div class="card-show-element">
-            <%@keywords.each do |keyword|%>
-              <strong><%=keyword[0]%>: </strong><%=keyword[1]%>
-            <%end%>
+            <%= render "jkeyword", keywords: @keywords %>
           </div>
           <div class="inner-header">
             <h1>Useful Phrases</h1>
           </div>
           <div class="card-show-element">
-            <%@phrases.each do |phrase|%>
-              <strong><%=phrase[0]%>: </strong><%=phrase[1]%>
-              <br>
-              <br>
-            <%end%>
+            <%= render "jphrase", phrases: @phrases%>
           </div>
         </div>
       </div>
