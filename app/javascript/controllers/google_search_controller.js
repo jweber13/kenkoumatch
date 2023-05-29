@@ -60,27 +60,37 @@ export default class extends Controller {
           const cardInstitutionsIndex = document.createElement('div');
           cardInstitutionsIndex.classList.add('card-institutions-index');
 
-          // create html elements and add text(result from the google maps api)
-          const name = document.createElement('h3');
-          const address = document.createElement('p');
-          const rating = document.createElement('p');
           const photo = document.createElement('img');
-          console.log(result.photos);
 
           if (result.photos !== undefined) {
-          const photoUrl = result.photos[0].getUrl({ maxWidth: 500, maxHeight: 333 });
-          photo.src = photoUrl;
+            const photoUrl = result.photos[0].getUrl(/*{ maxWidth: 500, maxHeight: 333 }*/);
+            photo.src = photoUrl;
+          } else {
+            photo.src = 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png'
           };
+
+          cardInstitutionsIndex.appendChild(photo);
+
+          const cardInstitutionsIndexInfos = document.createElement('div');
+          cardInstitutionsIndexInfos.classList.add('card-institutions-index-infos')
+
+          // create html elements and add text(result from the google maps api)
+          const name = document.createElement('h2');
+          const address = document.createElement('p');
+          const rating = document.createElement('p');
+          console.log(result.photos);
+
 
           name.textContent = result.name;
           address.textContent = result.vicinity
           rating.textContent = result.rating
 
           // append created html elements into the card div(<div class='card-institutions-index'>)
-          cardInstitutionsIndex.appendChild(name);
-          cardInstitutionsIndex.appendChild(address);
-          cardInstitutionsIndex.appendChild(rating);
-          cardInstitutionsIndex.appendChild(photo);
+          cardInstitutionsIndexInfos.appendChild(name);
+          cardInstitutionsIndexInfos.appendChild(address);
+          cardInstitutionsIndexInfos.appendChild(rating);
+
+          cardInstitutionsIndex.appendChild(cardInstitutionsIndexInfos);
 
           // append the card div(<div class='card-institutions-index'>) to the container
           container.appendChild(cardInstitutionsIndex);
