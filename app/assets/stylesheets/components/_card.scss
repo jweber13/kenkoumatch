@@ -113,6 +113,7 @@
   flex-direction: column;
   min-height: 150px;
   position: relative;
+  border-radius: 5px;
 }
 
 .card-link {
@@ -207,4 +208,8 @@
 
 .card-institutions-index .card-institutions-index-infos {
   padding: 16px;
+}
+
+.card-title {
+  text-decoration: underline;
 }
