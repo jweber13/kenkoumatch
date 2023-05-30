@@ -13,7 +13,11 @@
         <p><%= card.originalcontent %></p>
         <p><%= card.created_at.strftime('%Y-%m-%d')  %></p>
         <%= link_to "Delete", card_path(card), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<<<<<<< HEAD
         <%= link_to "View card", card_path(card) %>
+=======
+        <%= link_to "view card", card_path(card) %>
+>>>>>>> 4716d79f85a5cf1946ee3dd4004e3efe20a69683
       </div>
     <% end %>
   </div>

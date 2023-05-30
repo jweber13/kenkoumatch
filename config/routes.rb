@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     resources :cards, only: %i[new create]
     resources :institutions, only: %i[index show new create]
   end
-  resources :cards, only: %i[index show edit update destroy]
+  resources :cards, only: %i[index show update destroy] do
+    member do
+      post :redo, :redophrase
+    end
+  end
 end

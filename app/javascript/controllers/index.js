@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import EditController from "./edit_controller"
+application.register("edit", EditController)
+
+import EditphraseController from "./editphrase_controller"
+application.register("editphrase", EditphraseController)
+
 import GoogleMapsController from "./google_maps_controller"
 application.register("google-maps", GoogleMapsController)
 
@@ -18,6 +24,9 @@ application.register("popover", PopoverController)
 
 import SearchPracticesController from "./search_practices_controller"
 application.register("search-practices", SearchPracticesController)
+
+import SpinnerController from "./spinner_controller"
+application.register("spinner", SpinnerController)
 
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)

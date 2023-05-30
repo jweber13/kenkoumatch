@@ -14,3 +14,27 @@ color: white;
   background-color: $light-blue;
   color: $gray;
 }
+
+.redo-button {
+  background-color: $light-blue;
+  border-radius: 15px;
+  border: $turquoise 1px solid;
+  color: $turquoise;
+  // color: $light-gray;
+  font-weight: bolder;
+}
+
+.del-btn-container {
+  margin: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.del-btn {
+  background-color: $light-manila;
+  // margin-bottom: 0;
+  border: $turquoise 2px solid;
+  border-radius: 15px;
+  padding-top: .5em;
+}

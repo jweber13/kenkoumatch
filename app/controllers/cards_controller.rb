@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:redo, :redophrase]
   def index
     # @cards: all cards created by current user(scope ie defined in app/policies)
     @cards = policy_scope(Card) # pundit(authorization)
@@ -11,7 +12,6 @@ class CardsController < ApplicationController
     # raise
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
     @phrases = cards_parse_service.parse_content_phrases(@card.cardphrases)
-    # raise
   end
 
   def new
@@ -59,10 +59,51 @@ class CardsController < ApplicationController
     end
   end
 
-  def edit
+  def redo
+    @card = Card.find(params[:id])
+    authorize @card
+
+    prompt = keywords_prompt2(@card.translatedcontent)
+    @openai_service = OpenaiService.new(prompt)
+
+    # keys
+    keywords = @openai_service.call1
+    @cardparse_service = CardsParseService.new(keywords)
+    parsed_keywords = @cardparse_service.parse_content
+
+    @card.cardkeywords = parsed_keywords.to_json
+    @card.save
+
+    @keywords = parsed_keywords
+    respond_to do |format|
+      format.html
+      format.text { render partial: "jkeyword", locals: { keywords: @keywords }, formats: [:html]}
+    end
+  end
+
+  def redophrase
+    @card = Card.find(params[:id])
+    authorize @card
+
+    @cardparse_service = CardsParseService.new
+    jp_words = JSON.parse(@card.cardkeywords).map { |el| el[0] }
+    @openai_service = OpenaiService.new(phrases_prompt2(jp_words, @card.practice.name))
+
+    phrases = @openai_service.call1
+    @cardparse_service.update(phrases)
+    parsed_phrases = @cardparse_service.parse_content
+    @card.cardphrases = parsed_phrases.to_json
+    @card.save
+
+    @phrases = parsed_phrases
+    respond_to do |format|
+      format.html
+      format.text { render partial: "jphrase", locals: { phrases: @phrases }, formats: [:html] }
+    end
   end
 
   def update
+    raise
   end
 
   def destroy
@@ -86,7 +127,15 @@ class CardsController < ApplicationController
     "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 2-7 relevant keywords from the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
   end
 
+  def keywords_prompt2(input)
+    "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 3-6 keywords relevant to the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
+  end
+
   def phrases_prompt(input, practice)
     "Give me a numbered list of 3 useful and varied sentences in Japanese for a first-time patient to use at a #{practice} office, so they can help explain their symptoms. use some of the following keywords when creating the sentences:#{input}. In addition to the Japanese, provide the kana pronouncation in this format, and the english translation: '日本語 - かな - english'."
+  end
+
+  def phrases_prompt2(input, practice)
+    "Give me a numbered list of 3-4 useful and varied sentences in Japanese for a first-time patient to use at a #{practice} office, so they can help explain their symptoms. use some of the following keywords when creating the sentences:#{input}. In addition to the Japanese, provide the kana pronouncation in this format, and the english translation: '日本語 - かな - english'."
   end
 end
