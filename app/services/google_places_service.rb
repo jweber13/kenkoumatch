@@ -7,7 +7,6 @@ class GooglePlacesService
     @client.spot(place_id, fields: 'name,formatted_address,website,rating,formatted_phone_number,opening_hours,opening_hours')
 
     # places.map do |place|
-    #   {
     #     name: place.name,
     #     address: place.formatted_address,
     #     latitude: place.lat,
