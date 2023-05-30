@@ -297,27 +297,27 @@ medical_keywords_for_practices.each do |practice_name, keywords|
   end
 end
 
-puts "creating institutions"
-10.times do
-  Institution.create!(
-    name: Faker::Company.name,
-    address: Faker::Address.full_address,
-    website: Faker::Internet.url,
-    info: Faker::Lorem.paragraph,
-    rating: Faker::Number.between(from: 1, to: 5),
-    phone: Faker::PhoneNumber.phone_number
-  )
-end
+# puts "creating institutions"
+# 10.times do
+#   Institution.create!(
+#     name: Faker::Company.name,
+#     address: Faker::Address.full_address,
+#     website: Faker::Internet.url,
+#     info: Faker::Lorem.paragraph,
+#     rating: Faker::Number.between(from: 1, to: 5),
+#     phone: Faker::PhoneNumber.phone_number
+#   )
+# end
 
 # Additional code for creating cards if needed
 card = Card.new
 card.user = User.first
 card.practice = Practice.first
-card.institution = Institution.first
+# card.institution = Institution.first
 card.originalcontent = "I have a rash on my upper left thigh and it's itchy in the evening. "
 card.translatedcontent = "左太もも上部に発疹があり、夕方になると痒くなります。"
 card.cardkeywords = "[[\"発疹 (はっしん)\", \"rash\"], [\"左太もも上部 (ひだりふとももじょうぶ)\", \"upper left thigh\"], [\"痒い (かゆい)\", \"itchy\"]]"
-card.cardphrases = "[[\"皮膚に発疹ができて、左太ももの上部にかゆみを感じます。\", \"ひふにはっしんができて、ひだりふもものじょうぶに かゆみをかんじます。- I have a rash on my skin and feel itchy on the upper left thigh.\"], [\"最近、左太ももの上部にかゆみを伴う発疹ができました。\", \"さいきん、ひだりふもものじょうぶに かゆみをともなうはっしんができました。- Recently, I developed a rash with itching on the upper left thigh.\"]]"
+card.cardphrases = "[[\"腰痛があります。\",\"ようつうがあります。- I have lower back pain.\"],[\"首が痛いです。- くびがいたいです。- My neck hurts.\"],[\"週間前から痛みがあります。- しゅうかんまえからいたみがあります。- I've had pain since a few weeks ago.\"],[\"首を回すと痛いです。- くびをまわすといたいです。- It hurts when I turn my neck.\"]]"
 card.save
 
 
