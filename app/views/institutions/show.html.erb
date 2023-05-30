@@ -5,10 +5,18 @@
     <h1><%=@practice.name%></h1>
   </div>
   <div class="container">
-    <p><%= @institution.name %></p>
-    <p><%= @institution.address %></p>
-    <p><%= @institution.phone %></p>
-    <p><%= @institution.website %></p>
-    <p><%= @institution.info %></p>
+    <div class="institution-card">
+      <div id="inst-header">
+        <h3><%= @institution.name %></h3>
+      </div>
+      <div id="inst-contact-infos">
+        <p><%= @institution.address %></p>
+        <p><%= @institution.phone %></p>
+        <p><%= @institution.website %></p>
+      </div>
+      <div id="inst-other-infos">
+        <p><%= @institution.info %></p>
+      </div>
+    </div>
   </div>
 </div>
