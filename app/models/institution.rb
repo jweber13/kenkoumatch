@@ -4,11 +4,11 @@ class Institution < ApplicationRecord
   has_many :practices, through: :institutionspractices
   has_many :cards
 
-  has_one_attached :photo
+  # has_one_attached :photo
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   # validation
-  validates_presence_of :name, :address, :phone
+  validates_presence_of :name, :google_places_id
 end

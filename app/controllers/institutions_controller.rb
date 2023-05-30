@@ -16,10 +16,18 @@ class InstitutionsController < ApplicationController
   end
 
   def show
+    google_places_id = params[:google_places_id]
     @practice = Practice.find(params[:practice_id])
-    # @institution = Institution.find(params[:id])
+    @institution = Institution.new
+    authorize @institution
+    raise
+    # @institution = Institution.find_by(google_places_id: google_places_id)
+    # Handle the case when the institution is not found
+    # if @institution.nil?
+    #   flash[:error] = 'Institution not found'
+    #   redirect_to root_path
+    # end
   end
-
 
   private
 
