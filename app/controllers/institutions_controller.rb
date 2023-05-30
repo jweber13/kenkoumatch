@@ -16,10 +16,25 @@ class InstitutionsController < ApplicationController
   end
 
   def show
-    google_places_id = params[:google_places_id]
+    detail = GooglePlacesService.details(params[:google_places_id])
+    # google_places_id = params[:google_places_id]
     @practice = Practice.find(params[:practice_id])
     @institution = Institution.new
     authorize @institution
+
+    @institution.name = detail.name
+    @institution.address = detail.formatted_address
+    @institution.website = detail.website
+    @institution.info = detail.opening_hours['weekday_text']
+    @institution.rating = detail.rating
+    @institution.phone = detail.formatted_phone_number
+    # @institution.latitude = detail.lat
+    # @institution.longitude = detail.lan
+    # @institution.photo_url = detail
+    @institution.google_places_id = detail.place_id
+
+    @institution.save
+
     # raise
     # @institution = Institution.find_by(google_places_id: google_places_id)
     # Handle the case when the institution is not found
