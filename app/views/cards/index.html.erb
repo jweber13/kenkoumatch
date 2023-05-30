@@ -9,12 +9,18 @@
   <div class="cards p-4">
     <% @cards.each do |card| %>
       <div class="cards-index-card text-center d-flex flex-direction: column justify-content-around p-1 mt-2">
+        <div>
+          <%= link_to card_path(card), class: "trash-icon", data: {class: "trash-icon", turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+        </div>
         <h2 class='mt-3'><%= card.practice.name %></h2>
         <p><%= card.originalcontent %></p>
         <p><%= card.created_at.strftime('%Y-%m-%d')  %></p>
-        <%= link_to "Delete", card_path(card), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        <%= link_to "view card", card_path(card) %>
+        <%# <%= link_to "Delete", card_path(card), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        <%= link_to("view card", card_path(card), {class: "btn custom-button border-color-none"}) %>
       </div>
     <% end %>
   </div>
 </div>
+<%# <%= link_to("Browse Rage Rooms", rooms_path, {class: "btn btn-dark"}) %>

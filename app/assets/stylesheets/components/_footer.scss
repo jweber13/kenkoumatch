@@ -1,6 +1,6 @@
 .footer {
   background: #f5e5e5;
-  display: flex;
+  // display: flex;
   align-items: center;
   justify-content: space-between;
   min-height: 60px;
@@ -9,6 +9,8 @@
   width: 100%;
   background-color: #3199B5;
   margin-top: 40px;
+  text-align: center;
+  padding-top: 10px;
 }
 .footer-links {
   display: flex;
