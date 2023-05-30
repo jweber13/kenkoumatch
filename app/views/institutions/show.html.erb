@@ -10,5 +10,9 @@
     <p><%= @institution.phone %></p>
     <p><%= @institution.website %></p>
     <p><%= @institution.info %></p>
+    <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
+      <%= hidden_field_tag :institution_id, @institution.id %>
+      <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
+    <% end %>
   </div>
 </div>
