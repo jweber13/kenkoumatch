@@ -26,7 +26,7 @@ class CardsParseService
   end
 
   def parse_content_phrases(content)
-    arr = JSON.parse(content.gsub("-", ""))
+    arr = JSON.parse(content.gsub("- ", ""))
 
     return arr if arr.all? { |el| el.count == 3 }
 
