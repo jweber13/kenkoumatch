@@ -14,6 +14,9 @@
         </div>
         <%= simple_form_for [@practice, @card] do |f| %>
           <%= f.input :originalcontent, input_html: { maxlength: 150, placeholder: "Please describe your symptoms as specifically as possible" } %>
+          <% unless @institution.nil? %>
+            <%= f.input :institution_id, :as => :hidden, :input_html => { :value => @institution.id}%>
+          <% end %>
           <div class='d-flex justify-content-between p-3'>
             <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger fixed-width"} %>
             <%= f.submit "create card", class: "btn custom-button fixed-width",  data: { action: "click->spinner#showLoadingSpinner" } %>
