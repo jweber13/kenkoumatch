@@ -1,6 +1,6 @@
 <div class='container' data-controller='spinner'>
   <div id="overlay" data-spinner-target="overlay">
-      <div class="spinner" data-spinner-target="spinner"></div>
+    <div class="spinner" data-spinner-target="spinner"></div>
   </div>
   <%# <div data-spinner-target='spinner' class="spinner"></div> %>
   <div class='row justify-content-center mt-5'>
@@ -13,7 +13,7 @@
           <p>Instead of <span id="ex1">I have a headache</span>, consider saying <span id="ex2">I've had a headache for three days and the pain is most severe in the evening</span>.</p>
         </div>
         <%= simple_form_for [@practice, @card] do |f| %>
-          <%= f.input :originalcontent, input_html: { maxlength: 100, placeholder: "be specific" } %>
+          <%= f.input :originalcontent, input_html: { maxlength: 150, placeholder: "be specific" } %>
           <div class='d-flex justify-content-between'>
             <%= f.submit "create card", class: "btn custom-button fixed-width" ,  data: { action: "click->spinner#showLoadingSpinner" } %>
             <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger fixed-width"} %>

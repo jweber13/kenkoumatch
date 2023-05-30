@@ -12,7 +12,6 @@ class CardsController < ApplicationController
     # raise
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
     @phrases = cards_parse_service.parse_content_phrases(@card.cardphrases)
-    # raise
   end
 
   def new
