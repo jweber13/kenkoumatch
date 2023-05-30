@@ -23,6 +23,12 @@ User.create!(
   password: "password"
 )
 
+User.create!(
+  email: "ryo@email.com",
+  password: "password",
+  admin: true
+)
+
 # Create medical keywords
 puts "creating medical keywords"
 
@@ -313,15 +319,6 @@ card.translatedcontent = "左太もも上部に発疹があり、夕方になる
 card.cardkeywords = "[[\"発疹 (はっしん)\", \"rash\"], [\"左太もも上部 (ひだりふとももじょうぶ)\", \"upper left thigh\"], [\"痒い (かゆい)\", \"itchy\"]]"
 card.cardphrases = "[[\"皮膚に発疹ができて、左太ももの上部にかゆみを感じます。\", \"ひふにはっしんができて、ひだりふもものじょうぶに かゆみをかんじます。- I have a rash on my skin and feel itchy on the upper left thigh.\"], [\"最近、左太ももの上部にかゆみを伴う発疹ができました。\", \"さいきん、ひだりふもものじょうぶに かゆみをともなうはっしんができました。- Recently, I developed a rash with itching on the upper left thigh.\"]]"
 card.save
-
-=begin
-
->> parsed_keywords
-=> [["発疹 (はっしん)", "rash"], ["左太もも上部 (ひだりふとももじょうぶ)", "upper left thigh"], ["痒い (かゆい)", "itchy"]]
->> parsed_phrases
-=> [["皮膚に発疹ができて、左太ももの上部にかゆみを感じます。", "ひふにはっしんができて、ひだりふもものじょうぶに かゆみをかんじます。- I have a rash on my skin and feel itchy on the upper left thigh."], ["最近、左太ももの上部にかゆみを伴う発疹ができました。", "さいきん、ひだりふもものじょうぶに かゆみをともなうはっしんができました。- Recently, I developed a rash with itching on the upper left thigh."]]
-
-=end
 
 
 Practice.find_by(name: "Internal Medicine").photo.attach(
