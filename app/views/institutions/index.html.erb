@@ -15,10 +15,17 @@
             <% end %>
           </div>
         </div>
-        <div id="map">
+        <div
+          id="map"
+          data-controller="google-maps"
+          style="width: 100%;
+          height: 600px;"
+          data-markers="<%= @markers.to_json %>"
+        ></div>
+        <%# <div id="map">
           <div id="results">
           </div>
-        </div>
+        </div> %>
         <!-- </div> -->
         <!-- </div> -->
       </div>
