@@ -9,7 +9,6 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     authorize @card
     cards_parse_service = CardsParseService.new
-    # raise
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
     @phrases = cards_parse_service.parse_content_phrases(@card.cardphrases)
   end
@@ -95,7 +94,7 @@ class CardsController < ApplicationController
     @card.cardphrases = parsed_phrases.to_json
     @card.save
 
-    @phrases = parsed_phrases
+    @phrases = @cardparse_service.parse_content_phrases(parsed_phrases.to_json)
     respond_to do |format|
       format.html
       format.text { render partial: "jphrase", locals: { phrases: @phrases }, formats: [:html] }

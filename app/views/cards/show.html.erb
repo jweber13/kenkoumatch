@@ -7,8 +7,8 @@
     <i>Created on: <%= card_date %></i>
   </div>
   <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-6 col-sm-12">
         <div class="card-show-container">
           <%if @card.institution.present?%>
             <div class="inner-header">
@@ -29,10 +29,13 @@
             <p><strong>Japanese Translation: </strong><%="#{@card.translatedcontent}"%></p>
           </div>
           <div data-controller="edit" data-edit-id-value="<%=@card.id%>">
+            <div id="overlay" data-edit-target="overlay">
+              <div class="spinner" data-edit-target="spinner"></div>
+            </div>
             <div class="inner-header">
               <h1>Your Keywords</h1>
               <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
-                <% form.submit "Redo Keywords", class: "inner-header-btn h5"%>
+                <% form.submit "Redo Keywords", class: "inner-header-btn h5" %>
               <%end%>
             </div>
             <div data-edit-target="edited" class="card-show-element">
@@ -40,10 +43,13 @@
             </div>
           </div>
           <div data-controller="editphrase" data-editphrase-id-value="<%=@card.id%>">
+            <div id="overlay" data-editphrase-target="overlay">
+              <div class="spinner" data-editphrase-target="spinner"></div>
+            </div>
             <div class="inner-header">
               <h1>Useful Phrases</h1>
               <%=form_with url: redophrase_card_path(@card), data: { action: "submit->editphrase#edit" } do |form| %>
-                <% form.submit "Redo Phrases", class: "inner-header-btn h5"%>
+                <% form.submit "Redo Phrases", class: "inner-header-btn h5" %>
               <%end%>
             </div>
             <div data-editphrase-target="phedited" class="card-show-element">
@@ -53,7 +59,7 @@
           <div class="del-btn-container">
             <%= link_to card_path(@card), data: { turbo_method: :delete, turbo_confirm: "delete this card?" } do %>
               <button class="del-btn">
-                <h5>Delete this Card</h5>
+                <h5 style="color: black;">Delete this Card</h5>
               </button>
             <% end %>
           </div>

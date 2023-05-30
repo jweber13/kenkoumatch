@@ -11,6 +11,9 @@ export default class extends Controller {
     console.log("button clicked");
     this.spinnerTarget.innerHTML="<div class='text-center'><div class='spinner-border border-xl text-info'  style='width: 8rem; height: 8rem;' role='status'> <span class='sr-only'>Loading...</span></div></div>"
     this.overlayTarget.style.display = "block"; // show overlay
+    timer = setTimeout(() => {
+      this.hideLoadingSpinner();
+    } , 10);
   }
 }
 
