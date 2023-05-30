@@ -133,7 +133,6 @@
 }
 
 #index-content {
-  background-color:white;
   // border-bottom: $turquoise 2px solid;
   // border-top: $turquoise 2px solid;
   // background-color: rgb(255, 236, 176);
@@ -147,17 +146,28 @@
   padding-top: 10px;
   margin-bottom: .5em;
   text-shadow: black;
+  background-color: #C9EBEF;
+  background-image: url("kenkou-banner.svg");
+  background-repeat: no-repeat;
+  background-position: 10% 50%;
+  height: 150px;
+  background-size: 200px auto;
+
+  div {
+    height: 200px;
+  }
 }
 
 #subcontent {
-  background-color: rgba(255, 236, 176, 0.7);
-  border-bottom: $turquoise 2px solid;
-  border-top: $turquoise 2px solid;
-  background-color: rgb(255, 236, 176);
-  text-shadow: white 1px 0 10px;
+  // background-color: rgba(255, 236, 176, 0.7);
+  // border-bottom: $turquoise 2px solid;
+  // border-top: $turquoise 2px solid;
+  // background-color: rgb(255, 236, 176);
+  // text-shadow: white 1px 0 10px;
   width: 100%;
   margin-bottom: .5em;
   text-align: left;
   padding-left: 20px;
   padding-top: 10px;
+
 }
