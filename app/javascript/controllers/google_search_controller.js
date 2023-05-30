@@ -78,17 +78,22 @@ export default class extends Controller {
           const name = document.createElement('h2');
           const address = document.createElement('p');
           const rating = document.createElement('p');
+          const showlink = document.createElement('a');
           console.log(result.photos);
 
 
           name.textContent = result.name;
           address.textContent = result.vicinity
           rating.textContent = result.rating
+          const institutionsPath = `institutions/${result.place_id}`;
+          showlink.href = institutionsPath;
+          showlink.textContent = 'view this hospital'
 
           // append created html elements into the card div(<div class='card-institutions-index'>)
           cardInstitutionsIndexInfos.appendChild(name);
           cardInstitutionsIndexInfos.appendChild(address);
           cardInstitutionsIndexInfos.appendChild(rating);
+          cardInstitutionsIndexInfos.appendChild(showlink);
 
           cardInstitutionsIndex.appendChild(cardInstitutionsIndexInfos);
 
