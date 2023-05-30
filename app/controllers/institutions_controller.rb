@@ -20,7 +20,7 @@ class InstitutionsController < ApplicationController
     @practice = Practice.find(params[:practice_id])
     @institution = Institution.new
     authorize @institution
-    raise
+    # raise
     # @institution = Institution.find_by(google_places_id: google_places_id)
     # Handle the case when the institution is not found
     # if @institution.nil?
