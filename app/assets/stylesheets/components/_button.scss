@@ -38,3 +38,16 @@ color: white;
   border-radius: 15px;
   padding-top: .5em;
 }
+
+.trash-icon {
+  color: black;
+  display: flex;
+  justify-content: right;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+
+.trash-icon:hover {
+  color: black;
+  opacity: .7;
+}
