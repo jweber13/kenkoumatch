@@ -4,19 +4,22 @@
       <div class='bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
         <h1 class="text-center mt-2"><%=@practice.name%></h1>
         <!-- <div data-controller="google-search" data-practice="<%= @practice.japanese_name %>"> -->
-          <!-- <div> -->
-            <div class="mt-3 d-flex flex-column">
-              <p class='btn custom-button mt-3 text-center' data-action='click->google-search#searchNearbyInstitutionsFromCurrentLocation'>Search from current location</p>
-              <%= form_with class: 'd-flex flex-column', data: { action: "submit->google-search#searchNearbyInstitutionsFromAddress"}  do |form| %>
-                <%= form.text_field :address, placeholder: 'Enter address', data: {google_search_target: "input"}, class: 'text-center'%>
-                <%= form.submit 'Search from Address', class: 'btn custom-button text-center mt-3' %>
-              <% end %>
-            </div>
-            <div id="map">
-              <div id="results">
-              </div>
-            </div>
-          <!-- </div> -->
+        <!-- <div> -->
+        <div class="p-3 mt-3 d-flex flex-column">
+          <%= form_with class: 'd-flex flex-column', data: { action: "submit->google-search#searchNearbyInstitutionsFromAddress"}  do |form| %>
+            <p class='btn custom-button mt-3 text-center' data-action='click->google-search#searchNearbyInstitutionsFromCurrentLocation'>Search from current location</p>
+            <%= form.text_field :address, placeholder: 'Enter an address', data: {google_search_target: "input"}, class: 'text-center'%>
+            <div class='d-flex justify-content-between p-3'>
+              <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger fixed-width"} %>
+              <%= form.submit 'Confirm', class: 'btn custom-button fixed-width' %>
+            <% end %>
+          </div>
+        </div>
+        <div id="map">
+          <div id="results">
+          </div>
+        </div>
+        <!-- </div> -->
         <!-- </div> -->
       </div>
       <div class='mt-3' id="card-institutions-index-container" data-google-search-target="cardInstitutionsIndexContainer"></div>
