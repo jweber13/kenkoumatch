@@ -208,3 +208,25 @@
 .card-institutions-index .card-institutions-index-infos {
   padding: 16px;
 }
+
+
+.ai-card {
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+// background: #FFFFFF;
+// border-radius: 20px;
+}
+
+.ai-card-img {
+position: absolute;
+left: 15.06%;
+right: 14.76%;
+top: 15.93%;
+bottom: 15.34%;
+
+background: url(translation.png);
+}
