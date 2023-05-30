@@ -10,7 +10,6 @@ export default class extends Controller {
   }
 
   update() {
-    console.log("here")
     // we need the query the user is searching for...
     const url = `${this.formTarget.action}?query=${this.inputTarget.value}`;
     fetch(url, { headers: { Accept: "text/plain" } })

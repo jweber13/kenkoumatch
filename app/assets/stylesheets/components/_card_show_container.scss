@@ -24,29 +24,45 @@
 
 .card-show-key {
   display: flex;
-  // background-color: $manila;
+  // align-items: center;
   border: $turquoise 1px solid;
-  // font-weight: bolder;
   border-radius: 15px;
   width: 100%;
-  // padding: 2px;
-  // background: linear-gradient(to right, #FFECB0, #3399B7);
-  // background: linear-gradient(to right, $manila 0%, $manila 40%, $turquoise 60%, $turquoise 100%);
   background-color: $manila;
 }
 
-.key1 {
+.jcontainer {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
   padding-top: 2px;
   padding-bottom: 2px;
   padding-left: 1em;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
+}
+
+.key1 {
+  // flex-grow: 1;
+  // padding-top: 2px;
+  // padding-bottom: 2px;
+  // padding-left: 1em;
+  // border-top-left-radius: 15px;
+  // border-bottom-left-radius: 15px;
   text-align: left;
+  font-size: .7em;
 }
 
 .key2 {
+  text-align: left;
+  // flex-grow: 1;
+  // font-size: .7em;
+}
+
+.key3 {
   text-align: right;
+  padding-top: .5em;
+  padding-bottom: 0.5em;
   padding-right: 1em;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -61,10 +77,12 @@
   border-radius: 15px;
   width: 100%;
   background-color: $manila;
-  padding-top: 1em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
 }
 
 .card-show-phrase-sub {
+  text-align: center;
   border-top: $turquoise 1px solid;
   background: $light-gray;
   width: 100%;
@@ -74,14 +92,37 @@
 }
 
 .p1 {
-  // font-weight: bold;
+  padding-top: .5em;
   padding-bottom: .5em;
 }
 
+.p2 {
+  font-size: .7em;
+}
+
+.p3 {
+  font-size: 1.1em;
+}
+
 .inner-header {
+  display: flex;
+  padding-top: 1em;
+  flex-direction: column;
+  justify-content: center;
   background-color: $light-gray;
   color: $turquoise;
   text-align: center;
+}
+
+.inner-header-btn {
+  background-color: $light-manila;
+  margin-bottom: 0;
+  border-top: $turquoise 2px solid;
+  border-right: $turquoise 2px solid;
+  border-left: $turquoise 2px solid;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom: none;
 }
 
 .show-header {
@@ -97,6 +138,6 @@
   background-color: rgb(255, 236, 176);
   text-shadow: white 1px 0 10px;
   width: 100%;
-  margin-bottom: .5em;
+  // margin-bottom: .5em;
   text-align: center;
 }
