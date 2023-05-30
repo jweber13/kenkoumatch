@@ -26,18 +26,18 @@ class CardsParseService
   end
 
   def parse_content_phrases(content)
-    arr = JSON.parse(content)
-    unless arr.all? { |el| el.count == 3 }
-      return arr.map(&:join).map do |el|
-        if el.include?("？")
-          el.split("？")
-        elsif el.include?("!")
-          el.split("!")
-        else
-          el.split("。")
-        end
+    arr = JSON.parse(content.gsub("-", ""))
+
+    return arr if arr.all? { |el| el.count == 3 }
+
+    arr.map(&:join).map do |el|
+      if el.include?("？")
+        el.split("？")
+      elsif el.include?("!")
+        el.split("!")
+      else
+        el.split("。")
       end
     end
-    return arr
   end
 end

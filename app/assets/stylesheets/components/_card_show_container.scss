@@ -92,8 +92,16 @@
 }
 
 .p1 {
-  // font-weight: bold;
+  padding-top: .5em;
   padding-bottom: .5em;
+}
+
+.p2 {
+  font-size: .7em;
+}
+
+.p3 {
+  font-size: 1.1em;
 }
 
 .inner-header {
@@ -101,22 +109,13 @@
   padding-top: 1em;
   flex-direction: column;
   justify-content: center;
-  // gap: 1em;
   background-color: $light-gray;
   color: $turquoise;
   text-align: center;
 }
 
 .inner-header-btn {
-  // border: $turquoise 1px solid;
-  // border: none;
-  // background: $turquoise;
-  // color: $manila;
-  // font-weight: bold;
-  // padding-top: 1em;
-  // background-color: $light-gray;
   background-color: $light-manila;
-  // color: ;
   margin-bottom: 0;
   border-top: $turquoise 2px solid;
   border-right: $turquoise 2px solid;
