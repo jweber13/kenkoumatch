@@ -38,7 +38,7 @@
                 <% form.submit "Redo Keywords", class: "inner-header-btn h5" %>
               <%end%>
             </div>
-            <div data-edit-target="edited" class="card-show-element">
+            <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
               <%= render "jkeyword", keywords: @keywords %>
             </div>
           </div>

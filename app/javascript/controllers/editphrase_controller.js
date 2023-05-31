@@ -11,7 +11,6 @@ export default class extends Controller {
   }
 
   edit(event) {
-    console.log("here")
     event.preventDefault();
     console.log(`here is the id: ${this.idValue}`)
     const url = `${window.location.origin}/cards/${this.idValue}/redophrase`
