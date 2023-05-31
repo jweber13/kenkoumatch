@@ -132,18 +132,14 @@
   width: 100%;
 }
 
-#index-content {
-  // border-bottom: $turquoise 2px solid;
-  // border-top: $turquoise 2px solid;
-  // background-color: rgb(255, 236, 176);
-  // text-shadow: white 1px 0 10px;
+#banner-content {
   color:  black;
   border-color: black;
   width: 100%;
   // margin-bottom: .5em;
   text-align: left;
   padding-left: 20px;
-  padding-top: 10px;
+  padding-top: 0px;
   margin-bottom: .5em;
   text-shadow: black;
   background-color: #C9EBEF;
@@ -152,7 +148,7 @@
   background-position: 10% 50%;
   height: 150px;
   background-size: 200px auto;
-
+  font-weight: bold;
   div {
     height: 200px;
   }

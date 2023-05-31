@@ -1,11 +1,11 @@
 <%# <h1 class="text-center">your cards</h1> %>
-<div id="index-content">
+<div id="banner-content">
   <div></div>
 </div>
 <div class="container">
-  <h1><i class="fa-regular fa-clipboard" style="padding: 8px">  </i>Your Cards</h1>
-  <i>view cards you've created</i>
-  <div class="cards p-4">
+  <h1 class="index-header pb-0"><i class="fa-regular fa-clipboard" style="padding: 8px">  </i>Your Cards</h1>
+  <%# <i>view cards you've created</i> %>
+  <div class="cards pt-0 p-4">
     <% @cards.each do |card| %>
       <div class="cards-index-card text-center d-flex flex-direction: column justify-content-around p-1 mt-2">
         <div>
@@ -15,11 +15,7 @@
         </div>
         <p class="index-content m-3"><%= card.originalcontent %></p>
         <div class="card-title">
-          <ul>
-            <li>
-              <p><%= card.practice.name %></p>
-            </li>
-          </ul>
+          <span>#<%= card.practice.name %></span>
         </div>
         <p><%= card.created_at.strftime('%Y-%m-%d')  %></p>
         <%= link_to("view card", card_path(card), {class: "btn custom-button border-color-none"}) %>
