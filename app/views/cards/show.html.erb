@@ -1,9 +1,8 @@
 <div class="card-show-body">
-  <div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
   <div id="banner-content">
     <div></div>
   </div>
-  <div id="subcontent">
+  <div>
     <h1><%=@card.practice.name%> Card</h1>
     <% card_date = @card.created_at.strftime('%Y-%m-%d') %>
     <i>Created on: <%= card_date %></i>
@@ -17,10 +16,11 @@
               <h1>You're Going To:</h1>
             </div>
             <div class="card-show-element">
-              <p><%="#{@card.institution.name}"%></p>
-              <%="located at: #{@card.institution.address}"%>
-              <%="they can be contacted here: #{@card.institution.phone}"%>
-              <%="website: #{@card.institution.website}"%>
+              <h3><%="#{@card.institution.name}"%></h3>
+              <%=  link_to 'detailed information', practice_institution_path(@card.practice, @card.institution.google_places_id)%>
+              <p><%=@card.institution.address%></p>
+              <p><%="phone: #{@card.institution.phone}"%></p>
+              <p>website: <a href=<%= @card.institution.website %>><%=@card.institution.website%></a><p>
             </div>
           <%end%>
           <div class="inner-header">
@@ -37,11 +37,11 @@
             <div class="inner-header">
               <h1>Your Keywords</h1>
               <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
-                <% form.submit "Redo Keywords", class: "inner-header-btn h5" %>
+                <% form.submit "Generate More", class: "inner-header-btn h5" %>
               <%end%>
             </div>
             <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
-              <%= render "jkeyword", keywords: @keywords %>
+              <%= render "jkeyword", keywords: @keywords, studywords: @studywords %>
             </div>
           </div>
           <div data-controller="editphrase" data-editphrase-id-value="<%=@card.id%>">
@@ -51,7 +51,7 @@
             <div class="inner-header">
               <h1>Useful Phrases</h1>
               <%=form_with url: redophrase_card_path(@card), data: { action: "submit->editphrase#edit" } do |form| %>
-                <% form.submit "Redo Phrases", class: "inner-header-btn h5" %>
+                <% form.submit "Generate More", class: "inner-header-btn h5" %>
               <%end%>
             </div>
             <div data-editphrase-target="phedited" class="card-show-element">

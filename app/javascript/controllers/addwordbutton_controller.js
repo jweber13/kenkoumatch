@@ -11,7 +11,7 @@ export default class extends Controller {
   toggleSave() {
     if (this.buttonTarget.innerHTML == "+") {
       this.buttonTarget.innerHTML = "✓";
-    } else {
+    } else if (this.buttonTarget.innerHTML == "✓") {
       this.buttonTarget.innerHTML = "+";
     }
   }

@@ -10,11 +10,16 @@ class StudywordsController < ApplicationController
     authorize(@word)
     puts "creat is being hit "
     words = params[:_json]
+    saved = []
     words.each do |word|
-      nwrd = Studyword.new(kanji: word[1], english: word[2], kana: word[0])
-      nwrd.user = current_user
-      nwrd.save
+      if Studyword.find_by(english: word[2]).nil?
+        newrd = Studyword.new(kanji: word[1], english: word[2], kana: word[0])
+        newrd.user = current_user
+        if newrd.save
+          saved << word[2]
+        end
+      end
     end
-    render json: "hi".to_json, status: :created
+    render json: { message: saved.to_json, status: :created }
   end
 end

@@ -7,7 +7,7 @@
 }
 
 .card-show-container {
-  background-color: $light-blue;
+  // background-color: $light-blue;
 }
 
 .card-show-element {
@@ -24,13 +24,15 @@
 
 .card-show-key {
   display: flex;
-  // align-items: center;
   border: $turquoise 1px solid;
-  // border-: none;
-  // border-right: none;
   border-radius: 15px;
   width: 100%;
   background-color: $manila;
+}
+
+.card-show-key.alt {
+  background-color: $turquoise;
+  color: $manila;
 }
 
 .jcontainer {
@@ -45,20 +47,12 @@
 }
 
 .key1 {
-  // flex-grow: 1;
-  // padding-top: 2px;
-  // padding-bottom: 2px;
-  // padding-left: 1em;
-  // border-top-left-radius: 15px;
-  // border-bottom-left-radius: 15px;
   text-align: left;
   font-size: .7em;
 }
 
 .key2 {
   text-align: left;
-  // flex-grow: 1;
-  // font-size: .7em;
 }
 
 .key3 {
@@ -127,7 +121,9 @@
 }
 
 .inner-header-btn {
-  background-color: $light-manila;
+  background-color: $turquoise;
+  // color: $light-gray;
+  color: white;
   margin-bottom: 0;
   border: $turquoise 2px solid;
   border-radius: 15px;
@@ -137,7 +133,7 @@
   // border-top-left-radius: 15px;
   // border-top-right-radius: 15px;
   // border-bottom: none;
-  color: black;
+  // color: black;
   margin-bottom: .5em;
 }
 
@@ -164,8 +160,18 @@
   height: 150px;
   background-size: 200px auto;
   font-weight: bold;
+  position: relative;
+  text-align: center;
   div {
     height: 200px;
+  }
+  h1 {
+    // display: flex;
+    // justify-content: right;
+    // top: 0px;
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
   }
 }
 

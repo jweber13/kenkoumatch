@@ -31,13 +31,21 @@ export default class extends Controller {
       body: jsonString
     }
 
-    // const url = `http://localhost:3000/cards/85/studywords`;
     const url = `${window.location.origin}/cards/${this.idValue}/studywords`;
 
     fetch(url, requestItems)
       .then(response => response.json())
       .then(data => {
-        // console.log(data);
+        console.log(data)
+        if (data.status == "created") {
+          // console.log(parentNodes[0])
+          parentNodes.forEach(element => {
+            if (data.message.includes(element.querySelector(".key3").textContent)) {
+              element.classList.add("alt");
+              element.querySelector(".addword").innerHTML = "o";
+            }
+          });
+        }
       });
 
   }

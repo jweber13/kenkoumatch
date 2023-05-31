@@ -1,5 +1,6 @@
 <div class="card-show-body">
-  <div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
+  <div id="banner-content">
+    <div></div>
   </div>
   <div id="subcontent">
     <h1><%=@practice.name%></h1>
@@ -28,10 +29,10 @@
           data-markers="<%= @markers.to_json %>"
         ></div>
       <div>
-      <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
-        <%= hidden_field_tag :institution_id, @institution.id %>
-        <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
-      <% end %>
+        <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
+          <%= hidden_field_tag :institution_id, @institution.id %>
+          <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>
