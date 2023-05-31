@@ -1,0 +1,18 @@
+<div class="card-show-body">
+  <div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
+  </div>
+  <div id="subcontent">
+    <h1><%=@practice.name%></h1>
+  </div>
+  <div class="container">
+    <p><%= @institution.name %></p>
+    <p><%= @institution.address %></p>
+    <p><%= @institution.phone %></p>
+    <p><%= @institution.website %></p>
+    <p><%= @institution.info %></p>
+    <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
+      <%= hidden_field_tag :institution_id, @institution.id %>
+      <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+</div>
