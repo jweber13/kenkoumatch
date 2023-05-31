@@ -29,8 +29,6 @@ class InstitutionsController < ApplicationController
       @institution.google_places_id = detail.place_id
 
       @institution.save
-      # raise
-      # raise
       # @institution = Institution.find_by(google_places_id: google_places_id)
       # Handle the case when the institution is not found
       # if @institution.nil?
@@ -42,7 +40,6 @@ class InstitutionsController < ApplicationController
       @institution = Institution.find_by(google_places_id: params[:google_places_id])
       authorize @institution
     end
-    # raise
   end
 
   private
