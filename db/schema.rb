@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_034833) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_015658) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,15 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_034833) do
     t.index ["institution_id"], name: "index_cards_on_institution_id"
     t.index ["practice_id"], name: "index_cards_on_practice_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
-  end
-
-  create_table "cardwords", force: :cascade do |t|
-    t.bigint "studywords_id", null: false
-    t.bigint "cards_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cards_id"], name: "index_cardwords_on_cards_id"
-    t.index ["studywords_id"], name: "index_cardwords_on_studywords_id"
   end
 
   create_table "institutions", force: :cascade do |t|
@@ -130,6 +121,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_034833) do
     t.string "kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_studywords_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -150,10 +143,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_034833) do
   add_foreign_key "cards", "institutions"
   add_foreign_key "cards", "practices"
   add_foreign_key "cards", "users"
-  add_foreign_key "cardwords", "cards", column: "cards_id"
-  add_foreign_key "cardwords", "studywords", column: "studywords_id"
   add_foreign_key "institutionspractices", "institutions"
   add_foreign_key "institutionspractices", "practices"
   add_foreign_key "practicekeywords", "medicalkeywords"
   add_foreign_key "practicekeywords", "practices"
+  add_foreign_key "studywords", "users"
 end

@@ -1,9 +1,11 @@
-<%keywords.each do |kwrd|%>
+  <%keywords.each do |kwrd|%>
   <div class="card-show-key">
     <div class="jcontainer">
-      <div class="key1"><%=kwrd[1]%></div>
-      <div class="key2"><%=kwrd[0]%></div>
+      <div class="key1" data-savewordbutton-target="kna"><%=kwrd[1]%></div>
+      <div class="key2" data-savewordbutton-target="knj"><%=kwrd[0]%></div>
     </div>
-    <div class="key3"><%=kwrd[2]%></div>
+    <div class="key3" data-savewordbutton-target="eng"><%=kwrd[2]%></div>
+    <button class="addword" data-controller="addwordbutton" data-action="click->addwordbutton#toggleSave" data-addwordbutton-target="button">+</button>
   </div>
 <%end%>
+<button class="saveword" data-action="click->savewordbutton#saveWords">Save Favorites</button>
