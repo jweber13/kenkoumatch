@@ -6,19 +6,34 @@
     <h1><%=@practice.name%></h1>
   </div>
   <div class="container">
-    <p><%= @institution.name %></p>
-    <p><%= @institution.address %></p>
-    <p><%= @institution.phone %></p>
-    <p><%= @institution.website %></p>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Hours of operation
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
+    <img src=<%= @institution.photo_url ? @institution.photo_url : 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png'%>>
+    <div class="institution-card">
+      <div id="inst-header">
+        <h3><%= @institution.name %></h3>
+      </div>
+      <div id="inst-contact-infos">
+        <p><%= @institution.address %></p>
+        <p><%= @institution.phone %></p>
+        <p><%= @institution.website %></p>
+      </div>
+      <div id="inst-other-infos">
+        <p><%= @institution.info %></p>
+      </div>
+      <div
+          id="map"
+          data-controller="google-maps"
+          data-lat= '<%= @institution.latitude%>'
+          data-lng= '<%= @institution.longitude%>'
+          style="width: 100%;
+          height: 300px;"
+          data-markers="<%= @markers.to_json %>"
+        ></div>
+      <div>
+        <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
+          <%= hidden_field_tag :institution_id, @institution.id %>
+          <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
+        <% end %>
+      </div>
     </div>
     <p><%= @institution.info %></p>
     <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
