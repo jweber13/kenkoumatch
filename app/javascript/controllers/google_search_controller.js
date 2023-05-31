@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 import GMaps from 'gmaps/gmaps.js';
 // Connects to data-controller="google-search"
 export default class extends Controller {
-  static targets = ["input", "cardInstitutionsIndexContainer"];
+  static targets = ["input", "cardInstitutionsIndexContainer", "result"];
 
 
 
@@ -61,6 +61,10 @@ export default class extends Controller {
     service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
 
+        const resultsInstitution = results.length;
+        this.resultTarget.innerHTML = `${resultsInstitution} result(s) found`;
+        // this.resultTarget.classList.add('text-primary');
+
         results.forEach(result => {
           console.log(result);
 
@@ -88,20 +92,25 @@ export default class extends Controller {
           const cardInstitutionsIndexInfos = document.createElement('div');
           cardInstitutionsIndexInfos.classList.add('card-institutions-index-infos')
 
+
+
           // create html elements and add text(result from the google maps api)
           const name = document.createElement('h2');
           const address = document.createElement('p');
           const rating = document.createElement('p');
           const showlink = document.createElement('a');
-          // console.log(result.photos);
+          showlink.classList.add('card-link');
 
+          // Remove hyperlink appearance by modifying the style
+          showlink.style.color = 'inherit'; // Set the link color to inherit the parent color
+          showlink.style.textDecoration = 'none'; // Remove the underline
 
           name.textContent = result.name;
           address.textContent = result.vicinity
           rating.textContent = result.rating
           const institutionsPath = `institutions/${result.place_id}`;
           showlink.href = institutionsPath;
-          showlink.textContent = 'view this hospital'
+          // showlink.textContent = 'view this hospital'
 
           // append created html elements into the card div(<div class='card-institutions-index'>)
           cardInstitutionsIndexInfos.appendChild(name);
@@ -109,6 +118,7 @@ export default class extends Controller {
           cardInstitutionsIndexInfos.appendChild(rating);
           cardInstitutionsIndexInfos.appendChild(showlink);
           cardInstitutionsIndex.appendChild(cardInstitutionsIndexInfos);
+          cardInstitutionsIndex.appendChild(showlink);
 
           // append the card div(<div class='card-institutions-index'>) to the container
           container.appendChild(cardInstitutionsIndex);
