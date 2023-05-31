@@ -1,25 +1,35 @@
-<div class="card-show-body">
-  <div id="banner-content">
-    <div></div>
-  </div>
-  <div id="subcontent">
-    <h1><%=@practice.name%></h1>
-  </div>
-  <div class="container">
-    <img src=<%= @institution.photo_url ? @institution.photo_url : 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png'%>>
-    <div class="institution-card">
-      <div id="inst-header">
-        <h3><%= @institution.name %></h3>
-      </div>
-      <div id="inst-contact-infos">
-        <p><%= @institution.address %></p>
-        <p><%= @institution.phone %></p>
-        <p><%= @institution.website %></p>
-      </div>
-      <div id="inst-other-infos">
-        <p><%= @institution.info %></p>
-      </div>
-      <div
+<%# <div class="card-show-body"> %>
+<%# <div id="banner-content"> %>
+<%# </div> %>
+<%# <div id="subcontent"> %>
+<!--<h1><%=@practice.name%></h1>-->
+<%# </div> %>
+<div class="container page-content">
+  <div class='d-flex justify-content-center mt-5'>
+    <div class='col-12 col-md-6'>
+      <div class='bg-white border border-info border-opacity-25 rounded-4 shadow bg-body'>
+        <img class="w-100 rounded-img"src=<%= @institution.photo_url ? @institution.photo_url : 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png'%>>
+        <div class="container p-3">
+          <div class="institution-card">
+            <h1><%= @institution.name %></h1>
+            <div id="inst-contact-infos">
+              <p><%= @institution.address %></p>
+              <p><i class="fa-solid fa-phone" style="color: #000000;"></i> <%= @institution.phone %></p>
+              <p class="d-flex justify-content-center mb-3"><%= link_to "Visit the website", @institution.website, class:"userList text-white btn custom-button" %></p>
+            </div>
+            <div>
+              <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
+                <%= hidden_field_tag :institution_id, @institution.id %>
+                <%= f.submit "Translation card", class: "btn custom-button mb-3" %>
+              <% end %>
+            </div>
+            <div class="d-flex mb-3" id="inst-other-infos">
+              <span>
+                <p class="mb-1 fw-bold">Hours:</p>
+                <p><%= @institution.info.gsub("["," ").gsub("]"," " ).gsub('"', " ") %></p>
+              </span>
+            </div>
+            <div
           id="map"
           data-controller="google-maps"
           data-lat= '<%= @institution.latitude%>'
@@ -28,12 +38,10 @@
           height: 300px;"
           data-markers="<%= @markers.to_json %>"
         ></div>
-      <div>
-        <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
-          <%= hidden_field_tag :institution_id, @institution.id %>
-          <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
-        <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<%# </div> %>
