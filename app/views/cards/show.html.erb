@@ -1,5 +1,7 @@
 <div class="card-show-body">
   <div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
+  <div id="banner-content">
+    <div></div>
   </div>
   <div id="subcontent">
     <h1><%=@card.practice.name%> Card</h1>
@@ -18,7 +20,7 @@
               <p><%="#{@card.institution.name}"%></p>
               <%="located at: #{@card.institution.address}"%>
               <%="they can be contacted here: #{@card.institution.phone}"%>
-              <%="website: #{@card.institution.address}"%>
+              <%="website: #{@card.institution.website}"%>
             </div>
           <%end%>
           <div class="inner-header">
@@ -38,7 +40,7 @@
                 <% form.submit "Redo Keywords", class: "inner-header-btn h5" %>
               <%end%>
             </div>
-            <div data-edit-target="edited" class="card-show-element">
+            <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
               <%= render "jkeyword", keywords: @keywords %>
             </div>
           </div>

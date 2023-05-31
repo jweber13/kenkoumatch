@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddwordbuttonController from "./addwordbutton_controller"
+application.register("addwordbutton", AddwordbuttonController)
+
 import EditController from "./edit_controller"
 application.register("edit", EditController)
 
@@ -21,6 +24,9 @@ application.register("hello", HelloController)
 
 import PopoverController from "./popover_controller"
 application.register("popover", PopoverController)
+
+import SavewordbuttonController from "./savewordbutton_controller"
+application.register("savewordbutton", SavewordbuttonController)
 
 import SearchPracticesController from "./search_practices_controller"
 application.register("search-practices", SearchPracticesController)

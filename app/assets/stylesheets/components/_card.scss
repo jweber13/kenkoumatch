@@ -113,6 +113,8 @@
   flex-direction: column;
   min-height: 150px;
   position: relative;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .card-link {
@@ -232,4 +234,17 @@ top: 15.93%;
 bottom: 15.34%;
 
 background: url(translation.png);
+}
+
+.card-title {
+  // text-decoration: underline;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+
+  span {
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 1em;
+    padding: 0 15px;
+  }
 }
