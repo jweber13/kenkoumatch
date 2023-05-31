@@ -164,8 +164,18 @@
   height: 150px;
   background-size: 200px auto;
   font-weight: bold;
+  position: relative;
+  text-align: center;
   div {
     height: 200px;
+  }
+  h1 {
+    // display: flex;
+    // justify-content: right;
+    // top: 0px;
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
   }
 }
 
