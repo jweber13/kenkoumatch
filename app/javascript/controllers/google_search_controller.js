@@ -77,16 +77,23 @@ export default class extends Controller {
           const ratingStars = '⭐'.repeat(Math.round(result.rating));
           const institutionsPath = `institutions/${result.place_id}`;
           const infoWindowContent = `<p><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
-            <p><strong>${ratingStars} ${result.rating}</strong></p>`
+            <p><strong>${result.rating} ${ratingStars}</strong></p>`
 
           const infoWindow = new google.maps.InfoWindow({
             position: result.geometry.location,
             content: infoWindowContent,
-            pixelOffset: new google.maps.Size(0, -30)
+            pixelOffset: new google.maps.Size(0, -10)
           })
 
-          marker.addListener('click', () => {
-            infoWindow.open(map);
+          // marker.addListener('click', () => {a
+          //   infoWindow.open(map);
+          // });
+
+          marker.addListener("click", () => {
+            infoWindow.open({
+              anchor: marker,
+              map,
+            });
           });
 
           // create <div class='card-institutions-index'>
