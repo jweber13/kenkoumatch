@@ -69,9 +69,31 @@ export default class extends Controller {
           console.log(result);
 
           // add a pin(or marker) to the map
-          new google.maps.Marker({
+          const marker = new google.maps.Marker({
             position: result.geometry.location,
             map: map
+          });
+
+          const ratingStars = '⭐'.repeat(Math.round(result.rating));
+          const institutionsPath = `institutions/${result.place_id}`;
+          const infoWindowContent = `<p><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
+            <p><strong>${result.rating} ${ratingStars}</strong></p>`
+
+          const infoWindow = new google.maps.InfoWindow({
+            position: result.geometry.location,
+            content: infoWindowContent,
+            pixelOffset: new google.maps.Size(0, -10)
+          })
+
+          // marker.addListener('click', () => {a
+          //   infoWindow.open(map);
+          // });
+
+          marker.addListener("click", () => {
+            infoWindow.open({
+              anchor: marker,
+              map,
+            });
           });
 
           // create <div class='card-institutions-index'>
@@ -107,8 +129,8 @@ export default class extends Controller {
 
           name.textContent = result.name;
           address.textContent = result.vicinity
-          rating.textContent = result.rating
-          const institutionsPath = `institutions/${result.place_id}`;
+          rating.textContent = `${ratingStars} ${result.rating}`
+          // const institutionsPath = `institutions/${result.place_id}`;
           showlink.href = institutionsPath;
           // showlink.textContent = 'view this hospital'
 
