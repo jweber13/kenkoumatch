@@ -9,7 +9,7 @@
           <%= form_with class: 'd-flex flex-column', data: { action: "submit->google-search#searchNearbyInstitutionsFromAddress"}  do |form| %>
             <p class='btn custom-button mt-3 text-center' data-action='click->google-search#searchNearbyInstitutionsFromCurrentLocation'>Search from current location</p>
             <%= form.text_field :address, placeholder: 'Enter an address', data: {google_search_target: "input"}, class: 'text-center'%>
-            <div class='d-flex justify-content-between p-3'>
+            <div class='d-flex justify-content-between mt-3 gap-3'>
               <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger fixed-width"} %>
               <%= form.submit 'Confirm', class: 'btn custom-button fixed-width' %>
             <% end %>
@@ -20,7 +20,7 @@
           <%# data-controller="google-maps" %>
           style="width: 100%;
           height: 300px;"
-          data-markers="<%= @markers.to_json %>"
+          <%# data-markers="<%= @markers.to_json %>" %>
         ></div>
         <%# <div id="map">
           <div id="results">
