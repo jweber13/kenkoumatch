@@ -15,9 +15,9 @@
             <div id="inst-contact-infos">
               <p><%= @institution.address %></p>
               <p><i class="fa-solid fa-phone" style="color: #000000;"></i> <%= @institution.phone %></p>
-              <p class="d-flex justify-content-center mb-3"><%= link_to "Visit the website", @institution.website, class:"userList text-white btn custom-button" %></p>
             </div>
-            <div>
+            <div class="d-flex">
+              <p class="d-flex justify-content-center mb-3"><%= link_to "Visit the website", @institution.website, class:"userList text-white btn custom-button text-nowrap me-1", target: "_blank" %></p>
               <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
                 <%= hidden_field_tag :institution_id, @institution.id %>
                 <%= f.submit "Translation card", class: "btn custom-button mb-3" %>
