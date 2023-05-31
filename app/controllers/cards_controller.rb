@@ -28,11 +28,7 @@ class CardsController < ApplicationController
     # card needs a user and a practice
     @card.user = current_user
     @card.practice = @practice
-<<<<<<< HEAD
-    @card.institution = Institution.find(params[:card][:institution_id]) || nil
-=======
     @card.institution = Institution.find(params[:card][:institution_id]) unless params[:card][:institution_id].nil?
->>>>>>> master
     authorize @card
 
     # deepl
