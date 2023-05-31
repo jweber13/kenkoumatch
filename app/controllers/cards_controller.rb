@@ -7,6 +7,7 @@ class CardsController < ApplicationController
 
   def show
     @card = Card.find(params[:id])
+    @studywords = Studyword.where(user_id: current_user.id)
     authorize @card
     cards_parse_service = CardsParseService.new
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
@@ -64,10 +65,12 @@ class CardsController < ApplicationController
 
   def redo
     @card = Card.find(params[:id])
+    @studywords = Studyword.where(user_id: current_user.id)
     authorize @card
 
     jp_words = JSON.parse(@card.cardkeywords).map { |el| el[0] }
-    prompt = keywords_prompt2(@card.translatedcontent, jp_words)
+    # raise
+    prompt = keywords_prompt2(jp_words, @card.practice.name)
     @openai_service = OpenaiService.new(prompt)
 
     # keys
@@ -81,7 +84,7 @@ class CardsController < ApplicationController
     @keywords = parsed_keywords
     respond_to do |format|
       format.html
-      format.text { render partial: "jkeyword", locals: { keywords: @keywords }, formats: [:html]}
+      format.text { render partial: "jkeyword", locals: { keywords: @keywords, studywords: @studywords }, formats: [:html] }
     end
   end
 
@@ -131,8 +134,8 @@ class CardsController < ApplicationController
     "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 2-7 relevant keywords from the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
   end
 
-  def keywords_prompt2(input, words)
-    "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 4-6 related to these words: #{words} relevant to the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
+  def keywords_prompt2(words, practice)
+    "Give me a numbered list of 4-6 new japanese keywords related to these words, that a patient can use in a #{practice} clinic: #{words}. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'."
   end
 
   def phrases_prompt(input, practice)
