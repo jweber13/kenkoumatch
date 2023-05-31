@@ -1,11 +1,15 @@
 // Import the necessary modules
 import { Controller } from "@hotwired/stimulus"
+import GMaps from 'gmaps/gmaps.js';
 // Connects to data-controller="google-search"
 export default class extends Controller {
   static targets = ["input", "cardInstitutionsIndexContainer"];
 
+
+
   connect() {
     console.log('Google Search Controller connected');
+    const map = new GMaps({ el: '#map', lat: 35.68, lng: 139.76 });
   }
 
   searchNearbyInstitutionsFromCurrentLocation(e) {
@@ -39,27 +43,37 @@ export default class extends Controller {
     const container = this.cardInstitutionsIndexContainerTarget
     // clear the container
     container.innerHTML = '';
+
     const position = latLng;
     const practice = this.element.dataset.practice;
     const map = new google.maps.Map(document.getElementById('map'), {
       center: position,
       zoom: 15
     });
+
     const service = new google.maps.places.PlacesService(map);
     const request = {
       location: position,
       radius: '500',
       keyword: practice,
     };
+
     service.nearbySearch(request, (results, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
 
         results.forEach(result => {
+          console.log(result);
+
+          // add a pin(or marker) to the map
+          new google.maps.Marker({
+            position: result.geometry.location,
+            map: map
+          });
+
           // create <div class='card-institutions-index'>
           // if you want to add style to the each card, use that class
           const cardInstitutionsIndex = document.createElement('div');
           cardInstitutionsIndex.classList.add('card-institutions-index');
-
           const photo = document.createElement('img');
 
           if (result.photos !== undefined) {
@@ -79,7 +93,7 @@ export default class extends Controller {
           const address = document.createElement('p');
           const rating = document.createElement('p');
           const showlink = document.createElement('a');
-          console.log(result.photos);
+          // console.log(result.photos);
 
 
           name.textContent = result.name;
@@ -94,7 +108,6 @@ export default class extends Controller {
           cardInstitutionsIndexInfos.appendChild(address);
           cardInstitutionsIndexInfos.appendChild(rating);
           cardInstitutionsIndexInfos.appendChild(showlink);
-
           cardInstitutionsIndex.appendChild(cardInstitutionsIndexInfos);
 
           // append the card div(<div class='card-institutions-index'>) to the container

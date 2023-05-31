@@ -6,7 +6,7 @@ import GMaps from 'gmaps/gmaps.js';
 // Connects to data-controller="google-maps"
 export default class extends Controller {
   connect() {
-    const map = new GMaps({ el: '#map', lat: 0, lng: 0 });
+    const map = new GMaps({ el: '#map', lat: 35.68, lng: 139.76 });
     const markers = JSON.parse(this.element.dataset.markers);
     map.addMarkers(markers);
     if (markers.length === 0) {
