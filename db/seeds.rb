@@ -10,6 +10,7 @@ require 'faker'
 require 'open-uri'
 
 Institutionspractice.destroy_all
+Studyword.destroy_all
 Practicekeyword.destroy_all
 Medicalkeyword.destroy_all
 Practice.destroy_all

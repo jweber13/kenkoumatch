@@ -7,7 +7,7 @@
 }
 
 .card-show-container {
-  // background-color: $light-blue;
+  background-color: $light-blue;
 }
 
 .card-show-element {
@@ -147,13 +147,39 @@
   width: 100%;
 }
 
-#subcontent {
-  // background-color: rgba(255, 236, 176, 0.7);
-  border-bottom: $turquoise 2px solid;
-  border-top: $turquoise 2px solid;
-  background-color: rgb(255, 236, 176);
-  text-shadow: white 1px 0 10px;
+#banner-content {
+  color:  black;
+  border-color: black;
   width: 100%;
   // margin-bottom: .5em;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 0px;
+  margin-bottom: .5em;
+  text-shadow: black;
+  background-color: #C9EBEF;
+  background-image: url("kenkou-banner.svg");
+  background-repeat: no-repeat;
+  background-position: 10% 50%;
+  height: 150px;
+  background-size: 200px auto;
+  font-weight: bold;
+  div {
+    height: 200px;
+  }
+}
+
+#subcontent {
+  // background-color: rgba(255, 236, 176, 0.7);
+  // border-bottom: $turquoise 2px solid;
+  // border-top: $turquoise 2px solid;
+  // background-color: rgb(255, 236, 176);
+  // text-shadow: white 1px 0 10px;
+  width: 100%;
+  margin-bottom: .5em;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 10px;
   text-align: center;
+
 }
