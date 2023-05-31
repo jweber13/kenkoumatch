@@ -5,3 +5,9 @@
     </li>
   <%end%>
 </ul>
+<h1>list of phrases</h1>
+<ul>
+  <%@studyphrases.each do |phrase|%>
+    <li><%=phrase.kanji%>, <%=phrase.kana%>, <%=phrase.english%></li>
+  <%end%>
+</ul>

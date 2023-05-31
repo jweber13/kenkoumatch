@@ -3,6 +3,7 @@ class StudywordsController < ApplicationController
 
   def index
     @studywords = policy_scope(Studyword)
+    @studyphrases = policy_scope(Studyphrase)
   end
 
   def create

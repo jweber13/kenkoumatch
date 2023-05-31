@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddphrasebuttonController from "./addphrasebutton_controller"
+application.register("addphrasebutton", AddphrasebuttonController)
+
 import AddwordbuttonController from "./addwordbutton_controller"
 application.register("addwordbutton", AddwordbuttonController)
 
@@ -24,6 +27,9 @@ application.register("hello", HelloController)
 
 import PopoverController from "./popover_controller"
 application.register("popover", PopoverController)
+
+import SavephrasebuttonController from "./savephrasebutton_controller"
+application.register("savephrasebutton", SavephrasebuttonController)
 
 import SavewordbuttonController from "./savewordbutton_controller"
 application.register("savewordbutton", SavewordbuttonController)

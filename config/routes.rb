@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   end
   resources :cards, only: %i[index show update destroy] do
     resources :studywords, only: :create
+    resources :studyphrases, only: :create
     member do
       post :redo, :redophrase
     end
   end
-  resources :studywords, only: :index
+  resources :studywords, only: :index # do
+  #   resources :studyphrases, only: :index
+  # end
 end

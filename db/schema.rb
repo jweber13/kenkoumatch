@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_31_015658) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_082003) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_015658) do
     t.string "japanese_name"
   end
 
+  create_table "studyphrases", force: :cascade do |t|
+    t.string "kanji"
+    t.string "english"
+    t.string "kana"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_studyphrases_on_user_id"
+  end
+
   create_table "studywords", force: :cascade do |t|
     t.string "english"
     t.string "kanji"
@@ -147,5 +157,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_015658) do
   add_foreign_key "institutionspractices", "practices"
   add_foreign_key "practicekeywords", "medicalkeywords"
   add_foreign_key "practicekeywords", "practices"
+  add_foreign_key "studyphrases", "users"
   add_foreign_key "studywords", "users"
 end
