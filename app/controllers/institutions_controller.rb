@@ -13,7 +13,6 @@ class InstitutionsController < ApplicationController
   def show
     if Institution.find_by(google_places_id: params[:google_places_id]).nil?
       detail = GooglePlacesService.details(params[:google_places_id])
-      # google_places_id = params[:google_places_id]
       @practice = Practice.find(params[:practice_id])
       @institution = Institution.new
       authorize @institution
@@ -24,9 +23,9 @@ class InstitutionsController < ApplicationController
       @institution.info = detail.opening_hours['weekday_text'] unless detail.opening_hours.nil?
       @institution.rating = detail.rating
       @institution.phone = detail.formatted_phone_number
-      # @institution.latitude = detail.lat
-      # @institution.longitude = detail.lan
-      # @institution.photo_url = detail
+      @institution.latitude = detail.lat
+      @institution.longitude = detail.lng
+      @institution.photo_url = detail.photos[0].fetch_url(800) unless detail.photos[0].nil?
       @institution.google_places_id = detail.place_id
 
       @institution.save
@@ -43,6 +42,7 @@ class InstitutionsController < ApplicationController
       @institution = Institution.find_by(google_places_id: params[:google_places_id])
       authorize @institution
     end
+    # raise
   end
 
   private
