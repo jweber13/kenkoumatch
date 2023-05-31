@@ -23,6 +23,9 @@ class CardsParseService
 
   def parse_content_keys(content)
     keys = JSON.parse(content)
+    keys.each do |wrd|
+      wrd.insert(1, " ") if wrd.length != 3
+    end
   end
 
   def parse_content_phrases(content)
