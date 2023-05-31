@@ -16,6 +16,9 @@ application.register("editphrase", EditphraseController)
 import GoogleMapsController from "./google_maps_controller"
 application.register("google-maps", GoogleMapsController)
 
+import GoogleMapsRoutesController from "./google_maps_routes_controller"
+application.register("google-maps-routes", GoogleMapsRoutesController)
+
 import GoogleSearchController from "./google_search_controller"
 application.register("google-search", GoogleSearchController)
 
