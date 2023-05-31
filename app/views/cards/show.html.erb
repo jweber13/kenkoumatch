@@ -19,7 +19,7 @@
               <p><%="#{@card.institution.name}"%></p>
               <%="located at: #{@card.institution.address}"%>
               <%="they can be contacted here: #{@card.institution.phone}"%>
-              <%="website: #{@card.institution.address}"%>
+              <%="website: #{@card.institution.website}"%>
             </div>
           <%end%>
           <div class="inner-header">
@@ -39,7 +39,7 @@
                 <% form.submit "Redo Keywords", class: "inner-header-btn h5" %>
               <%end%>
             </div>
-            <div data-edit-target="edited" class="card-show-element">
+            <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
               <%= render "jkeyword", keywords: @keywords %>
             </div>
           </div>

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CardwordTest < ActiveSupport::TestCase
+class StudywordsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

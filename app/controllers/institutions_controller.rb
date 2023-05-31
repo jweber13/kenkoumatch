@@ -7,12 +7,7 @@ class InstitutionsController < ApplicationController
     # @clinics = GooglePlacesService.search_medical_institutions(current_location, practice)
     @institutions = policy_scope(Institution) # .where.not(latitude: nil, longitude: nil)# .where(id: @institutions.pluck(:id))
 
-    # @markers = @institutions.map do |institution|
-    #   {
-    #     lat: institution.latitude,
-    #     lng: institution.longitude
-    #   }
-    # end
+    # @markers = [{ lat: 35.0, lng: 135.0 }]
   end
 
   def show

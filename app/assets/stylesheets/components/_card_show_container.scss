@@ -6,6 +6,10 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+.card-show-container {
+  background-color: $light-blue;
+}
+
 .card-show-element {
   border: $turquoise 2px solid;
   background-color: $light-blue;
@@ -22,6 +26,8 @@
   display: flex;
   // align-items: center;
   border: $turquoise 1px solid;
+  // border-: none;
+  // border-right: none;
   border-radius: 15px;
   width: 100%;
   background-color: $manila;
@@ -62,6 +68,16 @@
   padding-right: 1em;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+.addword {
+  padding-left: 1em;
+  padding-right: 1em;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 15px;
+  border-left: $turquoise 1px solid;
 }
 
 .card-show-phrase {
@@ -113,13 +129,16 @@
 .inner-header-btn {
   background-color: $light-manila;
   margin-bottom: 0;
-  border-top: $turquoise 2px solid;
-  border-right: $turquoise 2px solid;
-  border-left: $turquoise 2px solid;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  border-bottom: none;
+  border: $turquoise 2px solid;
+  border-radius: 15px;
+  // border-top: $turquoise 2px solid;
+  // border-right: $turquoise 2px solid;
+  // border-left: $turquoise 2px solid;
+  // border-top-left-radius: 15px;
+  // border-top-right-radius: 15px;
+  // border-bottom: none;
   color: black;
+  margin-bottom: .5em;
 }
 
 .show-header {

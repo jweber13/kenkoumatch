@@ -28,7 +28,7 @@ class CardsController < ApplicationController
     # card needs a user and a practice
     @card.user = current_user
     @card.practice = @practice
-    @card.institution = Institution.find(params[:card][:institution_id]) || nil
+    @card.institution = Institution.find(params[:card][:institution_id]) unless params[:card][:institution_id].nil?
     authorize @card
 
     # deepl
@@ -64,7 +64,8 @@ class CardsController < ApplicationController
     @card = Card.find(params[:id])
     authorize @card
 
-    prompt = keywords_prompt2(@card.translatedcontent)
+    jp_words = JSON.parse(@card.cardkeywords).map { |el| el[0] }
+    prompt = keywords_prompt2(@card.translatedcontent, jp_words)
     @openai_service = OpenaiService.new(prompt)
 
     # keys
@@ -128,8 +129,8 @@ class CardsController < ApplicationController
     "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 2-7 relevant keywords from the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
   end
 
-  def keywords_prompt2(input)
-    "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 3-6 keywords relevant to the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
+  def keywords_prompt2(input, words)
+    "Analyze this text input describing a patient's symptoms in Japanese. Give me a numbered list of 4-6 related to these words: #{words} relevant to the input. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'. input: #{input}"
   end
 
   def phrases_prompt(input, practice)

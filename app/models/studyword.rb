@@ -1,6 +1,5 @@
 class Studyword < ApplicationRecord
-  has_many :cardwords
-  has_many :cards, through: :cardwords
+  belongs_to :user
 
   validates_presence_of :english, :kanji
 end

@@ -6,6 +6,7 @@
     <h1><%=@practice.name%></h1>
   </div>
   <div class="container">
+<<<<<<< HEAD
     <p><%= @institution.name %></p>
     <p><%= @institution.address %></p>
     <p><%= @institution.phone %></p>
@@ -25,5 +26,24 @@
       <%= hidden_field_tag :institution_id, @institution.id %>
       <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
     <% end %>
+=======
+    <div class="institution-card">
+      <div id="inst-header">
+        <h3><%= @institution.name %></h3>
+      </div>
+      <div id="inst-contact-infos">
+        <p><%= @institution.address %></p>
+        <p><%= @institution.phone %></p>
+        <p><%= @institution.website %></p>
+      </div>
+      <div id="inst-other-infos">
+        <p><%= @institution.info %></p>
+      </div>
+      <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
+        <%= hidden_field_tag :institution_id, @institution.id %>
+        <%= f.submit "create a card with this hospital", class: "btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
+>>>>>>> 0f51622eeb50becdd1760a36a025928acb763466
   </div>
 </div>
