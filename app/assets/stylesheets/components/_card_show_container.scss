@@ -64,6 +64,16 @@
   border-bottom-right-radius: 15px;
 }
 
+.addphrase {
+  padding-left: 1em;
+  padding-right: 1em;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  border-left: $turquoise 1px solid;
+  border-top-right-radius: 15px;
+}
+
 .addword {
   padding-left: 1em;
   padding-right: 1em;
@@ -87,6 +97,19 @@
   margin-bottom: 0.5em;
 }
 
+.card-show-phrase-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-show-phrase-top.alt {
+  background-color: $turquoise;
+  color: $manila;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
 .card-show-phrase-sub {
   text-align: center;
   border-top: $turquoise 1px solid;
@@ -100,6 +123,7 @@
 .p1 {
   padding-top: .5em;
   padding-bottom: .5em;
+  padding-left: .5em;
 }
 
 .p2 {

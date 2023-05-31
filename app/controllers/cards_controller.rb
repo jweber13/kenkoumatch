@@ -8,6 +8,7 @@ class CardsController < ApplicationController
   def show
     @card = Card.find(params[:id])
     @studywords = Studyword.where(user_id: current_user.id)
+    @studyphrases = Studyphrase.where(user_id: current_user.id)
     authorize @card
     cards_parse_service = CardsParseService.new
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
