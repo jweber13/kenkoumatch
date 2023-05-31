@@ -17,10 +17,11 @@
               <h1>You're Going To:</h1>
             </div>
             <div class="card-show-element">
-              <p><%="#{@card.institution.name}"%></p>
-              <%="located at: #{@card.institution.address}"%>
-              <%="they can be contacted here: #{@card.institution.phone}"%>
-              <%="website: #{@card.institution.website}"%>
+              <h3><%="#{@card.institution.name}"%></h3>
+              <%=  link_to 'detailed information', practice_institution_path(@card.practice, @card.institution.google_places_id)%>
+              <p><%="located at: #{@card.institution.address}"%></p>
+              <p><%="they can be contacted here: #{@card.institution.phone}"%></p>
+              <p>website: <a href=<%= @card.institution.website %>><%=@card.institution.website%></a><p>
             </div>
           <%end%>
           <div class="inner-header">
