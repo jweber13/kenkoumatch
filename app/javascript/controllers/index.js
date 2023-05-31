@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import AddphrasebuttonController from "./addphrasebutton_controller"
+application.register("addphrasebutton", AddphrasebuttonController)
+
 import AddwordbuttonController from "./addwordbutton_controller"
 application.register("addwordbutton", AddwordbuttonController)
 
@@ -16,6 +19,9 @@ application.register("editphrase", EditphraseController)
 import GoogleMapsController from "./google_maps_controller"
 application.register("google-maps", GoogleMapsController)
 
+import GoogleMapsRoutesController from "./google_maps_routes_controller"
+application.register("google-maps-routes", GoogleMapsRoutesController)
+
 import GoogleSearchController from "./google_search_controller"
 application.register("google-search", GoogleSearchController)
 
@@ -24,6 +30,9 @@ application.register("hello", HelloController)
 
 import PopoverController from "./popover_controller"
 application.register("popover", PopoverController)
+
+import SavephrasebuttonController from "./savephrasebutton_controller"
+application.register("savephrasebutton", SavephrasebuttonController)
 
 import SavewordbuttonController from "./savewordbutton_controller"
 application.register("savewordbutton", SavewordbuttonController)

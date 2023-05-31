@@ -11,7 +11,8 @@
               <%= form.text_field :address, placeholder: 'Enter an address', data: {google_search_target: "input"}, class: 'form-control rounded-pill w-75'%>
               <a class="rounded-pill border btn" href="#" data-action='click->google-search#searchNearbyInstitutionsFromCurrentLocation' >
                 <div class='text-center fa-solid fa-location-crosshairs'></div>
-                <span class="d-none d-lg-inline"> around me</span></a>
+                <span class="d-none d-lg-inline"> around me</span>
+              </a>
             </div>
             <div class='d-flex justify-content-center p-3'>
               <%= link_to "Cancel", :back , {:class=>"btn btn-outline-danger fixed-width"} %>

@@ -8,6 +8,7 @@ class CardsController < ApplicationController
   def show
     @card = Card.find(params[:id])
     @studywords = Studyword.where(user_id: current_user.id)
+    @studyphrases = Studyphrase.where(user_id: current_user.id)
     authorize @card
     cards_parse_service = CardsParseService.new
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
@@ -91,7 +92,7 @@ class CardsController < ApplicationController
   def redophrase
     @card = Card.find(params[:id])
     authorize @card
-
+    @studyphrases = Studyphrase.where(user_id: current_user.id)
     @cardparse_service = CardsParseService.new
     jp_words = JSON.parse(@card.cardkeywords).map { |el| el[0] }
     @openai_service = OpenaiService.new(phrases_prompt2(jp_words, @card.practice.name))
@@ -105,7 +106,7 @@ class CardsController < ApplicationController
     @phrases = @cardparse_service.parse_content_phrases(parsed_phrases.to_json)
     respond_to do |format|
       format.html
-      format.text { render partial: "jphrase", locals: { phrases: @phrases }, formats: [:html] }
+      format.text { render partial: "jphrase", locals: { phrases: @phrases, studyphrases: @studyphrases }, formats: [:html] }
     end
   end
 

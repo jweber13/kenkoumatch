@@ -32,6 +32,7 @@
             <div
           id="map"
           data-controller="google-maps"
+          data-google-maps-target='googlemap'
           data-lat= '<%= @institution.latitude%>'
           data-lng= '<%= @institution.longitude%>'
           style="width: 100%;
@@ -40,6 +41,10 @@
         ></div>
           </div>
         </div>
+      </div>
+      <%# bellow is the link to google map search result(outside the app)%>
+      <div>
+        <a href=<%="https://www.google.com/maps/dir/?api=1&destination=#{@institution.latitude},#{@institution.longitude}"%>  target="_blank">route</a>
       </div>
     </div>
   </div>
