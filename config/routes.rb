@@ -11,8 +11,10 @@ Rails.application.routes.draw do
     get '/institutions/:google_places_id', to: 'institutions#show', as: 'institution'
   end
   resources :cards, only: %i[index show update destroy] do
+    resources :studywords, only: :create
     member do
       post :redo, :redophrase
     end
   end
+  resources :studywords, only: :index
 end
