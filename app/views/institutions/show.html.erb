@@ -1,5 +1,6 @@
 <div class="card-show-body">
-  <div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
+  <div id="banner-content">
+    <div></div>
   </div>
   <div id="subcontent">
     <h1><%=@practice.name%></h1>
@@ -9,6 +10,16 @@
     <p><%= @institution.address %></p>
     <p><%= @institution.phone %></p>
     <p><%= @institution.website %></p>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Hours of operation
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
     <p><%= @institution.info %></p>
     <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
       <%= hidden_field_tag :institution_id, @institution.id %>

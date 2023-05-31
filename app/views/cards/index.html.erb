@@ -1,12 +1,11 @@
 <%# <h1 class="text-center">your cards</h1> %>
-<div class="show-header" style="background-image: url(<%='https://img.freepik.com/free-vector/doctor-medical-healthcare-pfrofessional-character-vector_53876-175176.jpg?size=626&ext=jpg&ga=GA1.1.1233122341.1682826076&semt=ais' %>); background-position: center; background-size: cover;">
-</div>
-<div id="subcontent">
-  <h1>Your Cards</h1>
-  <i>view cards you've created</i>
+<div id="banner-content">
+  <div></div>
 </div>
 <div class="container">
-  <div class="cards p-4">
+  <h1>Your Cards</h1>
+  <i>view cards you've created</i>
+  <div class="cards pt- p-4">
     <% @cards.each do |card| %>
       <div class="cards-index-card text-center d-flex flex-direction: column justify-content-around p-1 mt-2">
         <div>
