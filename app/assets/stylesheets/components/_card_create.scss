@@ -3,7 +3,7 @@
 }
 
 .create-inst-infos {
-  text-align: center;
+  text-align: right;
   width: 100%;
   background-color: $manila;
   border: 1px $turquoise solid;
@@ -25,6 +25,7 @@
 .instdisp {
   display: flex;
   justify-content: space-between;
+  gap: .5em
   // padding: .5em;
 }
 
