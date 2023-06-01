@@ -19,9 +19,6 @@ application.register("editphrase", EditphraseController)
 import GoogleMapsController from "./google_maps_controller"
 application.register("google-maps", GoogleMapsController)
 
-import GoogleMapsRoutesController from "./google_maps_routes_controller"
-application.register("google-maps-routes", GoogleMapsRoutesController)
-
 import GoogleSearchController from "./google_search_controller"
 application.register("google-search", GoogleSearchController)
 
@@ -42,6 +39,9 @@ application.register("search-practices", SearchPracticesController)
 
 import SpinnerController from "./spinner_controller"
 application.register("spinner", SpinnerController)
+
+import StudywordCardController from "./studyword_card_controller"
+application.register("studyword-card", StudywordCardController)
 
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)

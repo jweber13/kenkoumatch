@@ -8,26 +8,32 @@
         <h3 class="text-center mb-2">Favorite words</h3>
         <div class="card-show-element">
           <%@studywords.each do |word|%>
-            <div id="studyword-card">
-              <span id="kanjiword"><%=word.kanji%></span>
-              <div id="word-sub">
-                <span><%=word.kana%></span>
-                <span><%=word.english%></span>
+            <div class="card-show-key">
+              <div class="jcontainer">
+                <div class="key1"><%=word.kana%></div>
+                <div class="key2"><%=word.kanji%></div>
               </div>
+              <%# <span id="kanjiword"></span> %>
+              <%# <div id="word-sub"> %>
+                <%# <span></span> %>
+                <div class="key3"><%=word.english%></div>
+              <%# </div> %>
             </div>
           <%end%>
         </div>
       </div>
       <div class='bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
         <h3 class="text-center mb-2">Favorite Phrases</h3>
-        <div class="card-show-element">
+        <div class="card-studyword-element">
           <%@studyphrases.each do |phrase|%>
-            <div class="studyword-card">
-              <div id="phrase-top">
-                <%=phrase.kanji%>
+            <div class="card-studyword-phrase" data-controller="studyword-card" data-action="click->studyword-card#revealJapanese">
+              <div class="card-show-phrase-top">
+                <div class="p1"><%=phrase.english%></div>
               </div>
-              <%=phrase.kana if phrase.kana != phrase.kanji%>
-              <%=phrase.english%>
+              <div class="card-studyword-phrase-sub d-none" data-studyword-card-target="japanese">
+                <div class="p2"><%=phrase.kana if phrase.kana != phrase.kanji%></div>
+                <div class="p3"><%=phrase.kanji%></div>
+              </div>
             </div>
           <%end%>
         </div>
