@@ -129,9 +129,17 @@ export default class extends Controller {
           showlink.style.textDecoration = 'none'; // Remove the underline
 
           name.textContent = result.name;
+<<<<<<< HEAD
           address.textContent = result.vicinity
           rating.innerHTML = `<p class="mb-0"><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
           <p class="mb-0"><strong>${result.rating} ${ratingStars}</strong></p>`
+=======
+          address.textContent = result.vicinity;
+          console.log('hello')
+          rating.innerHTML = `<strong>${result.rating}</strong>${ratingStars}`;
+          rating.textContent = `${result.rating}${ratingStars}`;
+
+>>>>>>> master
           // const institutionsPath = `institutions/${result.place_id}`;
           showlink.href = institutionsPath;
           // showlink.textContent = 'view this hospital'
