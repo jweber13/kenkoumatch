@@ -1,3 +1,4 @@
+<% require "json" %>
 <div class="card-show-body">
   <div id="banner-content">
     <div></div>
@@ -17,7 +18,10 @@
         <p><%= @institution.website %></p>
       </div>
       <div id="inst-other-infos">
-        <p><%= @institution.info %></p>
+        <% arr = JSON.parse(@institution.info) %>
+        <% arr.each do |opening_hours| %>
+          <p><%= opening_hours %>
+        <% end %>
       </div>
       <div
           id="map"
