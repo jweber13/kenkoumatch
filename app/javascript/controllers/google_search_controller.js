@@ -74,9 +74,10 @@ export default class extends Controller {
             map: map
           });
 
-          const ratingStars = '⭐'.repeat(Math.round(result.rating));
+          // const ratingStars = '⭐'.repeat(Math.round(result.rating));
+          const ratingStars = '<i class="fa-solid fa-star" style="color: #ffd43b;"></i>'.repeat(Math.round(result.rating));
           const institutionsPath = `institutions/${result.place_id}`;
-          const infoWindowContent = `<p class="mb-0"><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
+          const infoWindowContent = `<p class="mb-1"><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
             <p class="mb-0"><strong>${result.rating} ${ratingStars}</strong></p>`
 
           const infoWindow = new google.maps.InfoWindow({
@@ -129,7 +130,8 @@ export default class extends Controller {
 
           name.textContent = result.name;
           address.textContent = result.vicinity
-          rating.textContent = `${result.rating}${ratingStars}`
+          rating.innerHTML = `<p class="mb-0"><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
+          <p class="mb-0"><strong>${result.rating} ${ratingStars}</strong></p>`
           // const institutionsPath = `institutions/${result.place_id}`;
           showlink.href = institutionsPath;
           // showlink.textContent = 'view this hospital'
