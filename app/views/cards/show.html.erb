@@ -46,7 +46,7 @@
               <div class="inner-header">
                 <h1>Your Keywords</h1>
                 <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
-                  <% form.submit "Generate More", class: "inner-header-btn h5" %>
+                  <% form.submit "Generate Related Words", class: "inner-header-btn h5" %>
                 <%end%>
               </div>
               <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
