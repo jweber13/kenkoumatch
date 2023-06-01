@@ -2,7 +2,7 @@
   <div></div>
 </div>
 <div class="container page-content"  data-controller="google-search" data-practice="<%= @practice.japanese_name %>">
-  <div class='d-flex justify-content-center mt-5'>
+  <div class='d-flex justify-content-center mt-3'>
     <div class='col-12 col-md-10 col-lg-8'>
       <div class='bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
         <h1 class="text-center mt-2"><%=@practice.name%></h1>
@@ -29,7 +29,7 @@
             style="width: 100%;
             height: 300px;"
             <%# data-markers="<%= @markers.to_json %>" %>
-          ></div>
+            ></div>
         </div>
       </div>
       <div data-google-search-target="result" class="d-flex justify-content-center mb-3 mt-4 fw-bold"></div>

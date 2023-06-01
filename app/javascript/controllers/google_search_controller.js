@@ -103,7 +103,7 @@ export default class extends Controller {
           const photo = document.createElement('img');
 
           if (result.photos !== undefined) {
-            const photoUrl = result.photos[0].getUrl(/*{ maxWidth: 500, maxHeight: 333 }*/);
+            const photoUrl = result.photos[0].getUrl({ maxWidth: 500, maxHeight: 400 });
             photo.src = photoUrl;
           } else {
             photo.src = 'https://www.shoshinsha-design.com/wp-content/uploads/2020/05/noimage-760x460.png'
@@ -129,7 +129,7 @@ export default class extends Controller {
 
           name.textContent = result.name;
           address.textContent = result.vicinity
-          rating.textContent = `${ratingStars} ${result.rating}`
+          rating.textContent = `${result.rating}${ratingStars}`
           // const institutionsPath = `institutions/${result.place_id}`;
           showlink.href = institutionsPath;
           // showlink.textContent = 'view this hospital'
