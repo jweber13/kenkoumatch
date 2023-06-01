@@ -76,8 +76,8 @@ export default class extends Controller {
 
           const ratingStars = '⭐'.repeat(Math.round(result.rating));
           const institutionsPath = `institutions/${result.place_id}`;
-          const infoWindowContent = `<p><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
-            <p><strong>${result.rating} ${ratingStars}</strong></p>`
+          const infoWindowContent = `<p class="mb-0"><strong><a href=${institutionsPath}>${result.name}</a><strong></p>
+            <p class="mb-0"><strong>${result.rating} ${ratingStars}</strong></p>`
 
           const infoWindow = new google.maps.InfoWindow({
             position: result.geometry.location,
