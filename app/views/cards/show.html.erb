@@ -33,8 +33,10 @@
             </div>
             <div class="card-show-element">
               <div class="card-element-show-info">
-                <h3 class="card-element-text"><%="#{@card.originalcontent}"%></p>
-                <h3 class="card-element-text"><%="#{@card.translatedcontent}"%></p>
+                <h3 class="card-element-text"><%="#{@card.originalcontent}"%></h3>
+                <span>
+                  <h3 class="card-element-text-japanese"><%="#{@card.translatedcontent}"%></h3>
+                </span>
               </div>
             </div>
             <div data-controller="edit" data-edit-id-value="<%=@card.id%>">
