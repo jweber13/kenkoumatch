@@ -3,3 +3,43 @@
   flex-direction: column;
   gap: 2em;
 }
+
+#studyword-card {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px $turquoise solid;
+  background-color: $light-gray;
+  text-align: center;
+  display: flex;
+}
+
+#kanjiword {
+  padding: 1em 2em;
+  font-size: larger;
+}
+
+#word-sub {
+  flex-grow: 1;
+  background-color: $manila;
+  border-left: 1px $turquoise solid;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.phrase-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+#studyphrase-card {
+
+}
+
+#phrase-sub {
+
+}

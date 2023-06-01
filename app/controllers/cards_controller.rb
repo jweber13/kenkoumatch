@@ -30,7 +30,6 @@ class CardsController < ApplicationController
     # card needs a user and a practice
     @card.user = current_user
     @card.practice = @practice
-
     @card.institution = Institution.find(params[:card][:institution_id]) unless params[:card][:institution_id].nil?
 
     authorize @card
@@ -70,11 +69,9 @@ class CardsController < ApplicationController
     authorize @card
 
     jp_words = JSON.parse(@card.cardkeywords).map { |el| el[0] }
-    # raise
-    prompt = keywords_prompt2(jp_words, @card.practice.name)
+    prompt = keywords_prompt3(jp_words, @card.practice.name)
     @openai_service = OpenaiService.new(prompt)
 
-    # keys
     keywords = @openai_service.call1
     @cardparse_service = CardsParseService.new(keywords)
     parsed_keywords = @cardparse_service.parse_content
@@ -137,6 +134,10 @@ class CardsController < ApplicationController
 
   def keywords_prompt2(words, practice)
     "Give me a numbered list of 4-6 new japanese keywords related to these words, that a patient can use in a #{practice} clinic: #{words}. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'."
+  end
+
+  def keywords_prompt3(words, practice)
+    "Give me a numbered list of 4-7 japanese keywords useful for a patient to use at a #{practice} clinic. Use two of these words as a reference point: #{words}. Similes or Medical Terms are okay. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'."
   end
 
   def phrases_prompt(input, practice)
