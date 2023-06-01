@@ -29,7 +29,7 @@ class InstitutionsController < ApplicationController
       @institution.save
 
       # This is the hash of the opening hours transofrmed into an array and for the view
-      @hours = JSON.parse(@institution.info)
+      @hours = JSON.parse(@institution.info) unless @institution.info.nil?
 
       # @institution = Institution.find_by(google_places_id: google_places_id)
       # Handle the case when the institution is not found
@@ -43,7 +43,7 @@ class InstitutionsController < ApplicationController
       authorize @institution
 
       # This is the hash of the opening hours transofrmed into an array and for the view
-      @hours = JSON.parse(@institution.info)
+      @hours = JSON.parse(@institution.info) unless @institution.info.nil?
 
     end
   end
