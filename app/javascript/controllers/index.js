@@ -25,6 +25,9 @@ application.register("google-search", GoogleSearchController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import HomepageDescriptionController from "./homepage_description_controller"
+application.register("homepage-description", HomepageDescriptionController)
+
 import PopoverController from "./popover_controller"
 application.register("popover", PopoverController)
 
