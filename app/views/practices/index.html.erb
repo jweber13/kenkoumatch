@@ -1,12 +1,10 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/kenkou-banner.avif');">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('/banner_doctor.jpg');">
   <div class="banner-container">
     <h1>Kenkou Match helps <strong>you find</strong> <strong>local medical specialists.</strong></h1>
     <p>Communicate with Japanese doctors with confidence.</p>
   </div>
 </div>
-<div class="practices-wrapper">
-  <%= render "descriptor"%>
-</div>
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -33,6 +31,9 @@
           <%= render "list", practices: @practices %>
         </div>
         <%# </div> %>
+      </div>
+      <div class="practices-wrapper" data-controller="homepage-description">
+        <%= render "descriptor"%>
       </div>
     </div>
   </div>
