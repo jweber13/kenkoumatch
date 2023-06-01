@@ -6,8 +6,20 @@
   <div class='row justify-content-center mt-5'>
     <div class='col-12 col-md-6'>
       <div class="bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded">
-        <h2 class="d-flex justify-content-center p-3">Create a Kenkou Card</h2>
-        <div class="create-infos justify-content-center p-3">
+        <div class="create-inst-infos justify-content-center px-2">
+          <%if @institution.present?%>
+            <div class="instdisp">
+              <p><span class="head">Clinic:</span></p>
+              <p><span id="in"><%=@institution.name%></span></p>
+            </div>
+          <%end%>
+          <div class="instdisp">
+            <p><span class="head">Practice:</span></p>
+            <p><span id="pn"><%=@practice.name%></span></p>
+          </div>
+        </div>
+        <h2 class="d-flex justify-content-center p-3">Create a Translation Card</h2>
+        <div class="create-infos justify-content-center">
           <p>Kenkou Match offers an ai-assisted 'study' card to help you describe your symptoms in Japanese.</p>
           <p>Enter your symptoms in the field below. <strong>Consider your phrasing</strong> - <i>Short prompts will return short responses.</i></p>
           <p>Instead of <span id="ex1">I have a headache</span>, consider saying <span id="ex2">I've had a headache for three days and the pain is most severe in the evening</span>.</p>

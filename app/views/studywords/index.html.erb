@@ -1,23 +1,42 @@
+<div id="banner-content">
+  <div></div>
+</div>
 <div class="container page-content">
   <div class='d-flex justify-content-center mt-5'>
     <div class='col-12 col-md-6 wordsphrases'>
       <div class='bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
-        <h1 class="text-center mt-2 mb-5">Your Favorite words</h1>
-        <ul>
+        <h3 class="text-center mb-2">Favorite words</h3>
+        <div class="card-show-element">
           <%@studywords.each do |word|%>
-            <li><%=word.kanji%>, <%=word.kana%>, <%=word.english%>
-            </li>
+            <div class="card-show-key">
+              <div class="jcontainer">
+                <div class="key1"><%=word.kana%></div>
+                <div class="key2"><%=word.kanji%></div>
+              </div>
+              <%# <span id="kanjiword"></span> %>
+              <%# <div id="word-sub"> %>
+                <%# <span></span> %>
+                <div class="key3"><%=word.english%></div>
+              <%# </div> %>
+            </div>
           <%end%>
-        </ul>
+        </div>
       </div>
       <div class='bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
-        <h1 class="text-center mt-2 mb-5">Your Favorite Phrases</h1>
-        <ul>
+        <h3 class="text-center mb-2">Favorite Phrases</h3>
+        <div class="card-studyword-element">
           <%@studyphrases.each do |phrase|%>
-            <li><%=phrase.kanji%>, <%=phrase.kana%>, <%=phrase.english%>
-            </li>
+            <div class="card-studyword-phrase" data-controller="studyword-card" data-action="click->studyword-card#revealJapanese">
+              <div class="card-show-phrase-top">
+                <div class="p1"><%=phrase.english%></div>
+              </div>
+              <div class="card-studyword-phrase-sub d-none" data-studyword-card-target="japanese">
+                <div class="p2"><%=phrase.kana if phrase.kana != phrase.kanji%></div>
+                <div class="p3"><%=phrase.kanji%></div>
+              </div>
+            </div>
           <%end%>
-        </ul>
+        </div>
       </div>
       <div class="d-flex justify-content-center">
         <%= link_to "Back", :back , {:class=>"btn btn-outline-danger"} %>
