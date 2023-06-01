@@ -214,7 +214,7 @@
   text-align: center;
 }
 
-.card-studycard-phrase {
+.card-studyword-phrase {
   border: $turquoise 1px solid;
   display: flex;
   flex-direction: column;
@@ -234,6 +234,19 @@
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   padding: 0.5em;
+}
+
+.card-studyword-element {
+  border: $turquoise 2px solid;
+  background-color: $light-blue;
+  border-radius: 15px;
+  font-size: 1em;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+  padding: 1em;
+  gap: .5em;
+  // text-align: center;
 }
 
 .card-element-show-info {

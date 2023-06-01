@@ -24,9 +24,9 @@
       </div>
       <div class='bg-white border border-info border-opacity-25 rounded-4 shadow p-3 bg-body rounded'>
         <h3 class="text-center mb-2">Favorite Phrases</h3>
-        <div class="card-show-element">
+        <div class="card-studyword-element">
           <%@studyphrases.each do |phrase|%>
-            <div class="card-studycard-phrase" data-controller="studyword-card" data-action="click->studyword-card#revealJapanese">
+            <div class="card-studyword-phrase" data-controller="studyword-card" data-action="click->studyword-card#revealJapanese">
               <div class="card-show-phrase-top">
                 <div class="p1"><%=phrase.english%></div>
               </div>
