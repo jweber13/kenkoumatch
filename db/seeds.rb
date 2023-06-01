@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 require 'faker'
 require 'open-uri'
 
@@ -250,9 +242,9 @@ practices_infos = {
   'Dermatology': 'Skin doctors are called hifuka (皮膚科) in Japanese. A lot of advertisements for such doctors seem to focus on making the skin look better: laser treatments to remove blemishes, age-defying creams, and so on. But you would also visit this doctor to check for more serious problems, such as skin cancers or worrisome blotches.',
   'Pediatrics': 'Pediatrics in Japan, known as "Shounika" (小児科), is a medical specialty focused on the healthcare and well-being of infants, children, and adolescents. Pediatric clinics and hospitals in Japan are specifically designed to cater to the needs of children. They are often equipped with child-friendly waiting areas, colorful decorations, and play areas to create a comfortable and welcoming environment for young patients. The primary language used during consultations is Japanese',
   'Orthopedics': 'Orthopedic practices are known as seikei-geka (整形外科) in Japanese. Such physicians are all over the place in Japan. While some orthopedic surgeons might need to cut you open to fix your bones or muscles, many of these doctors offer less-invasive relief for muscle and soft tissue aches and injuries. ',
-  'Dentistry': 'Unless you have a chronic illness, the doctor you will probably see more than all others is the dentist, known as shika (歯科) in Japan. Back in the US, you may schedule your dental cleanings twice a year, but in Japan, such services happen every three months. Dentists here also seem to do a lot more than you may be used to. All clinics here perform routine dental work, but some also offer orthodontic and oral surgery services, things that would be done by specialists back in America.',
+  'Dentistry': 'The doctor you will probably see more than all others is the dentist, known as shika (歯科) in Japan. In Japan, checkup services tend to happen every three months. Dentists in Japan also seem to do a lot more than you may be used to. All clinics here perform routine dental work, but some also offer orthodontic and oral surgery services, things that would be done by specialists back in the West.',
   'Physical Therapy': 'Physiotherapy is a comprehensive health disciple offering assessment, treatment and ongoing management for a range of acute and chronic conditions and injuries. Physiotherapists specialise in the musculoskeletal and neural systems, utilising a range of techniques including joint mobilisations, massage, heat treatment, stretching and exercise programs to alleviate pain while addressing the underlying cause of your issue.',
-  'OB-GYN': 'For women’s health, you visit a fujinka (婦人科), the name for a gynecologist. But if you are about to have a baby, check out an obstetrician, or sanka (産科), instead. And congratulations on your new baby! ',
+  'OB-GYN': 'For women’s health, you visit a fujinka (婦人科), the name for a gynecologist. But if you are about to have a baby, check out an obstetrician, or sanka (産科), instead. It is common to make an appointment before visiting a gynecology clinic in Japan. You can call the clinic and say, "Josei Shinryo Shitsu no yoyaku o onegaishimasu" (女性診療室の予約をお願いします) to request an appointment. ',
   'Psychiatry': 'Doctors take time to listen to a new patient. For this reason weekday after 17:00 and weekend (Saturday, Sundays are generally closed) appointments are very difficult to take for a first time patient. Often a nurse or a psychologist take a pre-examination interview with a patient or they ask a patient to fill out a detailed questionnaire about the condition and run some paper psychological tests. Many of these services are Japanese only even if the doctor speaks some English',
   'Neurology': 'Neurologists aim at treating mental, neurological, muscle diseases, and developmental disorders, and provide advanced pioneering medical care based on the research results and to disseminate good care throughout the country. ',
   'Cardiology': 'Cardiologists focus on hypertension, arrhythmia, heart failure, angina etc. They can also take care of patients who have head ache, allergic rhinitis, diabetes, and cold etc.',

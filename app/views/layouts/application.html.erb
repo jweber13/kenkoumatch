@@ -30,7 +30,7 @@
     <%= render "shared/flashes" %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= yield %>
-    <%= render "shared/footer" %>
   </body>
+  <%= render "shared/footer" %>
   <%#= render "shared/footer" %>
 </html>
