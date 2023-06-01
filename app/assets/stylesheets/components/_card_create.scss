@@ -2,6 +2,32 @@
   text-align: left;
 }
 
+.create-inst-infos {
+  text-align: center;
+  width: 100%;
+  background-color: $manila;
+  border: 1px $turquoise solid;
+  border-radius: 15px;
+  padding: .5em;
+  margin-bottom: 1em;
+}
+#in {
+  // color: $turquoise;
+  // color: $light-gray;
+  // font-weight: bolder;
+}
+
+#pn {
+  // color: $turquoise;
+  // font-weight: bold;
+}
+
+.instdisp {
+  display: flex;
+  justify-content: space-between;
+  // padding: .5em;
+}
+
 .create-card {
   background-color: $manila;
 }
