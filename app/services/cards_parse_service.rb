@@ -33,7 +33,7 @@ class CardsParseService
 
     return arr if arr.all? { |el| el.count == 3 }
 
-    arr.map(&:join).map do |el|
+    arr.map(&:join).reject(&:empty?).map do |el|
       if el.include?("？")
         el.split("？")
       elsif el.include?("!")
