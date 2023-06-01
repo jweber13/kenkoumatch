@@ -1,3 +1,5 @@
+require 'miyabi'
+
 class CardsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:redo, :redophrase]
   def index
@@ -10,6 +12,7 @@ class CardsController < ApplicationController
     @studywords = Studyword.where(user_id: current_user.id)
     @studyphrases = Studyphrase.where(user_id: current_user.id)
     authorize @card
+    @jinput = @card.translatedcontent.to_kanhira
     cards_parse_service = CardsParseService.new
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
     @phrases = cards_parse_service.parse_content_phrases(@card.cardphrases)
@@ -46,7 +49,8 @@ class CardsController < ApplicationController
     eng_keys = @cardparse_service.keys_english(parsed_keywords)
 
     # phrases
-    @openai_service.update(phrases_prompt(eng_keys, @practice.name))
+    # @openai_service.update(phrases_prompt(eng_keys, @practice.name))
+    @openai_service.update(phrases_prompt_new(@card.translatedcontent, @practice.name))
     phrases = @openai_service.call
     @cardparse_service.update(phrases)
     parsed_phrases = @cardparse_service.parse_content
@@ -137,14 +141,18 @@ class CardsController < ApplicationController
   end
 
   def keywords_prompt3(words, practice)
-    "Give me a numbered list of 4-7 new japanese keywords useful for a patient to use at a #{practice} clinic. They will be added to this list: #{words}. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'."
+    "Give me a numbered list of 4-7 new japanese keywords useful for a patient to use at a #{practice} clinic. They should be related to the sympoms in this list: #{words}. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'."
   end
 
   def phrases_prompt(input, practice)
-    "Give me a numbered list of 3 useful and varied sentences in Japanese for a first-time patient to use at a #{practice} office, so they can help explain their symptoms. use some of the following keywords when creating the sentences:#{input}. In addition to the Japanese, provide the kana pronouncation in this format, and the english translation: '日本語 - かな - english'."
+    "Give me a numbered list of 3 useful and varied sentences in Japanese for a first-time patient to use at a #{practice} office, so they can help explain their symptoms. use some of the following keywords when creating the sentences:#{input}. In addition to the Japanese, provide the hiragana, and the english translation, all in this format: '日本語 - ひらがな - english'."
+  end
+
+  def phrases_prompt_new(input, practice)
+    "Give me a numbered list of 4 useful sentences in Japanese for a first-time patient to use at a #{practice} office to explain their symptoms. These are their symptoms in Japanese: #{input}. Provide standard Japanese with Kanji, hiragana, and the english translation, all in this format: '日本語 - ひらがな - english'."
   end
 
   def phrases_prompt2(input, practice)
-    "Give me a numbered list of 3-4 useful and varied sentences in Japanese for a first-time patient to use at a #{practice} office, so they can help explain their symptoms. use some of the following keywords when creating the sentences:#{input}. In addition to the Japanese, provide the kana pronouncation in this format, and the english translation: '日本語 - かな - english'."
+    "Give me a numbered list of 3-4 useful and varied sentences in Japanese for a first-time patient to use at a #{practice} office, that help explain their symptoms. use some of the following keywords when creating the sentences:#{input}. Provide standard Japanese with Kanji, hiragana, and the english translation, all in this format: '日本語 - ひらがな - english'."
   end
 end

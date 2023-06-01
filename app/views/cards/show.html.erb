@@ -37,6 +37,9 @@
                 <span>
                   <h3 class="card-element-text-japanese"><%="#{@card.translatedcontent}"%></h3>
                 </span>
+                <span>
+                  <h3 class="card-element-text-japanese-kana"><%=@jinput%></h3>
+                </span>
               </div>
             </div>
             <div data-controller="edit" data-edit-id-value="<%=@card.id%>">
@@ -45,9 +48,12 @@
               </div>
               <div class="inner-header">
                 <h1>Your Keywords</h1>
-                <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
-                  <% form.submit "Generate Related Words", class: "inner-header-btn h5" %>
-                <%end%>
+                <div class="gen-section">
+                  <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
+                    <% form.submit "Related Words", class: "inner-header-btn h5" %>
+                  <%end%>
+                  <span>More words related to <%=@card.practice.name%></span>
+                </div>
               </div>
               <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
                 <%= render "jkeyword", keywords: @keywords, studywords: @studywords %>
@@ -59,9 +65,12 @@
               </div>
               <div class="inner-header">
                 <h1>Useful Phrases</h1>
-                <%=form_with url: redophrase_card_path(@card), data: { action: "submit->editphrase#edit" } do |form| %>
-                  <% form.submit "Generate More", class: "inner-header-btn h5" %>
-                <%end%>
+                <div class="gen-section">
+                  <%=form_with url: redophrase_card_path(@card), data: { action: "submit->editphrase#edit" } do |form| %>
+                    <% form.submit "Related Phrases", class: "inner-header-btn h5" %>
+                  <%end%>
+                  <span>More phrases related to <%=@card.practice.name%></span>
+                </div>
               </div>
               <div data-editphrase-target="phedited" class="card-show-element" data-controller="savephrasebutton">
                 <%= render "jphrase", phrases: @phrases, studyphrases: @studyphrases%>

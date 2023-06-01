@@ -152,14 +152,27 @@
   margin-bottom: 0;
   border: $turquoise 2px solid;
   border-radius: 15px;
-  // border-top: $turquoise 2px solid;
-  // border-right: $turquoise 2px solid;
-  // border-left: $turquoise 2px solid;
-  // border-top-left-radius: 15px;
-  // border-top-right-radius: 15px;
-  // border-bottom: none;
-  // color: black;
   margin-bottom: .5em;
+}
+
+.gen-section {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  gap: .5em;
+  padding: .5em, auto;
+  text-align: left;
+  color: black;
+  margin-bottom: .5em;
+}
+
+.gen-section form{
+  margin: 0 auto; // puts in center of the div
+}
+
+.gen-section span{
+  // font-size: small;
 }
 
 .show-header {
@@ -260,11 +273,16 @@
 }
 
 .card-element-text {
-  font-size: 16px;
-  text-align: center;
+  font-size: 1.2em;
+  text-align: left;
 }
 
 .card-element-text-japanese {
-  font-size: 20px;
-  text-align: center;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.card-element-text-japanese-kana {
+  font-size: 1em;
+  text-align: left;
 }

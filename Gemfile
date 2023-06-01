@@ -54,6 +54,7 @@ gem "pg_search"
 gem "ruby-openai"
 gem 'google_places'
 gem 'geocoder'
+gem 'miyabi'
 
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
