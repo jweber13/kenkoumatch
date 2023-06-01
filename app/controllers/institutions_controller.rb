@@ -16,7 +16,6 @@ class InstitutionsController < ApplicationController
       @practice = Practice.find(params[:practice_id])
       @institution = Institution.new
       authorize @institution
-
       @institution.name = detail.name
       @institution.address = detail.formatted_address
       @institution.website = detail.website
@@ -27,8 +26,11 @@ class InstitutionsController < ApplicationController
       @institution.longitude = detail.lng
       @institution.photo_url = detail.photos[0].fetch_url(800) unless detail.photos[0].nil?
       @institution.google_places_id = detail.place_id
-
       @institution.save
+
+      # This is the hash of the opening hours transofrmed into an array and for the view
+      @hours = JSON.parse(@institution.info)
+
       # @institution = Institution.find_by(google_places_id: google_places_id)
       # Handle the case when the institution is not found
       # if @institution.nil?
@@ -39,6 +41,10 @@ class InstitutionsController < ApplicationController
       @practice = Practice.find(params[:practice_id])
       @institution = Institution.find_by(google_places_id: params[:google_places_id])
       authorize @institution
+
+      # This is the hash of the opening hours transofrmed into an array and for the view
+      @hours = JSON.parse(@institution.info)
+
     end
   end
 

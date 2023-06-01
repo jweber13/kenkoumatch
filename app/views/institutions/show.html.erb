@@ -1,9 +1,3 @@
-<%# <div class="card-show-body"> %>
-<%# <div id="banner-content"> %>
-<%# </div> %>
-<%# <div id="subcontent"> %>
-<!--<h1><%=@practice.name%></h1>-->
-<%# </div> %>
 <div class="container page-content">
   <div class='d-flex justify-content-center mt-5'>
     <div class='col-12 col-md-6'>
@@ -17,7 +11,7 @@
               <p><i class="fa-solid fa-phone" style="color: #000000;"></i> <%= @institution.phone %></p>
             </div>
             <div class="d-flex">
-              <p class="d-flex justify-content-center mb-3"><%= link_to "Visit the website", @institution.website, class:"userList text-white btn custom-button text-nowrap me-1", target: "_blank" %></p>
+              <p class="d-flex justify-content-center mb-3"><%= link_to "Visit the website", @institution.website, class:"userList text-white btn btn-secondary text-nowrap me-1", target: "_blank" %></p>
               <%= form_for(@practice, url: new_practice_card_path(@practice), method: :get) do |f| %>
                 <%= hidden_field_tag :institution_id, @institution.id %>
                 <%= f.submit "Translation card", class: "btn custom-button mb-3" %>
@@ -26,7 +20,10 @@
             <div class="d-flex mb-3" id="inst-other-infos">
               <span>
                 <p class="mb-1 fw-bold">Hours:</p>
-                <p><%= @institution.info.gsub("["," ").gsub("]"," " ).gsub('"', " ") %></p>
+                <% @hours.each do |hour| %>
+                  <p class="m-0"><%= hour %></p>
+                <% end %>
+                <!--<% hours = JSON.parse(@institution.info) %>-->
               </span>
             </div>
             <div
@@ -40,13 +37,13 @@
           data-markers="<%= @markers.to_json %>"
         ></div>
           </div>
+          <div class="d-flex justify-content-center">
+            <span class="btn btn-primary fixed-width text-nowrap">
+              <a class="userList text-white"  href=<%="https://www.google.com/maps/dir/?api=1&destination=#{@institution.latitude},#{@institution.longitude}"%>  target="_blank">Directions <i class="fa-solid fa-route"></i></a>
+            </span>
+          </div>
         </div>
       </div>
       <%# bellow is the link to google map search result(outside the app)%>
-      <div>
-        <a href=<%="https://www.google.com/maps/dir/?api=1&destination=#{@institution.latitude},#{@institution.longitude}"%>  target="_blank">route</a>
-      </div>
     </div>
   </div>
-</div>
-<%# </div> %>
