@@ -1,3 +1,5 @@
+require 'miyabi'
+
 class CardsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:redo, :redophrase]
   def index
@@ -10,6 +12,7 @@ class CardsController < ApplicationController
     @studywords = Studyword.where(user_id: current_user.id)
     @studyphrases = Studyphrase.where(user_id: current_user.id)
     authorize @card
+    @jinput = @card.translatedcontent.to_kanhira
     cards_parse_service = CardsParseService.new
     @keywords = cards_parse_service.parse_content_keys(@card.cardkeywords)
     @phrases = cards_parse_service.parse_content_phrases(@card.cardphrases)

@@ -164,6 +164,7 @@
   padding: .5em, auto;
   text-align: left;
   color: black;
+  margin-bottom: .5em;
 }
 
 .gen-section form{
@@ -272,11 +273,16 @@
 }
 
 .card-element-text {
-  font-size: 16px;
-  text-align: center;
+  font-size: 1.2em;
+  text-align: left;
 }
 
 .card-element-text-japanese {
-  font-size: 20px;
-  text-align: center;
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.card-element-text-japanese-kana {
+  font-size: 1em;
+  text-align: left;
 }

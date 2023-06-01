@@ -168,6 +168,8 @@ GEM
     mime-types-data (3.2023.0218.1)
     mini_mime (1.1.2)
     minitest (5.18.0)
+    miyabi (0.2.0)
+      nokogiri (~> 1.14)
     msgpack (1.7.1)
     multi_xml (0.6.0)
     multipart-post (2.3.0)
@@ -323,6 +325,7 @@ DEPENDENCIES
   htmlbeautifier
   jbuilder
   jsbundling-rails
+  miyabi
   pg (~> 1.1)
   pg_search
   pry-byebug
