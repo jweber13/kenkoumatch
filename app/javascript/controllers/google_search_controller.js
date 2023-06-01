@@ -129,7 +129,7 @@ export default class extends Controller {
 
           name.textContent = result.name;
           address.textContent = result.vicinity
-          rating.textContent = `${ratingStars} ${result.rating}`
+          rating.textContent = ` <p><strong>${result.rating}${ratingStars}</strong></p>`
           // const institutionsPath = `institutions/${result.place_id}`;
           showlink.href = institutionsPath;
           // showlink.textContent = 'view this hospital'
