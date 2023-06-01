@@ -45,9 +45,12 @@
               </div>
               <div class="inner-header">
                 <h1>Your Keywords</h1>
-                <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
-                  <% form.submit "Generate Related Words", class: "inner-header-btn h5" %>
-                <%end%>
+                <div class="gen-section">
+                  <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
+                    <% form.submit "Related Words", class: "inner-header-btn h5" %>
+                  <%end%>
+                  <span>· More words related to <%=@card.practice.name%></span>
+                </div>
               </div>
               <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
                 <%= render "jkeyword", keywords: @keywords, studywords: @studywords %>

@@ -26,6 +26,7 @@ class CardsParseService
     keys.each do |wrd|
       wrd.insert(1, " ") if wrd.length != 3
     end
+    keys.reject { |el| el.length < 3}
   end
 
   def parse_content_phrases(content)
