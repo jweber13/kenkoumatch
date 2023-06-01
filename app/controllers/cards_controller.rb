@@ -137,7 +137,7 @@ class CardsController < ApplicationController
   end
 
   def keywords_prompt3(words, practice)
-    "Give me a numbered list of 4-7 japanese keywords useful for a patient to use at a #{practice} clinic. Use two of these words as a reference point: #{words}. Similes or Medical Terms are okay. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'."
+    "Give me a numbered list of 4-7 new japanese keywords useful for a patient to use at a #{practice} clinic. They will be added to this list: #{words}. Each list item should include the word in kanji, its english translation, and its pronounciation in kana. Use this format: '日本語 - かな - english'."
   end
 
   def phrases_prompt(input, practice)
