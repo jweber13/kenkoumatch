@@ -40,5 +40,8 @@ application.register("search-practices", SearchPracticesController)
 import SpinnerController from "./spinner_controller"
 application.register("spinner", SpinnerController)
 
+import StudywordCardController from "./studyword_card_controller"
+application.register("studyword-card", StudywordCardController)
+
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)
