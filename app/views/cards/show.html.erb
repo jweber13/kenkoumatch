@@ -29,7 +29,7 @@
               </div>
             <%end%>
             <div class="inner-header">
-              <h1>Your Input</h1>
+              <h1 class="mb-3">Your Input</h1>
             </div>
             <div class="card-show-element">
               <div class="card-element-show-info">
@@ -47,12 +47,12 @@
                 <div class="spinner" data-edit-target="spinner"></div>
               </div>
               <div class="inner-header">
-                <h1>Your Keywords</h1>
-                <div class="gen-section">
+                <h1 class="mb-3">Your Keywords</h1>
+                <div class="d-flex justify-content-center gap-3 mb-3 align-items-center">
                   <%=form_with url: redo_card_path(@card), data: { action: "submit->edit#edit" } do |form| %>
-                    <% form.submit "Related Words", class: "inner-header-btn h5" %>
+                  <button type="submit" class="btn custom-button"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></button>
                   <%end%>
-                  <span>More words related to <%=@card.practice.name%></span>
+                  <span class="text-dark">More words related to <%=@card.practice.name%></span>
                 </div>
               </div>
               <div data-edit-target="edited" class="card-show-element" data-controller="savewordbutton">
@@ -64,12 +64,12 @@
                 <div class="spinner" data-editphrase-target="spinner"></div>
               </div>
               <div class="inner-header">
-                <h1>Useful Phrases</h1>
-                <div class="gen-section">
+                <h1 class="mb-3">Useful Phrases</h1>
+                <div class="d-flex justify-content-center gap-3 mb-3 align-items-center">
                   <%=form_with url: redophrase_card_path(@card), data: { action: "submit->editphrase#edit" } do |form| %>
-                    <% form.submit "Related Phrases", class: "inner-header-btn h5" %>
+                    <button type="submit" class="btn custom-button"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></button>
                   <%end%>
-                  <span>More phrases related to <%=@card.practice.name%></span>
+                  <span class="text-dark">More phrases related to <%=@card.practice.name%></span>
                 </div>
               </div>
               <div data-editphrase-target="phedited" class="card-show-element" data-controller="savephrasebutton">
