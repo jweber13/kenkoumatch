@@ -2,8 +2,8 @@ class StudywordsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
 
   def index
-    @studywords = policy_scope(Studyword)
-    @studyphrases = policy_scope(Studyphrase)
+    @studywords = policy_scope(Studyword).where(user_id: current_user.id)
+    @studyphrases = policy_scope(Studyphrase).where(user_id: current_user.id)
   end
 
   def create
